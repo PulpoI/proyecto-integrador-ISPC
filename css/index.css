@@ -1,0 +1,15 @@
+.logo {
+  width: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+}
+@media (min-width: 1200px) {
+  .carousel-item {
+  
+    height: 40rem;
+    position: relative;
+    bottom: 9rem;
+  }
+}
