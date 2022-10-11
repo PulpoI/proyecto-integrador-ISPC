@@ -1,1 +1,3 @@
-# proyecto-integrador-ISPC
+# GYM APP
+
+## Proyecto integrador ISPC
