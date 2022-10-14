@@ -31,18 +31,18 @@ h1{
   
 }
 #card-pro{
-  background-image: url(/assets/pro.jpg); background-size:cover; background-position: inherit;
+  background-image: url(../assets/pro.jpg); background-size:cover; background-position: inherit;
 }
 #card-premium{
-  background-image: url(/assets/premium.jpg); background-size:cover; background-position: inherit;
+  background-image: url(../assets/premium.jpg); background-size:cover; background-position: inherit;
 }
 #card-platinum{
-  background-image: url(/assets/platinum.jpg); background-size:cover; background-position: inherit;
+  background-image: url(../assets/platinum.jpg); background-size:cover; background-position: inherit;
 }
 
 ul{
   color: aliceblue;
 }
 main{
-  background-image: url(/assets/planes-bg.jpg); background-size:cover; background-position: center;
+  background-image: url(../assets/planes-bg.jpg); background-size:cover; background-position: center;
 }

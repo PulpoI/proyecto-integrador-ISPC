@@ -1,0 +1,20 @@
+
+.container{
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  
+  
+}
+
+img{
+  height: auto;
+  width: auto;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+
+
+
