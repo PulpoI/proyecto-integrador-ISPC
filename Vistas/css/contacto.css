@@ -1,0 +1,10 @@
+/* Estilos pagina de Contacto */
+.bi{
+    font-size: 50px;
+    float: left;
+    margin: 1rem;
+  }
+  
+  .lista-dato{
+    list-style: none;
+  }
