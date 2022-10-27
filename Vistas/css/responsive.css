@@ -7,12 +7,16 @@
   .display-4 {
     font-size: 30px;
   }
+  #resp-form{
+    width:100%;
+   }
 }
 
 @media (min-width: 62em) {
   .display-4{
     margin-top: 5rem;
   }
+
 }
 
 @media only screen and (min-device-width: 1200px) {
@@ -22,6 +26,7 @@
 
   
   }
+
 }
 
 /* Smartphones (portrait and landscape) ----------- */
