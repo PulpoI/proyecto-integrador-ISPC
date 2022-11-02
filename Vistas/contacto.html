@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" media="only screen screen and (min-device-width: 320px) and (max-width : 320px) and (max-device-height: 640px) and (max-device-width : 480px) and (max-device-height: 896px)" href="/css/responsive.css">
-  <link rel="stylesheet" media="only screen screen and (min-device-width: 1200px)" href="/css/responsive.css">
+  <link rel="stylesheet" media="only screen screen and (min-device-width: 320px) and (max-width : 320px) and (max-device-height: 640px) and (max-device-width : 480px) and (max-device-height: 896px)" href="/Vistas/css/responsive.css">
+  <link rel="stylesheet" media="only screen screen and (min-device-width: 1200px)" href="/Vistas/css/responsive.css">
 
   
   <!-- Bootstrap css -->
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="./css/index.css" />
   <link rel="stylesheet" href="./css/contacto.css" />
   <title>Gym App</title>
+  <script defer src="/Vistas/js/form.js"></script>
 </head>
 <body class="d-flex flex-column h-100 bg-light">
     <header>
@@ -110,42 +111,48 @@
           
                           <h1 class="mb-5 text-center">No dudes en ponerte en contacto con nosotros</h1>
           
-                          <form>
-                            
-                            <div class="row">
+                          <form id="contacto-form" class="form" action="/Controladores/recibe-contacto.py">
+                         
+                            <div class="form-box row">
                               <div class="col-12 col-md-6 mb-4">
                                 <div class="form-outline">
-                                  <input type="text" id="form6Example1" class="form-control" />
-                                  <label class="form-label" for="form6Example1">Nombre</label>
+                                  <input type="text" id="firstname" name="firstname"  minlength="3" maxlength="30" class="form-control" placeholder="Nombre" required>
+                                  <label class="form-label" for="firstname">Nombre</label>
+                                  
                                 </div>
                               </div>
                               <div class="col-12 col-md-6 mb-4">
-                                <div class="form-outline">
-                                  <input type="text" id="form6Example2" class="form-control" />
-                                  <label class="form-label" for="form6Example2">Apellido</label>
+                                <div class="form-box  form-outline">
+                                  <input type="text" id="lastname" name="lastname" minlength="2" maxlength="30" class="form-control" placeholder="Apellido" required
+                                  <label class="form-label" for="lastname">Apellido</label>
+                                 
                                 </div>
                               </div>
                             </div>
           
-                            <div class="form-outline mb-4">
-                              <input type="email" id="form6Example5" class="form-control" />
-                              <label class="form-label" for="form6Example5">Email</label>
+                            <div class="form-box form-outline mb-4">
+                              <input type="email" id="email" class="form-control" placeholder="email@email.com" required>
+                              <label class="form-label" for="username">Email</label>
+                             
                             </div>
         
-                            <div class="form-outline mb-4">
-                              <input type="number" id="form6Example6" class="form-control" />
-                              <label class="form-label" for="form6Example6">Numero de Telefono</label>
+                            <div class="form-box form-outline mb-4">
+                              <input type="number" id="phoneNumber" class="form-control" maxlength="15" placeholder="5423335647645">
+                              <label class="form-label" for="phoneNumber">Número de Teléfono</label>
+                           
                             </div>
           
                             <!-- Message input -->
-                            <div class="form-outline mb-4">
-                              <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-                              <label class="form-label" for="form6Example7">Escribe aquí tu mensaje</label>
+                            <div class="form-box form-outline mb-4">
+                              <textarea class="form-control" id="messageInput"  minlength="5"  rows="4" placeholder="Escribe aquí tu mensaje" required></textarea>
+                              <label class="form-label" for="messagInput">Escribe aquí tu mensaje</label>
+                             
                             </div>
           
           
                             <!-- Submit button -->
-                            <button type="submit" class="btn btn-secondary btn-rounded btn-block">Enviar</button>
+                            <button id="submit-btn" type="submit" class="btn btn-secondary btn-rounded btn-block">Enviar</button>
+                          
                           </form>
           
                         </div>
