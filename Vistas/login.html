@@ -73,19 +73,28 @@
        <div class="row justify-content-center fs-6 " style="margin-bottom: 40px" >
          <div class="col-6 formulario fs-6" style="background: #a7022399">
                 <!--Form Login-->
-                <form id="form-login" class="col-12 ">
+                <form id="form-login" class="col-12 needs-validation" action="" novalidate>
                     <div class=" form-group text-center pt-0 ">
                         <h3 class="text-light fw-bo ld text-center py-5 gym">Gym App</h3>
                     </div>
-                    <div class="mb-4">
+                    <div class="col-12 position-relative mb-4">
                         <input class="form-control" type="text" name="username" id="username" placeholder="Usuario o correo electrónico" required/>
+                        <div class="valid-tooltip">
+                          Es necesario su nombre de usuario o su email. Ejemplo: email@email.com 
+                        </div>
                     </div>
                     <div class="mb-4">
-                        <input class="form-control" type ="password" name="contrasena" id="pass" placeholder="Contraseña" required />
+                      <div class="col-auto">
+                        <label for="inputPassword6" class="col-form-label">Password</label>
+                      </div>
+                      <input class="form-control" type ="password" name="contrasena" id="pass" placeholder="Contraseña" minlength="8" maxlength="20" aria-describedby="passwordHelpBlock" required/>
+                        <div id="passwordHelpBlock" class="form-text">
+                          Su contraseña debe tener entre 8-20 carácteres de longitud, puede contener letras y números, aunque no, espacios ni carácteres especiales.
+                        </div>
                     </div> 
-                    <div class="mb-4 form-check">
-                        <input type="checkbox" name="connected" class="form-check-input" id="">
-                        <label for="connected" class="form-check-label text-light">Mantenerme conectado</label>
+                    <div class="position-relative  mb-4 form-check">
+                        <input type="checkbox" name="connected" class="form-check-input" id="inlineFormCheck">
+                        <label class="form-check-label" for="inlineFormCheck">Mantenerme conectado</label>
                     </div>
 
                     <div class="d-grid">
