@@ -171,7 +171,7 @@
             
                                 <div class="position-relative  form-outline">
                             
-                                  <input type="email" class="form-control" id="email" placeholder="email@email.com"  required/>
+                                  <input type="email" class="form-control" id="email" placeholder="email@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
                                   <label class="form-label" for="email">Email</label>
                                   <div class="valid-tooltip">
                                     Todo bien!
@@ -203,14 +203,13 @@
             
                             <div class="mt-4 position-relative mb-4">
                               
-                              <input type="password" class="form-control" name="password" id="password" minlength="8" maxlength="20" aria-describedby="passwordHelpBlock" required/>
+                              <input type="password" class="form-control" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" aria-describedby="passwordHelpBlock" required/>
                               <label for="password" class="form-label">Contraseña</label>
                               <div id="passwordHelpBlock" class="form-text">
-                                Puede contener letras y números, aunque no, espacios ni carácteres especiales.
-                              </div>
+                                Debe contener al menos un número, una letra mayúscula y una minúscula. No puede contener espacios.
                               
-                              <input type="password" class="form-control" name="cfmPassword" id="cfmPassword" required/>
-                              <label for="cfmPpassword" class="form-label">Repita la contraseña</label>
+                              <input type="password" class="form-control btn-outline-warning" name="cfmPassword" id="cfmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required/>
+                              <label for="cfmPpassword" class="form-label">Confirmar contraseña</label>
                               <div id="passwordHelpBlock" class="form-text">
                                 
                               </div>

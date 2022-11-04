@@ -39,7 +39,7 @@ messages:{
 		},
 cfmPassword: { 
   equalTo: "El password debe ser igual al anterior",
-  minlength: "Minimo 6 caracteres",
+  minlength: "Minimo 8 caracteres",
   maxlength: "Maximo 50 caracteres"
 }
 }
