@@ -11,16 +11,6 @@ em{
 
 
 
-a{
-  background: blue;
-  color: white;    
-}
-a:hover{
-  background: red;
-  color: white;
-}
-
-
 
 section a{
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

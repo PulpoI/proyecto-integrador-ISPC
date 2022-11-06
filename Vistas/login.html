@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="only screen screen and (min-device-width: 320px) and (max-width : 320px) and (max-device-height: 640px) and (max-device-width : 480px) and (max-device-height: 896px)" href="/css/responsive.css">
-    <link rel="stylesheet" media="only screen screen and (min-device-width: 1200px)" href="/css/responsive.css">
+    <link rel="stylesheet" media="only screen screen and (min-device-width: 320px) and (max-width : 320px) and (max-device-height: 640px) and (max-device-width : 480px) and (max-device-height: 896px)" href="./css/responsive.css">
+    <link rel="stylesheet" media="only screen screen and (min-device-width: 1200px)" href="./css/responsive.css">
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/index.css" />
     <title>Gym APP - Login</title>
-   
+    <script defer src="./js/formLogin.js"></script>
 </head>
 <body class="d-flex flex-column h-100 bg-light">
     <main class="flex-shrink-0">
@@ -73,19 +73,28 @@
        <div class="row justify-content-center fs-6 " style="margin-bottom: 40px" >
          <div class="col-6 formulario fs-6" style="background: #a7022399">
                 <!--Form Login-->
-                <form id="form-login" class="col-12 ">
+                <form id="form-login" class="col-12 needs-validation" action="" novalidate>
                     <div class=" form-group text-center pt-0 ">
                         <h3 class="text-light fw-bo ld text-center py-5 gym">Gym App</h3>
                     </div>
-                    <div class="mb-4">
+                    <div class="col-12 position-relative mb-4">
                         <input class="form-control" type="text" name="username" id="username" placeholder="Usuario o correo electrónico" required/>
+                        <div class="valid-tooltip">
+                          Es necesario su nombre de usuario o su email. Ejemplo: email@email.com 
+                        </div>
                     </div>
                     <div class="mb-4">
-                        <input class="form-control" type ="password" name="contrasena" id="pass" placeholder="Contraseña" required />
+                      <div class="col-auto">
+                        <label for="inputPassword6" class="col-form-label">Password</label>
+                      </div>
+                      <input class="form-control" type ="password" name="contrasena" id="pass" placeholder="Contraseña" minlength="8" maxlength="20" aria-describedby="passwordHelpBlock" required/>
+                        <div id="passwordHelpBlock" class="form-text">
+                          Su contraseña debe tener entre 8-20 carácteres de longitud, puede contener letras y números, aunque no, espacios ni carácteres especiales.
+                        </div>
                     </div> 
-                    <div class="mb-4 form-check">
-                        <input type="checkbox" name="connected" class="form-check-input" id="">
-                        <label for="connected" class="form-check-label text-light">Mantenerme conectado</label>
+                    <div class="position-relative  mb-4 form-check">
+                        <input type="checkbox" name="connected" class="form-check-input" id="inlineFormCheck">
+                        <label class="form-check-label" for="inlineFormCheck">Mantenerme conectado</label>
                     </div>
 
                     <div class="d-grid">

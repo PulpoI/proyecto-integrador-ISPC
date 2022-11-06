@@ -12,8 +12,12 @@
   <!-- Styles -->
   <link rel="stylesheet" href="./css/styles.css" />
   <link rel="stylesheet" href="./css/index.css" />
- <title>Gym App</title>
-    <title>Document</title>
+  <title>Gym App</title>
+  
+  <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+
+  <script defer src="./js/formRegistro.js"></script>
 </head>
 <body>
     <header>
@@ -75,113 +79,153 @@
                     <div class="card">
                       <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2">Formulario de Registro</h3>
-          
-                        <form id="form-registro" action="">
-          
-                          <div class="row">
-                            <div class="col-md-6 mb-4">
-          
-                              <div class="form-outline">
-                                <input type="text" id="nombre" class="form-control" />
-                                <label class="form-label" for="nombre">Nombre</label>
+
+                        <div class="container">
+                          <form id="form-registro" class="row needs-validation" action="" novalidate>
+            
+                            <div class="form-box row">
+                              <div class="col-md-6 mb-4">
+            
+                                <div class="position-relative">
+                                  <input type="text" id="firstnameId" class="form-control" minlength="2" maxlength="50"  placeholder="Apellido" required/>
+                                   
+                                  <div class="valid-tooltip">
+                                    Todo bien!
+                                  </div>
+                               
+                                  <label class="form-label" for="firstnameId">Nombre</label>
+                                </div>
+            
                               </div>
-          
+
+                              <div class="col-md-6 mb-4">
+            
+                                <div class="position-relative  form-outline">
+                                  <input type="text" id="lastnameId" class="form-control" minlength="2" maxlength="50"  placeholder="Apellido" required/>
+                                   
+                                  <div class="valid-tooltip">
+                                    Todo bien!
+                                </div>
+                              
+                                  <label class="form-label" for="lastnameId">Apellido</label>
+                                </div>
+            
+                              </div>
                             </div>
-                            <div class="col-md-6 mb-4">
-          
-                              <div class="form-outline">
-                                <input type="text" id="apellido" class="form-control" />
-                                <label class="form-label" for="apellido">Apellido</label>
+            
+                            <div class="row">
+                              <div class="col-md-6 mb-4">
+            
+                                <div class="position-relative  form-outline datepicker">
+                                  
+                                  <input type="date"                                   
+                                    class="form-control"
+                                    id="fecha de nacimiento" required
+                                  />
+                                  <label for="fecha de nacimiento" class="form-label">Fecha de nacimiento</label>
+                                </div>
+            
                               </div>
-          
+                              <div class="col-md-6 mb-4">
+            
+                                <h6 class="mb-2 pb-1">Genero: </h6>
+            
+                                <div class=" position-relative form-check form-check-inline">
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="inlineRadioOptions"
+                                    id="femaleGender"
+                                    value="option1"
+                                  />
+                                  <label class="form-check-label" for="femaleGender">Femenino</label>
+                                </div>
+            
+                                <div class="position-relative  form-check form-check-inline">
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="inlineRadioOptions"
+                                    id="maleGender"
+                                    value="option2"
+                                  />
+                                  <label class="form-check-label" for="maleGender">Masculino</label>
+                                </div>
+            
+                                <div class="form-check form-check-inline position-relative ">
+                                  <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="inlineRadioOptions"
+                                    id="otherGender"
+                                    value="option3"
+                                  required/>
+                                  <label class="form-check-label" for="otherGender">Otro</label>
+                                </div>
+            
+                              </div>
                             </div>
-                          </div>
-          
-                          <div class="row">
-                            <div class="col-md-6 mb-4">
-          
-                              <div class="form-outline datepicker">
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="fecha de nacimiento"
-                                />
-                                <label for="fecha de nacimiento" class="form-label">Fecha de nacimiento</label>
+            
+                            <div class="row">
+                              <div class="col-md-6 mb-4">
+            
+                                <div class="position-relative  form-outline">
+                            
+                                  <input type="email" class="form-control" id="email" placeholder="email@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+                                  <label class="form-label" for="email">Email</label>
+                                  <div class="valid-tooltip">
+                                    Todo bien!
+                                  </div>
+                                  <div class="invalid-tooltip">
+                                      Ejemplo: email@email.com 
+                                  </div>  
+
+                                </div>
+            
                               </div>
-          
+                              <div class="col-md-6 mb-4">
+            
+                                <div class="position-relative  form-outline">
+                                  <input class="form-control" type="number" placeholder="Ejemplo: 5423335647645" required/>
+                                  <div class="valid-tooltip">
+                                    Todo bien!
+                                  </div>
+                                  <div class="invalid-tooltip">
+                                      Es necesario escribir su teléfono. 
+                                  </div>  
+                                  
+                                  <label class="form-label" for="phoneNumberId">Celular</label>
+                               
+                                </div>
+            
+                              </div>
                             </div>
-                            <div class="col-md-6 mb-4">
-          
-                              <h6 class="mb-2 pb-1">Genero: </h6>
-          
-                              <div class="form-check form-check-inline">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="inlineRadioOptions"
-                                  id="femaleGender"
-                                  value="option1"
-                                />
-                                <label class="form-check-label" for="femaleGender">Femenino</label>
+            
+                            <div class="mt-4 position-relative mb-4">
+                              
+                              <input type="password" class="form-control" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" aria-describedby="passwordHelpBlock" required/>
+                              <label for="password" class="form-label">Contraseña</label>
+                              <div id="passwordHelpBlock" class="form-text">
+                                Debe contener al menos un número, una letra mayúscula y una minúscula. No puede contener espacios.
+                              
+                              <input type="password" class="form-control btn-outline-warning" name="cfmPassword" id="cfmPassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required/>
+                              <label for="cfmPpassword" class="form-label">Confirmar contraseña</label>
+                              <div id="passwordHelpBlock" class="form-text">
+                                
                               </div>
-          
-                              <div class="form-check form-check-inline">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="inlineRadioOptions"
-                                  id="maleGender"
-                                  value="option2"
-                                />
-                                <label class="form-check-label" for="maleGender">Masculino</label>
+                                                    
+                            
+                          </div> 
+            
+                                <div class="mt-4">
+                                  <button id="submit" type="submit" class="btn btn-primary">Registrar</button>
+                                </div>
+            
                               </div>
-          
-                              <div class="form-check form-check-inline">
-                                <input
-                                  class="form-check-input"
-                                  type="radio"
-                                  name="inlineRadioOptions"
-                                  id="otherGender"
-                                  value="option3"
-                                />
-                                <label class="form-check-label" for="otherGender">Otro</label>
-                              </div>
-          
                             </div>
-                          </div>
-          
-                          <div class="row">
-                            <div class="col-md-6 mb-4">
-          
-                              <div class="form-outline">
-                                <input type="email" id="emailAddress" class="form-control" />
-                                <label class="form-label" for="emailAddress">Email</label>
-                              </div>
-          
-                            </div>
-                            <div class="col-md-6 mb-4">
-          
-                              <div class="form-outline">
-                                <input type="tel" id="phoneNumber" class="form-control" />
-                                <label class="form-label" for="phoneNumber">Celular</label>
-                              </div>
-          
-                            </div>
-                          </div>
-          
-                          <div class="col-md-6 mb-4">
-                            <label for="inputPassword4" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="inputPassword4">
-                          </div>
-          
-                              <div class="mt-4">
-                                <input class="btn btn-danger btn-lg" type="registrar" value="Registrar" />
-                              </div>
-          
-                            </div>
-                          </div>
-          
-                        </form>
+            
+                          </form>
+                        </div>
                       </div>
                     </div>
                   </div>
