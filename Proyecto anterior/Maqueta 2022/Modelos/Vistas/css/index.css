@@ -1,0 +1,12 @@
+
+@media (min-width: 1200px) {
+  .carousel-item {
+    height: 40rem;
+    position: relative;
+    bottom: 9rem;
+  }
+  .banner-danger {
+    position: relative;
+    bottom: 100px;
+  }
+}

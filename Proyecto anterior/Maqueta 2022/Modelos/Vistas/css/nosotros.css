@@ -1,0 +1,28 @@
+h3{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: x-large;
+}
+
+em{
+  color:red;
+  font-weight: bold;
+}
+
+
+
+
+
+section a{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+img{
+  height: auto;
+  width: auto;
+  max-width: 250px;
+  max-height: 250px;
+}
+
+
+
+

@@ -1,0 +1,48 @@
+body {
+  background-image: linear-gradient(180deg, rgb(12, 12, 12), rgb(43, 42, 42) 100px, rgb(8, 8, 8));
+}
+
+/* .container {
+  max-width: 960px;
+} */
+
+.pricing-header {
+  max-width: 700px;
+
+}
+ 
+
+h1{
+  color: rgb(255, 37, 37);
+}
+
+.card{
+  background-color:rgb(28, 26, 26);
+ 
+}
+.card-header{
+  color:rgb(255, 255, 255);
+}
+.platinum{
+  color:rgb(87, 79, 79);
+  }
+#planes-banner{
+  width: 100%;
+  
+}
+#card-pro{
+  background-image: url(../assets/pro.jpg); background-size:cover; background-position: inherit;
+}
+#card-premium{
+  background-image: url(../assets/premium.jpg); background-size:cover; background-position: inherit;
+}
+#card-platinum{
+  background-image: url(../assets/platinum.jpg); background-size:cover; background-position: inherit;
+}
+
+ul{
+  color: aliceblue;
+}
+main{
+  background-image: url(../assets/planes-bg.jpg); background-size:cover; background-position: center;
+}

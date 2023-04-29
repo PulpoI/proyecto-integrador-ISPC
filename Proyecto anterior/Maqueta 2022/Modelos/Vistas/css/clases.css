@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+   
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1280%;
+    margin: auto;
+}
+
+#clases {
+    background: gray;
+    margin-top: -500PX;
+    padding-top: 500Px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    color: #F6F6F6;
+
+}
+
+.negro , th {
+    background: black;
+    font-size: 17px;
+    font-weight: bold;
+  
+    
+
+}
+
+.rojo , th {
+    background: red;
+    font-size: 17px;
+    font-weight: bold;
+    
+}
+
+th {
+    padding: 20px;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.negrita {
+    font-weight: bold;
+}
+
+h2 { 
+    text-align: center;
+    font-size: 80px;
+    font-style: italic;
+
+}
