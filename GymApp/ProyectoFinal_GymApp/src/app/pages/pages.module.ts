@@ -4,6 +4,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { ClasesComponent } from './clases/clases.component';
+import { HomeComponent } from './home/home.component';
+import { PlanesComponent } from './planes/planes.component';
 
 
 
@@ -12,7 +14,9 @@ import { ClasesComponent } from './clases/clases.component';
     DashboardComponent,
     NosotrosComponent,
     ContactoComponent,
-    ClasesComponent
+    ClasesComponent,
+    HomeComponent,
+    PlanesComponent
   ],
   imports: [
     CommonModule
