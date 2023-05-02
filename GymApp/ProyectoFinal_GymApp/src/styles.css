@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@media (min-width: 1200px) {
+    .carousel-item {
+      height: 40rem;
+      position: relative;
+      bottom: 9rem;
+    }
+    .banner-danger {
+      position: relative;
+      bottom: 100px;
+    }
+  }
+  .logo {
+    width: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+  }
+  
+  a {
+    text-decoration: none;
+  }
