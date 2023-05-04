@@ -1,16 +1,16 @@
 
-body {
+.container-login {
     
-    background: url(/assets/login.jpg) no-repeat center center fixed;
+    background: url("../../assets/login.jpg") no-repeat center center fixed;
     background-size: cover;    
 }
 
-.container{
+/* .container{
     @media (min-width: 768px) {
         .first-section img {
           margin-bottom: 20px;
         }
-       
+  
       }
       
       @media (min-width: 992px) {
@@ -18,6 +18,12 @@ body {
           margin-bottom: 0;
         }
       }
+} */
+
+.formulario {
+
+    display: flex;
+    justify-content: center;
 }
 
 .Formulario{
