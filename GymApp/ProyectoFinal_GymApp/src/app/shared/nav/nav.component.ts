@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+userLoginOn:boolean=false;
   constructor() { }
 
   ngOnInit() {
