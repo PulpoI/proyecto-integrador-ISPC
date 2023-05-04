@@ -20,3 +20,8 @@
   a {
     text-decoration: none;
   }
+
+  body {
+    font-size: 1vh;
+    max-width: fit-content;
+  }

@@ -1,0 +1,15 @@
+@media (min-width: 1200px) {
+
+.navbar-responsive{
+    position: absolute;
+    width: fit-content 
+  }
+.navbar-responsive{
+    font-size: 1vh;
+    max-width: min-content;
+  }
+  .navbar{
+    width: fit-content ;
+    justify-content:fit-content;
+  }
+}
