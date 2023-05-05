@@ -33,7 +33,7 @@
     padding: 0;
     border-radius: 10px;
     border-top: 4px solid rgba(30, 25, 25, 0.578);
-    color: white;
+    color: rgb(58, 52, 52);
     margin:0 auto;
     margin-top: 0%;
 }
@@ -57,7 +57,7 @@
 .iniciar{
     width: 100%;
     height: 35px;
-    background: #342e2e;
+    background: none;
     border: none;
     font-size: 14px;font-weight: 600;
     color: white;
@@ -71,7 +71,7 @@
     height: 40px;
 }
 .iniciar:hover{
-    background: #fff;
+    background: #ffffff00;
     color: #342e2e;
 }
 
@@ -82,7 +82,7 @@
 }
     
 .reg a{
-    color: white;
+    color: rgb(249, 244, 244);
     text-decoration: none
 }
 

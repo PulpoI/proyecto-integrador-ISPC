@@ -1,9 +1,19 @@
 /* @media (min-width: 1200px) {
 
-.navbar-responsive{
-    position: absolute;
-    width: fit-content 
+  .logo {
+    height: 200%;
+    font-size: 1.5rem;
+    line-height: 2;
+    background-color: rgb(220,53,69);
+    height: 5rem; 
+    width: 10rem; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
   }
+<<<<<<< HEAD
+  
+=======
 .navbar-responsive{
     font-size: 1vh;
     max-width: min-content;
