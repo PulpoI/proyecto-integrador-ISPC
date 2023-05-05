@@ -1,15 +1,30 @@
-@media (min-width: 1200px) {
+  .navbar {
+    height: 5rem;
+      width: 100%!important;
+ font-family: monospace;
+ text-transform: uppercase;
+  }
+  
+  .navbar-brand {
+    height: 100%;
+  }
+  
+  .navbar-brand  {
+    height: 200%;
+    font-size: 1.5rem;
+    line-height: 2;
+    
+  }
 
-.navbar-responsive{
-    position: absolute;
-    width: fit-content 
+  .logo {
+    height: 200%;
+    font-size: 1.5rem;
+    line-height: 2;
+    background-color: rgb(220,53,69);
+    height: 5rem; 
+    width: 10rem; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;
   }
-.navbar-responsive{
-    font-size: 1vh;
-    max-width: min-content;
-  }
-  .navbar{
-    width: fit-content ;
-    justify-content:fit-content;
-  }
-}
+  

@@ -1,0 +1,8 @@
+.banner-danger {
+    position: relative; /* enable relative positioning for the section */
+    top: -50px; 
+    z-index: 1; 
+  }
+  .banner-danger .btn {
+    width: 150px; 
+  }
