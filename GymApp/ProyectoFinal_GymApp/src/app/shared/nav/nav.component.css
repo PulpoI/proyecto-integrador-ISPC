@@ -1,20 +1,4 @@
-  .navbar {
-    height: 5rem;
-      width: 100%!important;
- font-family: monospace;
- text-transform: uppercase;
-  }
-  
-  .navbar-brand {
-    height: 100%;
-  }
-  
-  .navbar-brand  {
-    height: 200%;
-    font-size: 1.5rem;
-    line-height: 2;
-    
-  }
+/* @media (min-width: 1200px) {
 
   .logo {
     height: 200%;
@@ -27,4 +11,28 @@
     align-items: center; 
     justify-content: center;
   }
+<<<<<<< HEAD
   
+=======
+.navbar-responsive{
+    font-size: 1vh;
+    max-width: min-content;
+  }
+  .navbar{
+    width: fit-content ;
+    justify-content:fit-content;
+  }
+} */
+
+.logo {
+  width: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5rem;
+}
+
+a {
+  text-decoration: none;
+}
+>>>>>>> abe8836cadb50cce48148a83efdd14c024e34ae8
