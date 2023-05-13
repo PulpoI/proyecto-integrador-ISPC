@@ -2,7 +2,7 @@
   <div class="row w-100 justify-content-center fs-6 py-4">
     <div class="col-md-6 formulario fs-6 bg-danger px-4 rounded">
       <!--Form Login-->
-      <form id="form-login" class="col-md-10 col-sm-12 needs-validation " action="" novalidate>
+      <form [formGroup]="loginForm" action="" novalidate>
         <div class=" form-group text-center pt-0 ">
           <h3 class="text-light fw-bo ld text-center py-5 gym">Iniciar sesión</h3>
         </div>
@@ -11,32 +11,39 @@
             <label for="username" class="col-form-label text-light">Usuario o Email</label>
           </div>
           <input class="form-control" type="text" name="username" id="username" placeholder="" required />
-          <div class="valid-tooltip">
-            Es necesario su nombre de usuario o su email. Ejemplo: email@email.com
-          </div>
-        </div>
-        <div class="mb-4">
-          <div class="col-auto">
-            <label for="pass" class="col-form-label text-light">Contraseña</label>
-          </div>
-          <input class="form-control" type="password" name="contrasena" id="pass" placeholder="" minlength="8"
-            maxlength="20" aria-describedby="passwordHelpBlock" required />
-          <div id="passwordHelpBlock" class="form-text text-light">
-            Su contraseña debe tener entre 8-20 carácteres de longitud, puede contener letras y números, aunque no,
-            espacios ni carácteres especiales.
-          </div>
-        </div>
-        <div class="position-relative  mb-4 form-check">
-          <input type="checkbox" name="connected" class="form-check-input" id="inlineFormCheck">
-          <label class="form-check-label" for="inlineFormCheck">Mantenerme conectado</label>
-        </div>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
 
-        <div class="d-grid">
-          <button class=iniciar type="submit" class="btn btn-dark">Iniciar Sesión</button>
-        </div>
-        <div class="my-2 mx-1 pb-4 text-light reg">
-          <span>¿No tienes una cuenta? <a href="./registro.html" class="b">Regístrate</a></span><br>
-          <span><a href="#" class="olvidaste">¿Olvidaste tu contraseña?</a></span>
+            <div *ngIf="email.errors?.['required']">
+              El email es requerido.
+            </div>
+
+          </div>
+          <div class="mb-4">
+            <div class="col-auto">
+              <label for="pass" class="col-form-label text-light">Contraseña</label>
+            </div>
+            <input class="form-control" type="password" name="contrasena" id="pass" placeholder="" minlength="8"
+              maxlength="20" aria-describedby="passwordHelpBlock" required />
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+              <div *ngIf="password.errors?.['required']">
+                Name is required.
+              </div>
+            
+            </div>
+            <div class="position-relative  mb-4 form-check">
+              <input type="checkbox" name="connected" class="form-check-input" id="inlineFormCheck">
+              <label class="form-check-label" for="inlineFormCheck">Mantenerme conectado</label>
+            </div>
+
+            <div class="d-grid">
+              <button class=iniciar type="submit" (click)="login()" class="btn btn-dark">Iniciar Sesión</button>
+            </div>
+            <div class="my-2 mx-1 pb-4 text-light reg">
+              <span>¿No tienes una cuenta? <a href="./registro.html" class="b">Regístrate</a></span><br>
+              <span><a href="#" class="olvidaste">¿Olvidaste tu contraseña?</a></span>
+            </div>
+          </div>
         </div>
       </form>
     </div>
