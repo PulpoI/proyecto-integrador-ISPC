@@ -5,20 +5,16 @@
     background-size: cover;    
 }
 
-/* .container{
-    @media (min-width: 768px) {
-        .first-section img {
-          margin-bottom: 20px;
-        }
-  
-      }
-      
-      @media (min-width: 992px) {
-        .first-section img {
-          margin-bottom: 0;
-        }
-      }
-} */
+.form-box{
+    width: 400px;
+    height: 400px;
+    padding: 25px;
+    background-color: rgb(223, 124, 124);
+
+   
+
+}
+
 
 .formulario {
 

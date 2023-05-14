@@ -14,7 +14,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { LoginComponent } from './auth/login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule, 
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
