@@ -3,15 +3,8 @@
     <a class="navbar-brand m-0 p-0" href="index.html">
       <div class="logo">GYM APP</div>
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -21,37 +14,44 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/nosotros">Nosotros</a>
-          
+
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/planes">Planes</a
-          >
+          <a class="nav-link" routerLink="/planes">Planes</a>
         </li>
 
-      <li class="nav-item">
-        <a class="nav-link text-uppercase" routerLink="/clases">Clases</a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" routerLink="/clases">Clases</a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link text-uppercase" routerLink="/contacto">Contacto</a>
-      </li>
-      <div class="mx-5 d-flex">
-        <a class="nav-link" routerLink="/login">
-          <button type="button"
-            class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace"
-            *ngIf="!userLoginOn">
-            Inicia sesión
-          </button>
-        </a>
-        <a class="nav-link" routerLink="/registro">
-          <button type="button"
-            class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
-            *ngIf="!userLoginOn">
-            Registrate
-          </button>
-        </a>
-      </div>
-    </ul>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" routerLink="/contacto">Contacto</a>
+        </li>
+        <div class="mx-5 d-flex">
+          <a class="nav-link" routerLink="/login">
+            <button type="button"
+              class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="!userLoginOn">
+              Inicia sesión
+            </button>
+          </a>
+          <a class="nav-link" routerLink="/inicio">
+            <button type="button"
+              class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="!userLoginOn">
+              Cerrar sesión
+            </button>
+          </a>
+          
+          <a class="nav-link" routerLink="/registro">
+            <button type="button"
+              class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="!userLoginOn">
+              Registrate
+            </button>
+          </a>
+        </div>
+      </ul>
+    </div>
   </div>
-</div>
 </nav>

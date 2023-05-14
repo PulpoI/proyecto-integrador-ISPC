@@ -1,160 +1,76 @@
-<section class="intro">
-    <div class="mask d-flex align-items-center h-100 gradient-custom">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-9 col-xl-7">
-                    <div class="card">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4 pb-2">Formulario de Registro</h3>
+<div class=" w-auto shadow p-0 fs-6 container-login ">
+    <div class="row w-100 justify-content-center fs-6 py-4">
+        <div class="col-md-6 formulario fs-6 bg-danger px-4 rounded">
+            <form [formGroup]="signup" (ngSubmit)="signupdata(signup)" id="form-registro" class="row needs-validation"
+                action="" novalidate>
+                <div class=" form-group text-center pt-0 ">
+                    <h3>Formulario de registro</h3>
+                </div>
+                <div class="col-12 position-relative mb-4">
+                    <div class="col-auto">
 
-                            <div class="container">
-                                <form id="form-registro" class="row needs-validation" action="" novalidate>
-
-                                    <div class="form-box row">
-                                        <div class="col-md-6 mb-4">
-
-                                            <div class="position-relative">
-                                                <input type="text" id="firstnameId" class="form-control" minlength="2"
-                                                    maxlength="50" placeholder="Apellido" required />
-
-                                                <div class="valid-tooltip">
-                                                    Todo bien!
-                                                </div>
-
-                                                <label class="form-label" for="firstnameId">Nombre</label>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-6 mb-4">
-
-                                            <div class="position-relative  form-outline">
-                                                <input type="text" id="lastnameId" class="form-control" minlength="2"
-                                                    maxlength="50" placeholder="Apellido" required />
-
-                                                <div class="valid-tooltip">
-                                                    Todo bien!
-                                                </div>
-
-                                                <label class="form-label" for="lastnameId">Apellido</label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-
-                                            <div class="position-relative  form-outline datepicker">
-
-                                                <input type="date" class="form-control" id="fecha de nacimiento"
-                                                    required />
-                                                <label for="fecha de nacimiento" class="form-label">Fecha de
-                                                    nacimiento</label>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-
-                                            <h6 class="mb-2 pb-1">Genero: </h6>
-
-                                            <div class=" position-relative form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="femaleGender" value="option1" />
-                                                <label class="form-check-label" for="femaleGender">Femenino</label>
-                                            </div>
-
-                                            <div class="position-relative  form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="maleGender" value="option2" />
-                                                <label class="form-check-label" for="maleGender">Masculino</label>
-                                            </div>
-
-                                            <div class="form-check form-check-inline position-relative ">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                    id="otherGender" value="option3" required />
-                                                <label class="form-check-label" for="otherGender">Otro</label>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-
-                                            <div class="position-relative  form-outline">
-
-                                                <input type="email" class="form-control" id="email"
-                                                    placeholder="email@email.com"
-                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
-                                                <label class="form-label" for="email">Email</label>
-                                                <div class="valid-tooltip">
-                                                    Todo bien!
-                                                </div>
-                                                <div class="invalid-tooltip">
-                                                    Ejemplo: email@email.com
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-
-                                            <div class="position-relative  form-outline">
-                                                <input class="form-control" type="number"
-                                                    placeholder="Ejemplo: 5423335647645" required />
-                                                <div class="valid-tooltip">
-                                                    Todo bien!
-                                                </div>
-                                                <div class="invalid-tooltip">
-                                                    Es necesario escribir su teléfono.
-                                                </div>
-
-                                                <label class="form-label" for="phoneNumberId">Celular</label>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="mt-4 position-relative mb-4">
-
-                                        <input type="password" class="form-control" name="password" id="password"
-                                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                            aria-describedby="passwordHelpBlock" required />
-                                        <label for="password" class="form-label">Contraseña</label>
-                                        <div id="passwordHelpBlock" class="form-text">
-                                            Debe contener al menos un número, una letra mayúscula y una minúscula. No
-                                            puede contener espacios.
-
-                                            <input type="password" class="form-control btn-outline-warning"
-                                                name="cfmPassword" id="cfmPassword"
-                                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required />
-                                            <label for="cfmPpassword" class="form-label">Confirmar contraseña</label>
-                                            <div id="passwordHelpBlock" class="form-text">
-
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="mt-4">
-                                            <button id="submit" type="submit" class="btn btn-primary">Registrar</button>
-                                        </div>
-
-                                    </div>
-                                </form>
-                                </div>
-
-                            
-
+                        <div class="mt-4 position-relative mb-4">
+                            <label>Nombre</label>
+                            <br>
+                            <input type="text" formControlName="fname" minlength="2" maxlength="50" placeholder="Nombre"
+                                required />
                         </div>
+
                     </div>
 
-                </div>
-            </div>
+                    <div class="col-auto">
 
+                        <div class="mt-4 position-relative mb-4">
+                            <label>Apellido</label>
+                            <br>
+                            <input type="text" formControlName="fapellido" minlength="2" maxlength="50"
+                                placeholder="Apellido" required />
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="col-auto">
+
+                        <div class="mt-4 position-relative mb-4">
+                            <label>Email</label>
+                            <br>
+                            <input type="email" formControlName="email" placeholder="email@email.com" />
+
+
+                        </div>
+
+                    </div>
+                    <div class="col-auto">
+
+                        <div class="mt-4 position-relative mb-4">
+                            <label>Contraseña</label>
+                            <br>
+                            <input type="password" formControlName="password" name="password" id="password" />
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="mt-4 position-relative mb-4">
+                            <button type="submit" class="btn btn-outline-dark">Registrar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
 
+
+
     </div>
-</section>
+</div>
