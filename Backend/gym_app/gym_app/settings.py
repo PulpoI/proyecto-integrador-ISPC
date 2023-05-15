@@ -101,9 +101,9 @@ DATABASES = {
         'USER': 'u837854629_grupo53',
         'PASSWORD': 'Grupo-53',
         'NAME': 'u837854629_gym',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
+        # 'OPTIONS': {
+        #     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        # }
     }
     # 'default': dj_database_url.config(default='django.db.backends.mysql')
     
