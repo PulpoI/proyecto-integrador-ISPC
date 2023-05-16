@@ -31,15 +31,22 @@
           <a class="nav-link" routerLink="/login">
             <button type="button"
               class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace"
-              *ngIf="!userLoginOn">
+              *ngIf="!isAuthenticated">
               Inicia sesión
             </button>
           </a>
           <a class="nav-link" routerLink="/registro">
             <button type="button"
               class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
-              *ngIf="!userLoginOn">
+              *ngIf="!isAuthenticated">
               Registrate
+            </button>
+          </a>
+          <a class="nav-link" routerLink="/dashboard">
+            <button type="button"
+              class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="isAuthenticated">
+              Mi cuenta
             </button>
           </a>
         </div>

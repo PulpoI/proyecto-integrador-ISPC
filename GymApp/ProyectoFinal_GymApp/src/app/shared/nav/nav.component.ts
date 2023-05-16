@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-userLoginOn:boolean=false;
-  constructor() { }
+  isAuthenticated: boolean = false;
 
-  ngOnInit() {
+  constructor(private authService: AuthService) { }
+
+  ngOnInit(): void {
+    this.authService.isAuthenticated$.subscribe(isAuthenticated => {
+      this.isAuthenticated = isAuthenticated;
+    });
   }
+  
+
+  // ngOnInit(): void {
+  //   // Verificar si hay un token en el localStorage al iniciar el componente
+  //   const token = localStorage.getItem('token');
+  //   this.userLoginOn = token !== null && token !== undefined;
+  // }
 }

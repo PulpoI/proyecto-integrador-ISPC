@@ -29,7 +29,7 @@ class AdminView(View):
     else:
       admins = list(Admin.objects.values())
       if len(admins) > 0:
-        datos = {'mensaje': "Success", 'planes': admins}
+        datos = {'mensaje': "Success", 'admins': admins}
       else:
         datos = {'mensaje': "No se encontraron administradores..."}
       return JsonResponse(datos)
@@ -52,7 +52,7 @@ class ClienteView(View):
     else:
       clientes = list(Cliente.objects.values())
       if len(clientes) > 0:
-        datos = {'mensaje': "Success", 'planes': clientes}
+        datos = {'mensaje': "Success", 'clientes': clientes}
       else:
         datos = {'mensaje': "No se encontraron clientes..."}
       return JsonResponse(datos)
@@ -61,7 +61,7 @@ class ClienteView(View):
     # print(request.body)
     jd = json.loads(request.body)
     # print(jd)
-    Cliente.objects.create(nombre=jd['nombre'], apellido=jd['apellido'], email=jd['email'], contraseña=jd['contraseña'], fecha_nacimiento=jd['fecha_nacimiento'], plan_id=jd['plan_id'])
+    Cliente.objects.create(nombre=jd['nombre'], apellido=jd['apellido'], email=jd['email'], contraseña=jd['contraseña'], fecha_nacimiento=jd['fecha_nacimiento'], plan_id=jd['plan_id'], clases_restantes=jd['clases_restantes'])
     datos={'mensaje': "Success"}
     return JsonResponse(datos)
   
