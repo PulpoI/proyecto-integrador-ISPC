@@ -42,11 +42,18 @@
               Registrate
             </button>
           </a>
+          <a class="nav-link" routerLink="/mi-cuenta">
+            <button type="button"
+              class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="!isAdmin && isAuthenticated">
+              Mi cuenta
+            </button>
+          </a>
           <a class="nav-link" routerLink="/dashboard">
             <button type="button"
               class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
-              *ngIf="isAuthenticated">
-              Mi cuenta
+              *ngIf="isAuthenticated && isAdmin">
+              Dashboard
             </button>
           </a>
         </div>

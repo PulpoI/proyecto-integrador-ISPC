@@ -21,8 +21,8 @@ class Cliente(models.Model):
   email=models.CharField(max_length=100)
   contraseña=models.CharField(max_length=50)
   fecha_nacimiento=models.DateField(null=True)
-  plan=models.ForeignKey(Plan, on_delete=models.CASCADE)
-  clases_restantes=models.PositiveBigIntegerField()
+  plan=models.ForeignKey(Plan, on_delete=models.CASCADE, null=True, blank=True)
+  clases_restantes=models.PositiveBigIntegerField(null=True, default=None, blank=True)
 
 class Clase(models.Model):
   nombre=models.CharField(max_length=50)

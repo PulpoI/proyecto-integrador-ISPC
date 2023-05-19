@@ -39,20 +39,21 @@ class ClienteView(View):
   @method_decorator(csrf_exempt)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
-    
+
   def get(self, request, id=0):
     if (id > 0):
         cliente = Cliente.objects.filter(id=id).values().first()
         if cliente:
             plan_id = cliente['plan_id']
-            plan = Plan.objects.get(id=plan_id)
-            cliente['plan'] = {
-                'id': plan.id,
-                'nombre': plan.nombre,
-                'descripcion': plan.descripcion,
-                'cantidad_clases': plan.cantidad_clases,
-                'precio': plan.precio
-            }
+            if plan_id:
+              plan = Plan.objects.get(id=plan_id)
+              cliente['plan'] = {
+                  'id': plan.id,
+                  'nombre': plan.nombre,
+                  'descripcion': plan.descripcion,
+                  'cantidad_clases': plan.cantidad_clases,
+                  'precio': plan.precio
+              }
             datos = {'mensaje': "Success", 'cliente': cliente}
         else:
             datos = {'mensaje': "Error, no se encontró el cliente"}
@@ -79,8 +80,13 @@ class ClienteView(View):
         
   def post(self, request):
     jd = json.loads(request.body)
-    plan_id = jd['plan_id']
-    plan = Plan.objects.get(id=plan_id)
+    plan_id = jd.get('plan_id')
+    plan = None
+    if plan_id:
+        try:
+            plan = Plan.objects.get(id=plan_id)
+        except Plan.DoesNotExist:
+            pass
     cliente = Cliente.objects.create(
         nombre=jd['nombre'],
         apellido=jd['apellido'],
@@ -88,7 +94,7 @@ class ClienteView(View):
         contraseña=jd['contraseña'],
         fecha_nacimiento=jd['fecha_nacimiento'],
         plan=plan,
-        clases_restantes=jd['clases_restantes']
+        clases_restantes=jd.get('clases_restantes')
     )
     cliente_data = {
         'id': cliente.id,
@@ -98,16 +104,17 @@ class ClienteView(View):
         'contraseña': cliente.contraseña,
         'fecha_nacimiento': cliente.fecha_nacimiento,
         'plan': {
-            'id': plan.id,
-            'nombre': plan.nombre,
-            'descripcion': plan.descripcion,
-            'cantidad_clases': plan.cantidad_clases,
-            'precio': plan.precio
-        },
+            'id': plan.id if plan else None,
+            'nombre': plan.nombre if plan else None,
+            'descripcion': plan.descripcion if plan else None,
+            'cantidad_clases': plan.cantidad_clases if plan else None,
+            'precio': plan.precio if plan else None
+        } if plan else None,
         'clases_restantes': cliente.clases_restantes
     }
     datos = {'mensaje': "Success", 'cliente': cliente_data}
     return JsonResponse(datos)
+
 
 
 # PLANES

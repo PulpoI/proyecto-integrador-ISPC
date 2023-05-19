@@ -8,6 +8,7 @@ import { AuthService } from '../../auth.service';
 })
 export class NavComponent implements OnInit {
   isAuthenticated: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private authService: AuthService) { }
 
@@ -15,12 +16,13 @@ export class NavComponent implements OnInit {
     this.authService.isAuthenticated$.subscribe(isAuthenticated => {
       this.isAuthenticated = isAuthenticated;
     });
-  }
-  
+    const isAuthenticatedString = sessionStorage.getItem('isAuthenticated');
+    this.isAuthenticated = isAuthenticatedString === 'true';
 
-  // ngOnInit(): void {
-  //   // Verificar si hay un token en el localStorage al iniciar el componente
-  //   const token = localStorage.getItem('token');
-  //   this.userLoginOn = token !== null && token !== undefined;
-  // }
+    this.authService.isAdmin$.subscribe(isAdmin => {
+      this.isAdmin = isAdmin;
+    });
+    const isAdminString = sessionStorage.getItem('isAdmin');
+    this.isAuthenticated = isAdminString === 'true';
+  }
 }

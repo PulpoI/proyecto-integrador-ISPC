@@ -1,11 +1,8 @@
-import { LoginService } from './../../service/auth/login.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
-
-
-
+import { LoginService } from '../../service/auth/login.service';
 
 @Component({
   selector: 'app-login',
@@ -13,59 +10,55 @@ import { AuthService } from '../../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  login: FormGroup | any;
-  data: any = [];
-  dataFiltrada: any = [];
+  login!: FormGroup;
 
-  constructor(private apiService: LoginService, private authService: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.traerData();
-    this.login = new FormGroup({
-      'fname': new FormControl(),
-      'password': new FormControl()
+    this.login = this.fb.group({
+      fname: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
-  traerData() {
-    this.apiService.getData().subscribe(data => {
-      this.data = data;
-    });
-  }
-
-  logindata(login: FormGroup) {
+  logindata(): void {
     const correoElectronico = this.login.value.fname;
     const contraseña = this.login.value.password;
 
-    this.dataFiltrada = this.data.clientes.filter((cliente: { email: any; }) => cliente.email === correoElectronico);
+    this.loginService.getData().subscribe(data => {
+      const usuarioFiltrado = data.clientes.find(
+        (cliente: { email: string }) => cliente.email === correoElectronico
+      );
 
-    if (this.dataFiltrada.length > 0) {
-      const usuarioFiltrado = this.dataFiltrada[0];
+      if (usuarioFiltrado) {
+        if (usuarioFiltrado.contraseña === contraseña) {
+          console.log('Contraseña válida');
 
-      if (usuarioFiltrado.contraseña === contraseña) {
-        console.log('Contraseña válida');
+          // Generar un token basado en el datetime actual
+          const token = Date.now().toString();
 
-        // Generar un token basado en el datetime actual
-        const token = Date.now().toString();
-
-        // Guardar el token y el usuario filtrado en el localStorage
-        localStorage.setItem('token', token);
-        localStorage.setItem('usuario', JSON.stringify(usuarioFiltrado));
-         // Actualizar el estado de autenticación al iniciar sesión correctamente
-         this.authService.setIsAuthenticated(true);
-        
+          // Guardar el token y el usuario filtrado en el sessionStorage
+          sessionStorage.setItem('token', token);
+          sessionStorage.setItem('usuario', JSON.stringify(usuarioFiltrado));
+          sessionStorage.setItem('isAuthenticated', 'true');
+          // Actualizar el estado de autenticación al iniciar sesión correctamente
+          this.authService.updateAuthenticationStatus(true);
+          
+          // Redirigir al dashboard o a la página deseada
+          this.router.navigate(['/mi-cuenta']);
+        } else {
+          console.log('Contraseña inválida');
+        }
       } else {
-        console.log('Contraseña inválida');
+        console.log('No se encontró ningún usuario con el correo electrónico especificado');
       }
-    } else {
-      console.log('No se encontró ningún usuario con el correo electrónico especificado');
-    }
+    });
   }
 }
-
-
-
-
-
 
 

@@ -5,13 +5,14 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
-  private urlApi = 'http://127.0.0.1:8000/api/';
+export class LoginAdminService {
+
+  private urlApiAdmins = 'http://127.0.0.1:8000/api/admins/'
+  
 
   constructor(private http: HttpClient) { }
 
-  public getData(route: string): Observable<any> {
-    const url = this.urlApi + route;
-    return this.http.get<any>(url);
+  public getData() : Observable<any> {
+    return this.http.get<any>(this.urlApiAdmins) ;
   }
 }

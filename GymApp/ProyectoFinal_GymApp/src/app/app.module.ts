@@ -10,12 +10,13 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ClasesComponent } from './pages/clases/clases.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {HttpClientModule} from '@angular/common/http';
     DashboardComponent,
     PlanesComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    LoginAdminComponent
   ],
   imports: [
     BrowserModule,
