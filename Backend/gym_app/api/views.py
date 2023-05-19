@@ -39,32 +39,76 @@ class ClienteView(View):
   @method_decorator(csrf_exempt)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
-  #Get
+    
   def get(self, request, id=0):
     if (id > 0):
-      clientes = list(Cliente.objects.filter(id=id).values())
-      if len(clientes) > 0:
-        cliente = clientes[0]
-        datos = {'mensaje': "Success", 'clientes': cliente}
-      else:
-        datos = {'mensaje': "Error, no se encontro el cliente"}
-      return JsonResponse(datos)
+        cliente = Cliente.objects.filter(id=id).values().first()
+        if cliente:
+            plan_id = cliente['plan_id']
+            plan = Plan.objects.get(id=plan_id)
+            cliente['plan'] = {
+                'id': plan.id,
+                'nombre': plan.nombre,
+                'descripcion': plan.descripcion,
+                'cantidad_clases': plan.cantidad_clases,
+                'precio': plan.precio
+            }
+            datos = {'mensaje': "Success", 'cliente': cliente}
+        else:
+            datos = {'mensaje': "Error, no se encontró el cliente"}
+        return JsonResponse(datos)
     else:
-      clientes = list(Cliente.objects.values())
-      if len(clientes) > 0:
-        datos = {'mensaje': "Success", 'clientes': clientes}
-      else:
-        datos = {'mensaje': "No se encontraron clientes..."}
-      return JsonResponse(datos)
-  # Post
+        clientes = Cliente.objects.values()
+        clientes_con_plan = []
+        for cliente in clientes:
+            plan_id = cliente['plan_id']
+            plan = Plan.objects.get(id=plan_id)
+            cliente['plan'] = {
+                'id': plan.id,
+                'nombre': plan.nombre,
+                'descripcion': plan.descripcion,
+                'cantidad_clases': plan.cantidad_clases,
+                'precio': plan.precio
+            }
+            clientes_con_plan.append(cliente)
+        if clientes_con_plan:
+            datos = {'mensaje': "Success", 'clientes': clientes_con_plan}
+        else:
+            datos = {'mensaje': "No se encontraron clientes..."}
+        return JsonResponse(datos)
+        
   def post(self, request):
-    # print(request.body)
     jd = json.loads(request.body)
-    # print(jd)
-    Cliente.objects.create(nombre=jd['nombre'], apellido=jd['apellido'], email=jd['email'], contraseña=jd['contraseña'], fecha_nacimiento=jd['fecha_nacimiento'], plan_id=jd['plan_id'], clases_restantes=jd['clases_restantes'])
-    datos={'mensaje': "Success"}
+    plan_id = jd['plan_id']
+    plan = Plan.objects.get(id=plan_id)
+    cliente = Cliente.objects.create(
+        nombre=jd['nombre'],
+        apellido=jd['apellido'],
+        email=jd['email'],
+        contraseña=jd['contraseña'],
+        fecha_nacimiento=jd['fecha_nacimiento'],
+        plan=plan,
+        clases_restantes=jd['clases_restantes']
+    )
+    cliente_data = {
+        'id': cliente.id,
+        'nombre': cliente.nombre,
+        'apellido': cliente.apellido,
+        'email': cliente.email,
+        'contraseña': cliente.contraseña,
+        'fecha_nacimiento': cliente.fecha_nacimiento,
+        'plan': {
+            'id': plan.id,
+            'nombre': plan.nombre,
+            'descripcion': plan.descripcion,
+            'cantidad_clases': plan.cantidad_clases,
+            'precio': plan.precio
+        },
+        'clases_restantes': cliente.clases_restantes
+    }
+    datos = {'mensaje': "Success", 'cliente': cliente_data}
     return JsonResponse(datos)
-  
+
 
 # PLANES
 class PlanView(View):
