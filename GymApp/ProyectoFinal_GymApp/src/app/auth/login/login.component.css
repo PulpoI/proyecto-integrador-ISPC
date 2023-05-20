@@ -6,12 +6,17 @@
 }
 
 .form-box{
-    width: 400px;
-    height: 400px;
-    padding: 25px;
-    background-color: rgb(223, 124, 124);
-
-   
+    min-width: 300px;
+    max-width: 60%;
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color:  rgb(223, 124, 124);
+      
+    color: black;
+    margin-top: 5rem;
 
 }
 
