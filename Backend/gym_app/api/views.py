@@ -154,7 +154,7 @@ class PlanView(View):
     # print(request.body)
     jd = json.loads(request.body)
     # print(jd)
-    Plan.objects.create(nombre=jd['nombre'], descripcion=jd['descripcion'], cantidad_clases=jd['cantidad_clases'], precio=jd['precio'], fecha_inicio=jd['fecha_inicio'])
+    Plan.objects.create(nombre=jd['nombre'], descripcion=jd['descripcion'], cantidad_clases=jd['cantidad_clases'], precio=jd['precio'])
     datos={'mensaje': "Success"}
     return JsonResponse(datos)
 

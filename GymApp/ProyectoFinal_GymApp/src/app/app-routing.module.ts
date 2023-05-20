@@ -1,3 +1,6 @@
+import { CrearPlanComponent } from './admin/views/crear-plan/crear-plan.component';
+import { PlanComponent } from './admin/views/plan/plan.component';
+import { ClienteComponent } from './admin/views/cliente/cliente.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //pages
@@ -24,6 +27,9 @@ const routes: Routes = [
   {path:'registro', component: RegistroComponent},
   {path:'admin', component: LoginAdminComponent},
   {path:'dashboard', component: DashboardComponent},
+  {path:'cliente/:id', component: ClienteComponent},
+  {path:'plan/:id', component: PlanComponent},
+  {path:'crear-plan', component: CrearPlanComponent },
   {path:'**', component: HomeComponent},
 
 ];

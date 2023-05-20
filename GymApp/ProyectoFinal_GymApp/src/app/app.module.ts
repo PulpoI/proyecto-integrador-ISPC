@@ -14,9 +14,12 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { LoginComponent } from './auth/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
+import { ClienteComponent } from './admin/views/cliente/cliente.component';
+import { PlanComponent } from './admin/views/plan/plan.component';
+import { CrearPlanComponent } from './admin/views/crear-plan/crear-plan.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +35,15 @@ import { LoginAdminComponent } from './admin/login-admin/login-admin.component';
     PlanesComponent,
     RegistroComponent,
     LoginComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    ClienteComponent,
+    PlanComponent,
+    CrearPlanComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule, 
     HttpClientModule,
   ],

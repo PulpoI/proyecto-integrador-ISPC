@@ -53,8 +53,12 @@
     <div *ngIf="planes">
       <h3>Lista de planes:</h3>
       <div class="column-container">
-        <div class="column-item" *ngFor="let item of planes; let i = index">{{ item.nombre }}</div>
+        <div class="column-item" *ngFor="let plan of planes; let i = index">
+          {{ plan.nombre }}
+          <button class="btn btn-secondary" (click)="verPlan(plan)">Ver Plan</button>
+        </div>
       </div>
+      <a routerLink="/crear-plan" class="btn btn-danger">Agregar Plan</a>
     </div>
     <div *ngIf="clases">
       <h3>Lista de clases:</h3>
@@ -65,11 +69,26 @@
     <div *ngIf="clientes">
       <h3>Lista de clientes:</h3>
       <div class="column-container">
-        <div class="column-item" *ngFor="let item of clientes; let i = index">{{ item.nombre + ' ' + item.apellido + ' '
-          + '(' + item.plan.nombre + ')'}}
-        </div>
+        <ng-container *ngFor="let cliente of clientes; let i = index">
+          <div class="column-item" *ngIf="cliente.plan">
+            {{ cliente.nombre + ' ' + cliente.apellido + ' ' + '(' + cliente.plan.nombre + ')' }}
+            <button class="btn btn-secondary" (click)="verCliente(cliente)">Ver Cliente</button>
+          </div>
+        </ng-container>
+      </div>
+
+      <h3>Registrados sin plan:</h3>
+      <div class="column-container">
+        <ng-container *ngFor="let cliente of clientes; let i = index">
+          <div class="column-item" *ngIf="!cliente.plan">
+            {{ cliente.nombre + ' ' + cliente.apellido + ' ' + '(sin plan)' }}
+            <button class="btn btn-secondary" (click)="verCliente(cliente)">Ver Cliente</button>
+          </div>
+        </ng-container>
       </div>
     </div>
+
+
   </div>
 </body>
 

@@ -23,6 +23,6 @@ export class NavComponent implements OnInit {
       this.isAdmin = isAdmin;
     });
     const isAdminString = sessionStorage.getItem('isAdmin');
-    this.isAuthenticated = isAdminString === 'true';
+    this.isAdmin = isAdminString === 'true';
   }
 }
