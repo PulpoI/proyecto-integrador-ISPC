@@ -5,20 +5,21 @@
     background-size: cover;    
 }
 
-/* .container{
-    @media (min-width: 768px) {
-        .first-section img {
-          margin-bottom: 20px;
-        }
-  
-      }
+.form-box{
+    min-width: 300px;
+    max-width: 60%;
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color:  rgb(223, 124, 124);
       
-      @media (min-width: 992px) {
-        .first-section img {
-          margin-bottom: 0;
-        }
-      }
-} */
+    color: black;
+    margin-top: 5rem;
+
+}
+
 
 .formulario {
 
@@ -28,12 +29,12 @@
 
 .Formulario{
     
-    background: rgba(179, 12, 51, 0.18);
+    background: rgba(190, 19, 53, 0.18);
     box-shadow: 7px 13px 37px rgb(0, -0, -0, 568);
     padding: 0;
     border-radius: 10px;
     border-top: 4px solid rgba(30, 25, 25, 0.578);
-    color: rgb(219, 205, 205);
+    color: rgb(58, 52, 52);
     margin:0 auto;
     margin-top: 0%;
 }
@@ -52,7 +53,7 @@
     background: rgba(26, 22, 22, 0.922);
     border-style: none;
     transition: 0.5s ease-in;
-    color: white;
+    /* color: white; */
 }
 .iniciar{
     width: 100%;
@@ -71,11 +72,15 @@
     height: 40px;
 }
 .iniciar:hover{
-    background: #dbcece00;
+    background: #ffffff00;
     color: #342e2e;
 }
 
-
+.olvidaste a{
+    height: 40px;
+    text-align: center;
+    text-decoration: underline;
+}
     
 .reg a{
     color: rgb(249, 244, 244);
