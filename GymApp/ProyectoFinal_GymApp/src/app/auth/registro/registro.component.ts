@@ -23,16 +23,10 @@ export class RegistroComponent {
 
 }
 
-  signupdata(signup:FormGroup) {
-    console.log(this.signup.value);
-    
-  }
-}
-/*
   save(signup:FormGroup) {
     console.log(this.signup.value);
     
 
   
   }
-*/
+}

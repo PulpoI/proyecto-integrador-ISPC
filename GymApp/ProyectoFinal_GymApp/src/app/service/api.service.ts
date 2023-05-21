@@ -37,7 +37,6 @@ export class ApiService {
     const url = this.urlApi + 'planes/';
     this.cache = {}
     return this.http.post<any>(url, planData);
-
   }
   public eliminarPlan(planId: number): Observable<any> {
     const url = this.urlApi + 'planes/' + planId;

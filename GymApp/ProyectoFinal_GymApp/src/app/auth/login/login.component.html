@@ -2,10 +2,7 @@
   <div class="row w-100 justify-content-center fs-6 py-4">
     <div class="col-md-6 formulario fs-6 px-4 rounded">
       <!--Form Login-->
-     <!-- <form  <!-- [formGroup]="login" --> (ngSubmit)="logindata(login)">
-        <div class=" form-group text-center pt-0 ">-->
-         <h3>Login</h3>
-     <!-- <form  [formGroup]="login" (ngSubmit)="logindata()" class="form-box">-->
+      <form [formGroup]="login" (ngSubmit)="logindata()" class="form-box">
         <div class=" form-group text-center pt-0 ">
           <h3>Login</h3>
         </div>
@@ -13,37 +10,10 @@
           <div class="col-auto">
             <label for="exampleInputEmail" class="form-label">Email</label>
           </div>
-          <input type="text" formControlName="fname" class= "form-control bg-light" id="username" placeholder="Enter Email" required />
-          
-<!--
-          </div>
-          <div class="mb-4">
-            <div class="col-auto">
-              <label for="exampleInputPassword" class="form-label">Password</label>
-            </div>
-            <input class="form-control bg-light" type="password" formControlName="password" id="pass" placeholder="Enter Password" minlength="8"
-              maxlength="20" aria-describedby="passwordHelpBlock" required />
-          
-            </div>
-            
-
-            <div class="d-grid">
-              <button type="submit" class="btn btn-outline-dark">Iniciar Sesión</button>
-            </div>
-
-            <div class="my-2 mx-1 pb-4 text-light reg">
-              <span>¿No tienes una cuenta? <a routerLink="./registro.html" class="b">Regístrate</a></span><br>
-              
-            </div>
-         
-      
-      </form>
-    </div>
-  </div>
           <input type="text" formControlName="fname" class="form-control bg-light" id="username"
             placeholder="Enter Email" required />
 
---->
+
         </div>
         <div class="mb-4">
           <div class="col-auto">
@@ -65,8 +35,6 @@
         </div>
 
 
-  <!--  </form> -->  
+      </form>
     </div>
   </div>
-</div>
-</div>

@@ -1,12 +1,8 @@
-<div class=" w-auto shadow p-0 fs-6 container-login ">
-    <div class="row w-100 justify-content-center fs-6 py-4">
-        <div class="col-md-6 formulario fs-6 bg-danger px-4 rounded">
-        <!--   <form [formGroup]="signup" (ngSubmit)="signupdata(signup)" id="form-registro" class="row needs-validation"
 <div class=" w-auto shadow p-0 fs-6 container-registro ">
     <div class="row w-100 justify-content-center fs-6 py-4">
         <div class="col-md-6 formulario fs-6 px-4 rounded">
-             <form  [formGroup]="signup"(ngSubmit)="save(signup)" id="form-registro" class="custom-form"
-                action="" novalidate>-->
+            <form [formGroup]="signup" (ngSubmit)="save(signup)" id="form-registro" class="custom-form" action=""
+                novalidate>
                 <div class=" form-group text-center pt-0 ">
                     <h3>Formulario de registro</h3>
                 </div>
@@ -33,46 +29,13 @@
 
                     </div>
 
-
-                    <div class="col-auto">
-
-                        <div class="mt-4 position-relative mb-4">
-                            <label>Email</label>
-                            <br>
-                            <input type="email" formControlName="email" placeholder="email@email.com" />
-
-
-                        </div>
-
-                    </div>
-                    <div class="col-auto">
-
-                        <div class="mt-4 position-relative mb-4">
-                            <label>Contraseña</label>
-                            <br>
-                            <input type="password" formControlName="password" name="password" id="password" />
-
-
-
-
-
-                        </div>
-
-
-
-                    </div>
-
-                    <div class="col-auto">
-                        <div class="mt-4 position-relative mb-4">
-                            <button type="submit" class="btn btn-outline-dark">Registrar</button>
                     <div class="col-12 position-relative mb-4">
                         <div class="col-auto">
 
                             <div class="mt-4 position-relative mb-4">
                                 <label>DNI</label>
                                 <br>
-                                <input type="number" formControlName="fdni" maxlength="50"
-                                    placeholder="dni" required />
+                                <input type="number" formControlName="fdni" maxlength="50" placeholder="dni" required />
                             </div>
 
                         </div>
@@ -104,7 +67,8 @@
                                 <div class="mt-4 position-relative mb-4">
                                     <label>Contraseña</label>
                                     <br>
-                                    <input type="password" formControlName="password" name="password" placeholder="contraseña" id="password" />
+                                    <input type="password" formControlName="password" name="password"
+                                        placeholder="contraseña" id="password" />
 
                                 </div>
 
@@ -120,8 +84,11 @@
                         </div>
                     </div>
                 </div>
-        
-    
 
+            </form>
         </div>
+
+
+
     </div>
+</div>

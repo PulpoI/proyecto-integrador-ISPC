@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/auth/login.service';
-import { LoginRequest } from 'src/app/services/auth/loginRequest';
-
+import { AuthService } from '../../auth.service';
+import { LoginService } from '../../service/auth/login.service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +10,6 @@ import { LoginRequest } from 'src/app/services/auth/loginRequest';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  login:FormGroup|any;
-  constructor() { }
-
-  ngOnInit(): void {
-  this.login = new FormGroup({
-  'fname' : new FormControl(),
-  'password' : new FormControl()
-  })/*
   login!: FormGroup;
 
   constructor(
@@ -67,13 +58,5 @@ export class LoginComponent implements OnInit {
         console.log('No se encontró ningún usuario con el correo electrónico especificado');
       }
     });
-  }
-}
-
-  logindata(login:FormGroup) {
-    console.log(this.login.value);
-    
-  }
-*/
   }
 }
