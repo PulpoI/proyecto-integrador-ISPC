@@ -12,6 +12,7 @@
 ### * Instalar entorno virual de manera global ( pip install virtualenv )
 ### * Entrar en la ruta "proyecto-integrador-ISPC/Backend/gym_app" ( cd ./Backend/gym_app )
 ### * Crear entorno virtual ( virtualenv -p python3 env )
+### * Activar entorno virual ( . env/Scripts/activate )
 ### * Instalar todas las dependencias necesarias ( pip install -r requirements.txt ). 
 ### * Actualizar Pip si sale el mensaje de nueva version ( python.exe -m pip install --upgrade pip )
 
@@ -33,7 +34,7 @@
 
 ## Frontend 
 ### Instalaciones: 
-### Ir a la ruta /GymApp/ProyectoFinal_GymApp (cd GymApp) - (cd ProyectoFinal_GymApp)
+### Ir a la ruta /Frontend (cd GymApp) - (cd ProyectoFinal_GymApp)
 ### Instalar las dependencias (npm install)
 
 ### Levantar el proyecto: (npm start) o (ng serve)
