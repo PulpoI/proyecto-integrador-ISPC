@@ -1,8 +1,36 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartComponent } from './cart.component';
+import { ProductsComponent } from '../products/products.component';
+
 
 describe('CartComponent', () => {
+  let component: CartComponent;
+  let fixture: ComponentFixture<CartComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ CartComponent ]
+    })
+    .compileComponents();
+  });
+  
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  fixture = TestBed.createComponent(CartComponent);
+  component = fixture.componentInstance;
+  fixture.detectChanges();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(CartComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+});
+
+/*describe('CartComponent', () => {
   let component: CartComponent;
   let fixture: ComponentFixture<CartComponent>;
 
@@ -21,3 +49,4 @@ describe('CartComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/
