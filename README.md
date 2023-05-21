@@ -34,7 +34,7 @@
 
 ## Frontend 
 ### Instalaciones: 
-### Ir a la ruta /Frontend (cd GymApp) - (cd ProyectoFinal_GymApp)
+### Ir a la ruta /GymApp/ProyectoFinal_GymApp (cd GymApp) - (cd ProyectoFinal_GymApp)
 ### Instalar las dependencias (npm install)
 
 ### Levantar el proyecto: (npm start) o (ng serve)
