@@ -13,7 +13,19 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { RegistroComponent } from './auth/registro/registro.component';
-import { LoginComponent } from './auth/login/login.component';
+import { LoginComponent } from '../app/auth/login/login.component';
+import { ProductGridComponent } from './shop/product-grid/product-grid.component';
+import { TiendaComponent } from './shop/tienda/tienda.component';
+import { CartComponent } from './shop/cart/cart.component';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { CartService } from './shop/cart/cart.service';
+import { CurrencyPipe } from '@angular/common';
+import { CheckoutComponent } from './shop/checkout/checkout.component';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 
 @NgModule({
@@ -29,13 +41,26 @@ import { LoginComponent } from './auth/login/login.component';
     DashboardComponent,
     PlanesComponent,
     RegistroComponent,
+    LoginComponent,
+    AppComponent,
+    TiendaComponent,
+    ProductGridComponent,
+    CartComponent,
+    CheckoutComponent,
     LoginComponent
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule, 
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [CartService, CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
