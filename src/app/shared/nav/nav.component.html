@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
+  <div class="container px-5">
+    <a class="navbar-brand m-0 p-0" href="index.html">
+      <div class="logo">GYM APP</div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/nosotros">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/planes">Planes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" routerLink="/clases">Clases</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" routerLink="/contacto">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" routerLink="/tienda">Tienda</a>
+        </li>
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" routerLink="/login">
+            <button type="button" class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace" *ngIf="!userLoginOn">Inicia sesión</button>
+          </a>
+        </li>
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" routerLink="/inicio">
+            <button type="button" class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace" *ngIf="!userLoginOn">Cerrar sesión</button>
+          </a>
+        </li>
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" routerLink="/registro">
+            <button type="button" class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace" *ngIf="!userLoginOn">Registrate</button>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav d-none d-lg-flex">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" *ngIf="!userLoginOn">Inicia sesión</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/inicio" *ngIf="!userLoginOn">Cerrar sesión</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link p-3" routerLink="/registro" *ngIf="!userLoginOn">Registrate</a>
+        </li>
+      </ul>

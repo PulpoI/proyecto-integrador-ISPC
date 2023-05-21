@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    padding: 0;
+   
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1280%;
+    margin: auto;
+}
+
+#clases {
+    background: gray;
+    margin-top: -500PX;
+    padding-top: 500Px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    color: #f4f4f4;
+ 
+  padding: 0.5rem;
+}
+table tr:nth-child(even) {
+    color: rgb(22, 22, 22);
+  }
+  
+  table tr:nth-child(odd) {
+    color: rgb(117, 115, 115);
+  }
+  table {
+    border-spacing: 0 1px;
+   
+    border-spacing: 0 1px; /* Espacio de 10px entre filas */
+    background-color: #f4f4f4;
+   
+  }
+.negro , th {
+    background: black;
+    font-size: 17px;
+    font-weight: bold;
+  
+    
+
+}
+.rojo{
+    background: red;
+}
+.rojo , th {
+    
+    font-size: 17px;
+    font-weight: bold;
+    
+}
+
+th {
+    padding: 20px;
+    font-style: italic;
+    font-size: 20px;
+    background-color: gray;
+    color: black;
+}
+
+.negrita {
+    font-weight: bold;
+}
+
+h2 { 
+    text-align: center;
+    font-size: 80px;
+    font-style: italic;
+ background-color: gray;
+}
+tr{
+    border: 1px solid white; /* aplicar un borde blanco a los td y th */
+  padding: 0.5rem;
+    height: 2.5rem;
+}

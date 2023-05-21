@@ -1,0 +1,38 @@
+h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: x-large;
+  }
+  
+  em{
+    color:red;
+    font-weight: bold;
+  }
+  
+  
+  a{
+    text-decoration: none;
+  }
+  
+  
+  section a{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  img{
+    height: auto;
+    width: auto;
+    max-width: 250px;
+    max-height: 250px;
+  }
+  
+  
+  
+  p {
+    margin: -20px;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: 200;
+    color: #252728;
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  }
+  
