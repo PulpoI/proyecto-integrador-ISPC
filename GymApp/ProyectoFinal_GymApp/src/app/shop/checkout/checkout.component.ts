@@ -49,4 +49,5 @@ export class CheckoutComponent {
     this.router.navigate(['ruta-de-confirmacion']);
     this.confirmationMessage = 'Pedido realizado correctamente';
   }
+
 }

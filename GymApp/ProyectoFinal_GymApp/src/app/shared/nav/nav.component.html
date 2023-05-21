@@ -1,10 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
   <div class="container px-5">
-    <a class="navbar-brand m-0 p-0" href="index.html">
+    <a class="navbar-brand m-0 p-0" routerLink="/home">
       <div class="logo">GYM APP</div>
     </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -31,20 +32,20 @@
         </li>
         <li class="nav-item d-lg-none">
           <a class="nav-link" routerLink="/login">
-            <button type="button" class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace" *ngIf="!userLoginOn">Inicia sesión</button>
+            <button type="button" class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace" >Inicia sesión</button><!--*ngIf="!userLoginOn"-->
           </a>
         </li>
         <li class="nav-item d-lg-none">
           <a class="nav-link" routerLink="/inicio">
-            <button type="button" class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace" *ngIf="!userLoginOn">Cerrar sesión</button>
+            <button type="button" class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace" >Cerrar sesión</button><!--*ngIf="!userLoginOn"-->
           </a>
         </li>
         <li class="nav-item d-lg-none">
           <a class="nav-link" routerLink="/registro">
-            <button type="button" class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace" *ngIf="!userLoginOn">Registrate</button>
+            <button type="button" class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace" >Registrate</button> <!--*ngIf="!userLoginOn"-->
           </a>
         </li>
-      </ul>
+  <!--    </ul>
 
       <ul class="navbar-nav d-none d-lg-flex">
         <li class="nav-item">
@@ -57,3 +58,44 @@
           <a class="nav-link p-3" routerLink="/registro" *ngIf="!userLoginOn">Registrate</a>
         </li>
       </ul>
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" routerLink="/clases">Clases</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-uppercase" routerLink="/contacto">Contacto</a>
+        </li>-->
+        <div class="mx-5 d-flex">
+          <a class="nav-link" routerLink="/login">
+            <button type="button"
+              class="btn btn-outline-danger me-2 border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="!isAuthenticated">
+              Inicia sesión
+            </button>
+          </a>
+          <a class="nav-link" routerLink="/registro">
+            <button type="button"
+              class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="!isAuthenticated">
+              Registrate
+            </button>
+          </a>
+          <a class="nav-link" routerLink="/mi-cuenta">
+            <button type="button"
+              class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="!isAdmin && isAuthenticated">
+              Mi cuenta
+            </button>
+          </a>
+          <a class="nav-link" routerLink="/dashboard">
+            <button type="button"
+              class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="isAuthenticated && isAdmin">
+              Dashboard
+            </button>
+          </a>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>

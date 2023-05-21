@@ -5,20 +5,21 @@
     background-size: cover;    
 }
 
-/* .container{
-    @media (min-width: 768px) {
-        .first-section img {
-          margin-bottom: 20px;
-        }
-  
-      }
+.form-box{
+    min-width: 300px;
+    max-width: 60%;
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color:  rgb(223, 124, 124);
       
-      @media (min-width: 992px) {
-        .first-section img {
-          margin-bottom: 0;
-        }
-      }
-} */
+    color: black;
+    margin-top: 5rem;
+
+}
+
 
 .formulario {
 
@@ -52,7 +53,7 @@
     background: rgba(26, 22, 22, 0.922);
     border-style: none;
     transition: 0.5s ease-in;
-    color: white;
+    /* color: white; */
 }
 .iniciar{
     width: 100%;

@@ -15,6 +15,8 @@ export class RegistroComponent {
   this.signup = new FormGroup({
   'fname' : new FormControl(),
   'fapellido': new FormControl(),
+  'fdni': new FormControl(),
+  'fecha_nacimiento': new FormControl(),
   'email': new FormControl(),
   'password' : new FormControl()
   })
@@ -26,4 +28,11 @@ export class RegistroComponent {
     
   }
 }
+/*
+  save(signup:FormGroup) {
+    console.log(this.signup.value);
+    
 
+  
+  }
+*/

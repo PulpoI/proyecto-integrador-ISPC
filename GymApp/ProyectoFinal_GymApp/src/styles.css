@@ -1,6 +1,6 @@
 @media (min-width: 1200px) {
 button{
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     background-color: #333;
     color: white;
@@ -34,14 +34,14 @@ button{
     margin: 20px;
   }
   
-  p {
+  /* p {
     margin: 0;
     padding: 20px;
     font-size: 20px;
     font-weight: 200;
     color: #f5f7f9;
     font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  }
+  } */
   
   form {
     text-align: center;
