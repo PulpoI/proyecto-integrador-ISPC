@@ -13,6 +13,20 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { RegistroComponent } from './auth/registro/registro.component';
+
+import { ProductGridComponent } from './shop/product-grid/product-grid.component';
+import { TiendaComponent } from './shop/tienda/tienda.component';
+import { CartComponent } from './shop/cart/cart.component';
+
+
+import { CartService } from './shop/cart/cart.service';
+import { CurrencyPipe } from '@angular/common';
+import { CheckoutComponent } from './shop/checkout/checkout.component';
+import { RouterModule } from '@angular/router';
+
+
+
+
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -35,6 +49,13 @@ import { CrearPlanComponent } from './admin/views/crear-plan/crear-plan.componen
     PlanesComponent,
     RegistroComponent,
     LoginComponent,
+    AppComponent,
+    TiendaComponent,
+    ProductGridComponent,
+    CartComponent,
+    CheckoutComponent,
+    LoginComponent,
+   
     LoginAdminComponent,
     ClienteComponent,
     PlanComponent,
@@ -47,7 +68,7 @@ import { CrearPlanComponent } from './admin/views/crear-plan/crear-plan.componen
     ReactiveFormsModule, 
     HttpClientModule,
   ],
-  providers: [],
+  providers: [CartService, CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

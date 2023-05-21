@@ -29,12 +29,12 @@
 
 .Formulario{
     
-    background: rgba(190, 19, 53, 0.18);
+    background: rgba(179, 12, 51, 0.18);
     box-shadow: 7px 13px 37px rgb(0, -0, -0, 568);
     padding: 0;
     border-radius: 10px;
     border-top: 4px solid rgba(30, 25, 25, 0.578);
-    color: rgb(58, 52, 52);
+    color: rgb(219, 205, 205);
     margin:0 auto;
     margin-top: 0%;
 }
@@ -72,15 +72,11 @@
     height: 40px;
 }
 .iniciar:hover{
-    background: #ffffff00;
+    background: #dbcece00;
     color: #342e2e;
 }
 
-.olvidaste a{
-    height: 40px;
-    text-align: center;
-    text-decoration: underline;
-}
+
     
 .reg a{
     color: rgb(249, 244, 244);
