@@ -1,5 +1,8 @@
+
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ClienteService } from 'src/app/service/clientes.service';
+
 
 @Component({
   selector: 'app-registro',
@@ -7,26 +10,32 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
-  
-  constructor() { }
-  signup:FormGroup|any;
+  registroForm: FormGroup;
 
-  ngOnInit(): void {
-  this.signup = new FormGroup({
-  'fname' : new FormControl(),
-  'fapellido': new FormControl(),
-  'fdni': new FormControl(),
-  'fecha_nacimiento': new FormControl(),
-  'email': new FormControl(),
-  'password' : new FormControl()
-  })
+  constructor(private clienteService: ClienteService) {
+    this.registroForm = new FormGroup({
+      nombre: new FormControl('', Validators.required),
+      apellido: new FormControl('', Validators.required),
+      dni: new FormControl('', Validators.required),
+      fecha_nacimiento: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      contraseña: new FormControl('', Validators.required)
+    });
+  }
 
-}
-
-  save(signup:FormGroup) {
-    console.log(this.signup.value);
-    
-
-  
+  registrarCliente(): void {
+    if (this.registroForm.valid) {
+      const cliente = this.registroForm.value;
+      this.clienteService.registrarCliente(cliente).subscribe(
+        response => {
+          console.log('Cliente registrado exitosamente:', response);
+         
+        },
+        error => {
+          console.error('Error al registrar el cliente:', error);
+       
+        }
+      );
+    }
   }
 }

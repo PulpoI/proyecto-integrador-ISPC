@@ -1,94 +1,36 @@
 <div class=" w-auto shadow p-0 fs-6 container-registro ">
     <div class="row w-100 justify-content-center fs-6 py-4">
         <div class="col-md-6 formulario fs-6 px-4 rounded">
-            <form [formGroup]="signup" (ngSubmit)="save(signup)" id="form-registro" class="custom-form" action=""
-                novalidate>
-                <div class=" form-group text-center pt-0 ">
-                    <h3>Formulario de registro</h3>
+            <h2>Registro de Cliente</h2>
+
+            <form [formGroup]="registroForm" (ngSubmit)="registrarCliente()" class="custom-form">
+                <div>
+                  <label for="nombre">Nombre:</label>
+                  <input id="nombre" type="text" formControlName="nombre" placeholder="Nombre" />
                 </div>
-                <div class="col-12 position-relative mb-4">
-                    <div class="col-auto">
-
-                        <div class="mt-4 position-relative mb-4">
-                            <label>Nombre</label>
-                            <br>
-                            <input type="text" formControlName="fname" minlength="2" maxlength="50" placeholder="Nombre"
-                                required />
-                        </div>
-
-                    </div>
-
-                    <div class="col-auto">
-
-                        <div class="mt-4 position-relative mb-4">
-                            <label>Apellido</label>
-                            <br>
-                            <input type="text" formControlName="fapellido" minlength="2" maxlength="50"
-                                placeholder="Apellido" required />
-                        </div>
-
-                    </div>
-
-                    <div class="col-12 position-relative mb-4">
-                        <div class="col-auto">
-
-                            <div class="mt-4 position-relative mb-4">
-                                <label>DNI</label>
-                                <br>
-                                <input type="number" formControlName="fdni" maxlength="50" placeholder="dni" required />
-                            </div>
-
-                        </div>
-
-                        <div class="col-12 position-relative mb-4">
-                            <div class="col-auto">
-
-                                <div class="mt-4 position-relative mb-4">
-                                    <label>Fecha de nacimiento</label>
-                                    <br>
-                                    <input type="date" name="fecha_nacimiento" />
-                                </div>
-
-                            </div>
-
-                            <div class="col-auto">
-
-                                <div class="mt-4 position-relative mb-4">
-                                    <label>Email</label>
-                                    <br>
-                                    <input type="email" formControlName="email" placeholder="email@email.com" />
-
-
-                                </div>
-
-                            </div>
-                            <div class="col-auto">
-
-                                <div class="mt-4 position-relative mb-4">
-                                    <label>Contraseña</label>
-                                    <br>
-                                    <input type="password" formControlName="password" name="password"
-                                        placeholder="contraseña" id="password" />
-
-                                </div>
-
-
-
-                            </div>
-
-                            <div class="col-auto">
-                                <div class="mt-4 position-relative mb-4">
-                                    <button type="submit" class="btn btn-outline-dark">Registrar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                  <label for="apellido">Apellido:</label>
+                  <input id="apellido" type="text" formControlName="apellido" placeholder="Apellido" />
                 </div>
-
-            </form>
-        </div>
-
-
-
-    </div>
-</div>
+                <div>
+                  <label for="dni">DNI:</label>
+                  <input id="dni" type="text" formControlName="dni" placeholder="Ingresar DNI completo"/>
+                </div>
+                <div>
+                  <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+                  <input id="fecha_nacimiento" type="date" formControlName="fecha_nacimiento" placeholder="Ingresar la fecha de nacimiento" />
+                </div>
+                <div>
+                  <label for="email">Email:</label>
+                  <input id="email" type="email" formControlName="email" placeholder="Email con formato @" />
+                </div>
+                <div>
+                  <label for="contraseña">Contraseña:</label>
+                  <input id="contraseña" type="password" formControlName="contraseña" placeholder="Ingrese la contraseña"/>
+                </div>
+               
+              <div class="d-grid">
+                <button type="submit" class="btn btn-outline-dark" [disabled]="registroForm.invalid">Registrar</button>
+              </div>
+              </form>
+              
