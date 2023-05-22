@@ -1,0 +1,88 @@
+
+.container-login {
+    
+    background: url("../../assets/login.jpg") no-repeat center center fixed;
+    background-size: cover;    
+}
+
+.form-box{
+    min-width: 300px;
+    max-width: 60%;
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color:  rgb(223, 124, 124);
+      
+    color: black;
+    margin-top: 5rem;
+
+}
+
+
+.formulario {
+
+    display: flex;
+    justify-content: center;
+}
+
+.Formulario{
+    
+    background: rgba(179, 12, 51, 0.18);
+    box-shadow: 7px 13px 37px rgb(0, -0, -0, 568);
+    padding: 0;
+    border-radius: 10px;
+    border-top: 4px solid rgba(30, 25, 25, 0.578);
+    color: rgb(219, 205, 205);
+    margin:0 auto;
+    margin-top: 0%;
+}
+
+.gym{
+    margin: o; 
+    text-align: center;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid;
+    font-size: 25px;
+}
+
+.form-control{
+    padding: 11px 10px; 
+    background: rgba(26, 22, 22, 0.922);
+    border-style: none;
+    transition: 0.5s ease-in;
+    /* color: white; */
+}
+.iniciar{
+    width: 100%;
+    height: 35px;
+    background: none;
+    border: none;
+    font-size: 14px;font-weight: 600;
+    color: white;
+    margin-bottom: 16px; 
+    outline: none;
+    cursor: pointer;
+    transition:all 300ms;
+}
+
+.form-check{
+    height: 40px;
+}
+.iniciar:hover{
+    background: #dbcece00;
+    color: #342e2e;
+}
+
+
+    
+.reg a{
+    color: rgb(249, 244, 244);
+    text-decoration: none
+}
+
+.reg a:hover{
+    text-decoration: underline
+}
