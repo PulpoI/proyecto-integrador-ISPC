@@ -25,4 +25,7 @@ export class NavComponent implements OnInit {
     const isAdminString = sessionStorage.getItem('isAdmin');
     this.isAdmin = isAdminString === 'true';
   }
+  logout() {
+    this.authService.logout();
+  }
 }

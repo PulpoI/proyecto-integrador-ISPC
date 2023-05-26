@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 
@@ -10,7 +11,7 @@ export class AuthService {
 
   private isAdminSubject = new BehaviorSubject<boolean>(false);
   public isAdmin$ = this.isAdminSubject.asObservable();
-  constructor() {
+  constructor(private router: Router) {
     // Verificar el estado de autenticación al cargar el servicio
     const isAuthenticated = this.getIsAuthenticatedFromSessionStorage();
     this.updateAuthenticationStatus(isAuthenticated);
@@ -38,5 +39,22 @@ export class AuthService {
   private getIsAuthenticatedFromSessionStorage(): boolean {
     const isAuthenticated = sessionStorage.getItem('isAuthenticated');
     return isAuthenticated === 'true';
+  }
+  logout() {
+    // Guardar el token y el usuario filtrado en el sessionStorage
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('usuario');
+    sessionStorage.removeItem('isAuthenticated');
+    this.updateAuthenticationStatus(false);
+    
+    if (sessionStorage.getItem('isAdmin')) {
+      sessionStorage.removeItem('isAdmin');
+      this.updateAdminStatus(false);
+      this.router.navigate(['/admin']);
+      console.log("isadmin");
+      
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }

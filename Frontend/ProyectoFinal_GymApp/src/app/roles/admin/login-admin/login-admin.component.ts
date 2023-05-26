@@ -62,6 +62,8 @@ export class LoginAdminComponent implements OnInit {
       console.log('No se encontró ningún usuario con el correo electrónico especificado');
     }
   }
+
+
 }
 
 

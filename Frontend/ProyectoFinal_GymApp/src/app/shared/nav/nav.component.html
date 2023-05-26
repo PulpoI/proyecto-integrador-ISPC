@@ -92,6 +92,13 @@
               Dashboard
             </button>
           </a>
+          <a class="nav-link">
+            <button (click)="logout()" type="button"
+              class="btn text-dark btn-danger link-light border border-2 border-danger rounded-0 text-uppercase font-monospace"
+              *ngIf="isAuthenticated">
+              Cerrar sesión
+            </button>
+          </a>
         </div>
       </ul>
     </div>
