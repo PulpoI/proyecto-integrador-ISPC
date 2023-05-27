@@ -1,95 +1,69 @@
-<!DOCTYPE html>
-<html>
+<div class="container">
+  <h2>Dashboard ADMIN</h2>
 
-<head>
-  <title>Dashboard ADMIN</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    h2 {
-      text-align: center;
-      padding: 20px;
-      background-color: #f1f1f1;
-      margin: 0;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    h3 {
-      margin-top: 30px;
-    }
-
-    .column-container {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .column-item {
-      margin-bottom: 10px;
-    }
-
-    @media screen and (max-width: 600px) {
-      .container {
-        max-width: 100%;
-        padding: 10px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <h2>Dashboard ADMIN</h2>
-
-    <!-- Mostrar datos de la API -->
-    <div *ngIf="planes">
-      <h3>Lista de planes:</h3>
-      <div class="column-container">
-        <div class="column-item" *ngFor="let plan of planes; let i = index">
-          {{ plan.nombre }}
-          <button class="btn btn-secondary" (click)="verPlan(plan)">Ver Plan</button>
-        </div>
-      </div>
-      <a routerLink="/crear-plan" class="btn btn-danger">Agregar Plan</a>
-    </div>
-    <div *ngIf="clases">
-      <h3>Lista de clases:</h3>
-      <div class="column-container">
-        <div class="column-item" *ngFor="let clase of clases; let i = index">{{ clase.nombre }}</div>
-      </div>
-    </div>
-    <div *ngIf="clientes">
-      <h3>Lista de clientes:</h3>
-      <div class="column-container">
-        <ng-container *ngFor="let cliente of clientes; let i = index">
-          <div class="column-item" *ngIf="cliente.plan">
-            {{ cliente.nombre + ' ' + cliente.apellido + ' ' + '(' + cliente.plan.nombre + ')' }}
-            <button class="btn btn-secondary" (click)="verCliente(cliente)">Ver Cliente</button>
-          </div>
-        </ng-container>
-      </div>
-
-      <h3>Registrados sin plan:</h3>
-      <div class="column-container">
-        <ng-container *ngFor="let cliente of clientes; let i = index">
-          <div class="column-item" *ngIf="!cliente.plan">
-            {{ cliente.nombre + ' ' + cliente.apellido + ' ' + '(sin plan)' }}
-            <button class="btn btn-secondary" (click)="verCliente(cliente)">Ver Cliente</button>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-
-
+  <!-- Mostrar datos de la API -->
+  <div *ngIf="planes">
+    <h3>Lista de planes:</h3>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Nombre del Plan</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plan of planes; let i = index">
+          <td>{{ plan.nombre }}</td>
+          <td>
+            <button class="btn btn-secondary" (click)="verPlan(plan)">Ver Plan</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/crear-plan" class="btn btn-danger">Agregar Plan</a>
   </div>
-</body>
 
-</html>
+  <div *ngIf="clases">
+    <h3>Lista de clases:</h3>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Nombre de la Clase</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let clase of clases; let i = index">
+          <td>{{ clase.nombre }}</td>
+          <td>
+            <button class="btn btn-secondary" (click)="verClase(clase)">Ver Clase</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/crear-clase" class="btn btn-danger">Agregar Clase</a>
+  </div>
+
+  <div *ngIf="clientes">
+    <h3>Lista de clientes:</h3>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Nombre del Cliente</th>
+          <th>Plan</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes; let i = index">
+          <td>{{ cliente.nombre + ' ' + cliente.apellido }}</td>
+          <td>{{ cliente.plan ? cliente.plan.nombre : 'Sin plan' }}</td>
+          <td>
+            <button class="btn btn-secondary" (click)="verCliente(cliente)">Ver Cliente</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/crear-cliente" class="btn btn-danger">Agregar Cliente</a>
+  </div>
+</div>

@@ -35,6 +35,8 @@ import { ClienteComponent } from './roles/admin/views/cliente/cliente.component'
 import { PlanComponent } from './roles/admin/views/plan/plan.component';
 import { CrearPlanComponent } from './roles/admin/views/crear-plan/crear-plan.component';
 import { MiCuentaComponent } from './roles/clientes/mi-cuenta/mi-cuenta.component';
+import { CrearClaseComponent } from './roles/admin/views/crear-clase/crear-clase.component';
+import { ClaseComponent } from './roles/admin/views/clase/clase.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { MiCuentaComponent } from './roles/clientes/mi-cuenta/mi-cuenta.componen
     ClienteComponent,
     PlanComponent,
     CrearPlanComponent,
-    MiCuentaComponent
+    MiCuentaComponent,
+    CrearClaseComponent,
+    ClaseComponent
   ],
   imports: [
     BrowserModule,

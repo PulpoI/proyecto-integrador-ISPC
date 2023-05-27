@@ -98,6 +98,7 @@ class ClienteView(View):
     cliente = Cliente.objects.create(
         nombre=jd['nombre'],
         apellido=jd['apellido'],
+        dni=jd['dni'],
         email=jd['email'],
         contraseña=jd['contraseña'],
         fecha_nacimiento=jd['fecha_nacimiento'],
@@ -108,6 +109,7 @@ class ClienteView(View):
         'id': cliente.id,
         'nombre': cliente.nombre,
         'apellido': cliente.apellido,
+        'dni': cliente.dni,
         'email': cliente.email,
         'contraseña': cliente.contraseña,
         'fecha_nacimiento': cliente.fecha_nacimiento,
