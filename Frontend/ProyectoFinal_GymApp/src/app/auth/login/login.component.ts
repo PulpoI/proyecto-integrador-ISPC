@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.authService.updateAuthenticationStatus(true);
           
           // Redirigir al dashboard o a la página deseada
-          const clienteId = 1;
+          const clienteId = usuarioFiltrado.id;;
           this.router.navigate(['/mi-cuenta', clienteId]);
         } else {
           console.log('Contraseña inválida');

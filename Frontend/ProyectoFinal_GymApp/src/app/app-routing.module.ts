@@ -20,10 +20,6 @@ import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
 
 
-
-
-
-
 const routes: Routes = [
   // {path:'inicio', component: DashboardComponent},
   //Pages: 
@@ -36,7 +32,7 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'registro', component: RegistroComponent},
   {path:'checkout', component: CheckoutComponent},
-  {path: 'mi-cuenta', component: MiCuentaComponent},
+  {path: 'mi-cuenta/:id', component: MiCuentaComponent},
   {path:'',redirectTo:'/inicio', pathMatch:'full'},
   //Admin views
   {path:'admin', component: LoginAdminComponent},
