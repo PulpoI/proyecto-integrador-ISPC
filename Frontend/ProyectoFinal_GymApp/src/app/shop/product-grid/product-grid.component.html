@@ -1,12 +1,12 @@
 
 
-  <div class="product-grid m-5">
-    <div class="product-card" *ngFor="let product of products">
-      <img [src]="product.image" alt="{{ product.name }}" />
-      <h3>{{ product.name }}</h3>
-      <p class="price">{{ product.price | currency }}</p>
-      <p class="description">Descripción: {{ product.description }}</p>
-     <button (click)="viewProduct(product)">Ver detalle {{ product.name }}</button>
-     <button class="product-detail-add-to-cart" (click)="addToCart(product)">Agregar al carrito</button>  
-    </div>
+<div class="product-grid m-5">
+  <div class="product-card grid" *ngFor="let product of products">
+    <img [src]="product.image" alt="{{ product.name }}" />
+    <h3>{{ product.name }}</h3><i class="i fa-solid fa-dumbbell"></i>
+    <p class="price">{{ product.price | currency }}</p>
+    <p class="description"> {{ product.description }}</p>
+   <button (click)="viewProduct(product)">Ver detalle {{ product.name }}</button>
+   <button class="product-detail-add-to-cart" (click)="addToCart(product)">Agregar al carrito</button>  
   </div>
+</div>

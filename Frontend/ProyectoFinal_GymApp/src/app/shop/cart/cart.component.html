@@ -6,6 +6,7 @@
         <th>Producto</th>
         <th>Cantidad</th>
         <th>Precio Unitario</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -16,8 +17,8 @@
           </div>
              {{ product.name }}</td>
           <td>{{ product.quantity }}</td>
-          <td>{{ product.price | currency:'ARS' }}
-            <button (click)="removeCartItem(product)"><i class="fas fa-trash text-danger"></i></button>
+          <td>{{ product.price | currency:'ARS' }}</td>
+            <td> <button class="btn-remove" (click)="removeCartItem(product)"><i class="fas fa-trash text-danger"></i></button>
           </td>
         </tr>
       </ng-container>
@@ -46,6 +47,6 @@
 
   <div class="cart-summary">
     <p class="cart-total">Total: {{ calculateTotal() | currency }}</p>
-    <button (click)="placeOrder()">Comprar</button>
+    <button class="btn-buy" (click)="placeOrder()">Comprar</button>
   </div>
 </div>
