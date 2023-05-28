@@ -70,7 +70,7 @@ td{
 /* Product grid styles */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
   grid-gap: 20px;
 }
 
@@ -91,11 +91,12 @@ td{
 
 /* Cart styles */
 .cart {
+  border-radius: 10px;
   position: fixed;
-  right: 0;
+  right: 37%;
   top: 50%;
   transform: translateY(-50%);
-  width: 300px;
+  width: 400px;
   background-color: #970707bf;
   box-shadow: -1px 0 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -183,7 +184,9 @@ td{
     background: none;
     color: #dc3545;
     cursor: pointer;
+    
     font-size: 1rem;
+   
   }
   
   .cart-item-remove button:hover {
@@ -293,4 +296,13 @@ td{
    .cart p{
     color: rgb(255, 255, 255);
     font-weight: 700;
+   }
+   .btn-buy{
+    border-radius: 30px;
+    height: 30px;
+   }
+   .btn-remove{
+    border-radius: 54px;
+    width: 30px;
+    position: sticky;
    }
