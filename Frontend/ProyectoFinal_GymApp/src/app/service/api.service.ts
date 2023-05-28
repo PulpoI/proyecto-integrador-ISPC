@@ -32,7 +32,7 @@ export class ApiService {
       );
     }
   }
-
+  // Planes
   public crearPlan(planData: any): Observable<any> {
     const url = this.urlApi + 'planes/';
     this.cache = {}
@@ -46,6 +46,17 @@ export class ApiService {
   public actualizarPlan(id: number, planData: any): Observable<any> {
     const url = this.urlApi + `planes/${id}/`;
     return this.http.put<any>(url, planData);
+  }
+  //Clases
+  public crearClase(claseData: any): Observable<any> {
+    const url = this.urlApi + 'clases/';
+    this.cache = {}
+    return this.http.post<any>(url, claseData);
+  }
+  public eliminarClase(claseId: number): Observable<any> {
+    const url = this.urlApi + 'clases/' + claseId;
+    this.cache = {}
+    return this.http.delete<any>(url);
   }
   
 }

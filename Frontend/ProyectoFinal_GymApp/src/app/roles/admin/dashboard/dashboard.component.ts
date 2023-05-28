@@ -72,4 +72,7 @@ export class DashboardComponent implements OnInit {
   verPlan(plan: any): void {
     this.router.navigate(['/plan', plan.id], { state: { plan } });
   }
+  verClase(clase: any): void {
+    this.router.navigate(['/clase', clase.id], { state: { clase } });
+  }
 }

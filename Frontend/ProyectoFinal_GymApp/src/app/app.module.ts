@@ -34,9 +34,15 @@ import { LoginAdminComponent } from './roles/admin/login-admin/login-admin.compo
 import { ClienteComponent } from './roles/admin/views/cliente/cliente.component';
 import { PlanComponent } from './roles/admin/views/plan/plan.component';
 import { CrearPlanComponent } from './roles/admin/views/crear-plan/crear-plan.component';
+<<<<<<< HEAD
 import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
 
 
+=======
+import { MiCuentaComponent } from './roles/clientes/mi-cuenta/mi-cuenta.component';
+import { CrearClaseComponent } from './roles/admin/views/crear-clase/crear-clase.component';
+import { ClaseComponent } from './roles/admin/views/clase/clase.component';
+>>>>>>> 4f3a6206a983842f16920a7fd8df23355d891cdb
 
 @NgModule({
   declarations: [
@@ -64,9 +70,14 @@ import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component'
     PlanComponent,
     CrearPlanComponent,
     MiCuentaComponent,
+<<<<<<< HEAD
  
  
   
+=======
+    CrearClaseComponent,
+    ClaseComponent
+>>>>>>> 4f3a6206a983842f16920a7fd8df23355d891cdb
   ],
   imports: [
     BrowserModule,

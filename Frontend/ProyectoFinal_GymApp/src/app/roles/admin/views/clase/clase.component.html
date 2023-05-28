@@ -1,0 +1,19 @@
+<h2 class="text-center my-5">Detalles de la Clase</h2>
+
+<div class="card">
+  <div class="card bg-light mb-3">
+    <div class="card-header">Clase</div>
+    <div class="card-body">
+      <p class="mb-1"><strong>Nombre:</strong> {{ clase.nombre }}</p>
+      <p class="mb-1"><strong>Descripción:</strong> {{ clase.descripcion }}</p>
+      <p class="mb-1"><strong>Fecha:</strong> {{ clase.fecha }}</p>
+      <p class="mb-0"><strong>Hora:</strong> {{clase.hora }}</p>
+      <p class="mb-0"><strong>Limite de cupos:</strong> {{clase.limite_cupos }}</p>
+      <p class="mb-0"><strong>Cantidad de inscriptos:</strong> {{clase.cantidad_inscriptos }}</p>
+      <p class="mb-0"><strong>Estado:</strong> {{clase.estado_clase }}</p>
+    </div>
+  </div>
+  <button class="btn btn-danger" (click)="eliminarClase()">Eliminar clase</button>
+  <button class="btn btn-secondary" (click)="regresar()">Regresar</button>
+
+</div>

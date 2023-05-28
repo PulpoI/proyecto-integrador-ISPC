@@ -1,3 +1,5 @@
+import { CrearClaseComponent } from './roles/admin/views/crear-clase/crear-clase.component';
+import { ClaseComponent } from './roles/admin/views/clase/clase.component';
 import { CrearPlanComponent } from './roles/admin/views/crear-plan/crear-plan.component';
 import { PlanComponent } from './roles/admin/views/plan/plan.component';
 import { ClienteComponent } from './roles/admin/views/cliente/cliente.component';
@@ -23,8 +25,9 @@ import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component'
 
 
 const routes: Routes = [
-  {path:'home', component: HomeComponent},
-  {path:'inicio', component: DashboardComponent},
+  // {path:'inicio', component: DashboardComponent},
+  //Pages: 
+  {path:'', component: HomeComponent},
   {path:'nosotros', component:NosotrosComponent},
   {path:'planes', component: PlanesComponent},
   {path:'clases', component: ClasesComponent},
@@ -34,13 +37,11 @@ const routes: Routes = [
   {path:'registro', component: RegistroComponent},
   {path:'checkout', component: CheckoutComponent},
   {path:'',redirectTo:'/inicio', pathMatch:'full'},
+  //Admin views
   {path:'admin', component: LoginAdminComponent},
   {path:'dashboard', component: DashboardComponent},
-  {path:'cliente/:id', component: ClienteComponent},
   {path:'plan/:id', component: PlanComponent},
   {path:'crear-plan', component: CrearPlanComponent },
-  {path:'mi-cuenta', component:MiCuentaComponent},
-  {path: 'mi-cuenta/:id', component: MiCuentaComponent},
   {path:'**', component: HomeComponent},
 
 ];
