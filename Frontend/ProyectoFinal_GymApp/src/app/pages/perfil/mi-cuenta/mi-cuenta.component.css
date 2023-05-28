@@ -1,0 +1,85 @@
+.container-perfil {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #bfe2bf, rgb(223, 124, 124))
+}
+
+
+.editar-perfil-container {
+  max-width: 400px;
+  width: 100%;
+  background: rgb(223, 124, 124);
+  padding: 25px 30px;
+  border-radius: 5px;
+}
+
+.editar-perfil-container .id{
+  font-size: 25px;
+  color:black;
+  text-align: center;
+}
+
+
+
+.editar-perfil-container .user{
+  font-size: 25px;
+  color:black
+}
+
+
+.editar-perfil-container .tittle {
+   font-size: 35px;
+  font-weight: 500;
+  font-weight:bold;
+ text-align: center;
+  
+}
+
+.editar-perfil-container .tittle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background: linear-gradient(135deg, #bfe2bf, rgb(223, 124, 124));
+justify-content: left;
+}
+
+form .user-details{
+  display:inline;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+form label{
+	width: 100px;
+	font-weight:bold;
+	display:inline-block;
+}
+
+.user-details .input-box{
+  margin: 20px 0 12px 0;
+width: calc(100%/2 -20px);
+}
+
+.user-details .input-box input{
+  height: 35px;
+  width: 70%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 10px;
+}
+
+
+.editar-perfil-container .button {
+  width: 110px;
+  top: 90px;
+  left: 120px;
+  cursor: pointer;
+}

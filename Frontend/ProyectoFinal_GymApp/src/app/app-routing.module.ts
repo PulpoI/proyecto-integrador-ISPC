@@ -14,7 +14,11 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { TiendaComponent } from './shop/tienda/tienda.component';
-import { CheckoutComponent } from '../app/shop/checkout/checkout.component';
+import { CheckoutComponent } from './shop/checkout/checkout.component';
+import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
+
+
+
 
 
 
@@ -35,6 +39,8 @@ const routes: Routes = [
   {path:'cliente/:id', component: ClienteComponent},
   {path:'plan/:id', component: PlanComponent},
   {path:'crear-plan', component: CrearPlanComponent },
+  {path:'mi-cuenta', component:MiCuentaComponent},
+  {path: 'mi-cuenta/:id', component: MiCuentaComponent},
   {path:'**', component: HomeComponent},
 
 ];

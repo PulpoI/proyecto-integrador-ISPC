@@ -34,7 +34,9 @@ import { LoginAdminComponent } from './roles/admin/login-admin/login-admin.compo
 import { ClienteComponent } from './roles/admin/views/cliente/cliente.component';
 import { PlanComponent } from './roles/admin/views/plan/plan.component';
 import { CrearPlanComponent } from './roles/admin/views/crear-plan/crear-plan.component';
-import { MiCuentaComponent } from './roles/clientes/mi-cuenta/mi-cuenta.component';
+import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
+
+
 
 @NgModule({
   declarations: [
@@ -61,7 +63,10 @@ import { MiCuentaComponent } from './roles/clientes/mi-cuenta/mi-cuenta.componen
     ClienteComponent,
     PlanComponent,
     CrearPlanComponent,
-    MiCuentaComponent
+    MiCuentaComponent,
+ 
+ 
+  
   ],
   imports: [
     BrowserModule,
