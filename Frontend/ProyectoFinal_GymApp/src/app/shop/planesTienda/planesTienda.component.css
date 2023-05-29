@@ -15,7 +15,9 @@
 }
 
 
-
+#placeholder{
+  background-image: url("/Frontend/ProyectoFinal_GymApp/src/assets/planes-bg.jpg");
+}
 .product-card::before, .product-card::after {
   position: absolute;
   top: 0;
@@ -36,14 +38,15 @@
 }
 
 
-.product-grid {
+.planes {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
    
   }
   
-  .product-card .grid{
+  .plan-tienda-card{
+    
     transition:0.5s;
     cursor:pointer;
     position: absolute;
@@ -80,7 +83,19 @@
     font-family: Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     
   }
-  
+  .product-detail-add-to-cart{
+    width: 18rem;
+    outline: 0;
+    border: 0;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 0;
+    
+  }
   .product-card button {
     
     font-size: 1rem;
@@ -90,7 +105,9 @@
     border-radius: 1px;
     cursor: pointer;
     transition: all 0.10s ease;
-    height: 4.5rem;
+    height: 2.5rem;
+   
+    
   }
   
   .product-card button:hover {
@@ -113,7 +130,7 @@
     color: #fff;
   }
   
-  .product-grid {
+  .planes {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-gap: 1rem;
@@ -127,10 +144,13 @@
     overflow: hidden;
     position: relative;
     color: #fff;
+    position: relative;
+    margin: 0;
+    padding-bottom: 2.5rem;
   }
   
   .product-card  img {
-    height:150px;
+    height:100px;
     width:100%;
     overflow-clip-margin: content-box;
     overflow: clip;
@@ -144,7 +164,6 @@
     font-size:9px;
     transition:1s;
     cursor:pointer;
-    
     font-weight: bold;
     margin: 0;
   }
@@ -164,7 +183,7 @@
   font-weight: 800;
 
 }
-.product-grid {
+.planes {
   grid-template-columns: 350px 350px 350px;
   grid-template-rows: 500px;
   display:grid;

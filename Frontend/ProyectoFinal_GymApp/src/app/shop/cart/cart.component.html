@@ -10,15 +10,15 @@
       </tr>
     </thead>
     <tbody>
-      <ng-container class="ngcont" *ngFor="let product of items">
+      <ng-container class="ngcont" *ngFor="let plan of items">
         <tr class="tr">
           <td><div class="cart-item-image">
-            <img [src]="product.image" alt="{{ product.name }}" />
+            <img [src]="plan.image" alt="{{ plan.nombre }}" />
           </div>
-             {{ product.name }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>{{ product.price | currency:'ARS' }}</td>
-            <td> <button class="btn-remove" (click)="removeCartItem(product)"><i class="fas fa-trash text-danger"></i></button>
+             {{ plan.nombre }}</td>
+          <td>{{ plan.cantidad_clases }}</td>
+          <td>{{ plan.precio | currency }}</td>
+            <td> <button class="btn-remove" (click)="removeCartItem(plan)"><i class="fas fa-trash text-danger"></i></button>
           </td>
         </tr>
       </ng-container>

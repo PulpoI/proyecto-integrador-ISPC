@@ -1,26 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product.model';
+import { Plan } from '../models/plan.model';
+import { OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { PlanService } from '../services/plan.service';
+
+import { CurrencyPipe } from '../pipes/currency.pipe';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CartService {
-  items: Product[] = [];
+  items: Plan[] = [];
   
   constructor() { }
   getItems() {
     return this.items;
   }
   
-  addToCart(product: Product) {
-    this.items.push(product);
+  addToCart(plan: Plan) {
+    this.items.push(plan);
     
   }
   
-  removeCartItem(product: Product): void{
+  removeCartItem(plan: Plan): void{
     // Find the index of the product in the cart items array
-  const index = this.items.findIndex(item => item.id === product.id);
+  const index = this.items.findIndex(item => item.id === plan.id);
 
   // If the product is found in the cart
   if (index !== -1) {
@@ -34,7 +40,7 @@ export class CartService {
     return this.items;
   }
   getTotal() {
-    return this.items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    return this.items.reduce((acc, item) => acc + (item.precio * item.cantidad_clases), 0);
   }
 }
 

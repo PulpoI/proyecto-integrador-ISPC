@@ -67,25 +67,25 @@ td{
   }
   
 
-/* Product grid styles */
-.product-grid {
+/* Planes styles */
+.planes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
   grid-gap: 20px;
 }
 
-.product-grid-item {
+.planes-item {
   background-color: #d61f1f;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
 
-.product-grid-item img {
+.planes-item img {
   max-width: 100%;
   height: auto;
 }
 
-.product-grid-item h2 {
+.planes-item h2 {
   margin-top: 0;
 }
 

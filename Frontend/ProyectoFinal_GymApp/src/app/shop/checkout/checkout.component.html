@@ -73,16 +73,16 @@
       <div class="summary-container__items">
         <h2>Listado de productos</h2>
         <div class="item-list">
-          <div class="item-container" *ngFor="let product of items">
+          <div class="item-container" *ngFor="let plan of items">
             <div class="item-image">
-              <img [src]="product.image" alt="" />
+              <img [src]="plan.image" alt="" />
             </div>
             <div class="item-title">
-              {{ product.name}}
+              {{ plan.nombre}}
             </div>
             <div class="item-total">
-              {{ product.price  }} x {{ product.quantity }} =
-              {{ product.quantity * product.price  }}
+              {{ plan.precio  }} x {{ plan.cantidad_clases }} =
+              {{ plan.cantidad_clases * plan.precio  }}
             </div>
           </div>
         </div>
@@ -94,16 +94,16 @@
     <div class="products-container">
       
         <div class="products-container__list">
-          <div class="list-item" *ngFor="let product of items">
+          <div class="list-item" *ngFor="let plan of items">
             <div class="item-image">
-              <img [src]="product.image" alt="" />
+              <img [src]="plan.image" alt="" />
             </div>
             <div class="item-title">
-              {{ product.name }}
+              {{ plan.nombre }}
             </div>
             <div class="item-total">
-              {{ product.price  }} x {{ product.quantity }} =
-              {{ product.quantity * product.price  }}
+              {{ plan.precio  }} x {{ plan.cantidad_clases }} =
+              {{ plan.cantidad_clases * plan.precio  }}
             </div>
           </div>
         </div>
@@ -113,8 +113,8 @@
   <div class="checkout-summary">
     <h3>Resumen del pedido</h3>
     <ul>
-      <li *ngFor="let product of cartItems">
-        {{ product.name }} x {{ product.quantity }} - {{ product.price  }}
+      <li *ngFor="let plan of cartItems">
+        {{ plan.nombre }} x {{ plan.cantidad_clases }} - {{ plan.precio  }}
       </li>
     </ul>
     <p class="cart-total">Total: {{ calculateTotal() }}</p>

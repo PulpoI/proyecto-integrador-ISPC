@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -11,22 +10,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { ClasesComponent } from './pages/clases/clases.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { DashboardComponent } from './roles/admin/dashboard/dashboard.component';
-import { PlanesComponent } from './pages/planes/planes.component';
 import { RegistroComponent } from './auth/registro/registro.component';
-
-import { ProductGridComponent } from './shop/product-grid/product-grid.component';
 import { TiendaComponent } from './shop/tienda/tienda.component';
 import { CartComponent } from './shop/cart/cart.component';
-
-
 import { CartService } from './shop/cart/cart.service';
-import { CurrencyPipe } from '@angular/common';
 import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { RouterModule } from '@angular/router';
-
-
-
-
 import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -38,8 +27,13 @@ import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component'
 import { CrearClaseComponent } from './roles/admin/views/crear-clase/crear-clase.component';
 import { ClaseComponent } from './roles/admin/views/clase/clase.component';
 
+import { PlanesTiendaComponent } from './shop/planesTienda/planesTienda.component';
+import { PlanesComponent } from './pages/planes/planes.component';
+import { PlanesTiendaModule } from './shop/planesTienda/planesTienda.module';
+import { PlanService } from './shop/services/plan.service';
+import { TiendaModule } from './shop/tienda/tienda.module';
 
-
+import { CurrencyPipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,30 +45,30 @@ import { ClaseComponent } from './roles/admin/views/clase/clase.component';
     ClasesComponent,
     ContactoComponent,
     DashboardComponent,
-    PlanesComponent,
     RegistroComponent,
     LoginComponent,
-    AppComponent,
     TiendaComponent,
-    ProductGridComponent,
     CartComponent,
     CheckoutComponent,
     LoginComponent,
-   
     LoginAdminComponent,
     ClienteComponent,
     PlanComponent,
     CrearPlanComponent,
     MiCuentaComponent,
     CrearClaseComponent,
-    ClaseComponent
+    ClaseComponent,
+    
   ],
   imports: [
+    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule, 
     HttpClientModule,
+    TiendaModule,
+    PlanesTiendaModule
   ],
   providers: [CartService, CurrencyPipe],
   bootstrap: [AppComponent]

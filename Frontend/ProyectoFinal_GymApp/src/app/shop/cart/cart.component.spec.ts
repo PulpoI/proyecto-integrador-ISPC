@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartComponent } from './cart.component';
-import { ProductsComponent } from '../products/products.component';
+import { PlanesComponent } from '../planes/planes.component';
 
 
 describe('CartComponent', () => {

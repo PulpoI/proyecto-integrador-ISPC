@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product.model';
+import { Plan } from '../models/plan.model';
 import { CartService } from './cart.service';
 import { Router } from '@angular/router';
 
@@ -15,17 +15,17 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
   cartItems: any[] = [];
   cartTotal: number = 0;
-  products: Product[] = [];
+  planes: Plan[] = [];
   listItems: any[]=[];
-  getItems(): Product[] {
+  getItems(): Plan[] {
     
     return this.items;
   }
   
-  addToCart(product: Product) {
-    // this.cartService.addToCart(product);
+  addToCart(plan: Plan) {
+    // this.cartService.addToCart(plan);
    
-    this.items.push(product);
+    this.items.push(plan);
     window.alert('El producto ha sido agregado al carrito!');
   }
   
@@ -48,10 +48,10 @@ export class CartComponent implements OnInit {
   }
 
 
-  viewProduct(product: Product) {
-    const myArray = product;
+  viewPlan(plan: Plan) {
+    const myArray = plan;
     window.alert('abrió el detalle del producto!' + JSON.stringify(myArray));
-    console.log('Product selected:', product);}
+    console.log('Product selected:', plan);}
     
   ngOnInit(): void {
     this.cartItems = this.cartService.getItems();
@@ -69,7 +69,7 @@ export class CartComponent implements OnInit {
   }
   isCartOpen: boolean = false;
   total : number = 0;
-  items : Product[]  =
+  items : Plan[]  =
   [];
   constructor(private cartService: CartService,  private router: Router) {
     
@@ -95,11 +95,11 @@ checkout() {
 }
 
 
-updateItem(item: Product) {
+updateItem(item: Plan) {
  
 }
 
-removeItem(item: Product) {
+removeItem(item: Plan) {
  
 }
 

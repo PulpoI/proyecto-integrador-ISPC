@@ -127,7 +127,7 @@ class ClienteView(View):
 
 
 
-# PLANES
+# planes
 class PlanView(View):
   @method_decorator(csrf_exempt)
   def dispatch(self, request, *args, **kwargs):

@@ -28,7 +28,7 @@
 ### Rutas de la api:
 ### Ruta de Administradores: http://127.0.0.1:8000/api/admins/
 ### Ruta de Clientes: http://127.0.0.1:8000/api/clientes
-### Ruta de Planes: http://127.0.0.1:8000/api/planes/
+### Ruta de Tienda: http://127.0.0.1:8000/api/tienda/
 ### Ruta de Clases: http://127.0.0.1:8000/api/clases/
 ### Ruta de Reservas: http://127.0.0.1:8000/api/reservas/
 

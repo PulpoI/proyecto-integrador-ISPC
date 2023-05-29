@@ -10,7 +10,7 @@ import { LoginAdminComponent } from './roles/admin/login-admin/login-admin.compo
 import { HomeComponent } from './pages/home/home.component';
 import { DashboardComponent } from './roles/admin/dashboard/dashboard.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
-import { PlanesComponent } from './pages/planes/planes.component';
+import { PlanesTiendaComponent } from './shop/planesTienda/planesTienda.component';
 import { ClasesComponent } from './pages/clases/clases.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -18,7 +18,7 @@ import { RegistroComponent } from './auth/registro/registro.component';
 import { TiendaComponent } from './shop/tienda/tienda.component';
 import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
-
+import { PlanesComponent } from './pages/planes/planes.component';
 
 
 
@@ -29,7 +29,8 @@ const routes: Routes = [
   //Pages: 
   {path:'', component: HomeComponent},
   {path:'nosotros', component:NosotrosComponent},
-  {path:'planes', component: PlanesComponent},
+  {path:'planes', component:PlanesComponent},
+  {path:'planesTienda', component:PlanesTiendaComponent},
   {path:'clases', component: ClasesComponent},
   {path:'contacto', component:ContactoComponent},
   {path:'tienda', component: TiendaComponent},
