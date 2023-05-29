@@ -84,8 +84,7 @@ class ClienteView(View):
         else:
             datos = {'mensaje': "No se encontraron clientes..."}
         return JsonResponse(datos)
-
-        
+ 
   def post(self, request):
     jd = json.loads(request.body)
     plan_id = jd.get('plan_id')
@@ -100,7 +99,7 @@ class ClienteView(View):
         apellido=jd['apellido'],
         dni=jd['dni'],
         email=jd['email'],
-        contraseña=jd['contraseña'],
+        password=jd['password'],
         fecha_nacimiento=jd['fecha_nacimiento'],
         plan=plan,
         clases_restantes=jd.get('clases_restantes')
@@ -111,7 +110,7 @@ class ClienteView(View):
         'apellido': cliente.apellido,
         'dni': cliente.dni,
         'email': cliente.email,
-        'contraseña': cliente.contraseña,
+        'password': cliente.password,
         'fecha_nacimiento': cliente.fecha_nacimiento,
         'plan': {
             'id': plan.id if plan else None,
@@ -125,6 +124,51 @@ class ClienteView(View):
     datos = {'mensaje': "Success", 'cliente': cliente_data}
     return JsonResponse(datos)
 
+  def put(self, request, id):
+        jd = json.loads(request.body)
+        try:
+            cliente = Cliente.objects.get(id=id)
+        except Cliente.DoesNotExist:
+            datos = {'mensaje': "Error, no se encontró el cliente"}
+            return JsonResponse(datos, status=404)
+
+        plan_id = jd.get('plan_id')
+        plan = None
+        if plan_id:
+            try:
+                plan = Plan.objects.get(id=plan_id)
+            except Plan.DoesNotExist:
+                pass
+
+        cliente.nombre = jd.get('nombre', cliente.nombre)
+        cliente.apellido = jd.get('apellido', cliente.apellido)
+        cliente.dni = jd.get('dni', cliente.dni)
+        cliente.email = jd.get('email', cliente.email)
+        cliente.password = jd.get('password', cliente.password)
+        cliente.fecha_nacimiento = jd.get('fecha_nacimiento', cliente.fecha_nacimiento)
+        cliente.plan = plan
+        cliente.clases_restantes = jd.get('clases_restantes', cliente.clases_restantes)
+        cliente.save()
+
+        cliente_data = {
+            'id': cliente.id,
+            'nombre': cliente.nombre,
+            'apellido': cliente.apellido,
+            'dni': cliente.dni,
+            'email': cliente.email,
+            'password': cliente.password,
+            'fecha_nacimiento': cliente.fecha_nacimiento,
+            'plan': {
+                'id': plan.id if plan else None,
+                'nombre': plan.nombre if plan else None,
+                'descripcion': plan.descripcion if plan else None,
+                'cantidad_clases': plan.cantidad_clases if plan else None,
+                'precio': plan.precio if plan else None
+            } if plan else None,
+            'clases_restantes': cliente.clases_restantes
+        }
+        datos = {'mensaje': "Success", 'cliente': cliente_data}
+        return JsonResponse(datos)
 
 
 # PLANES

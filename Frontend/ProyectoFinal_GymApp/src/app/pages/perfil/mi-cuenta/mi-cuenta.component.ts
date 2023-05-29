@@ -33,7 +33,7 @@ export class MiCuentaComponent implements OnInit {
     const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.obtenerIdCliente();
     console.log(clienteId);
     this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
-     
+ 
       this.clientes = clientes.cliente;
       console.log('Datos del cliente:', clientes);
     });

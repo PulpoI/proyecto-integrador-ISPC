@@ -34,14 +34,14 @@ export class LoginAdminComponent implements OnInit {
 
   logindata() {
     const correoElectronico = this.loginAdmin.value.fname;
-    const contraseña = this.loginAdmin.value.password;
+    const password = this.loginAdmin.value.password;
 
     this.dataFiltrada = this.data.admins.filter((admin: { email: any; }) => admin.email === correoElectronico);
 
     if (this.dataFiltrada.length > 0) {
       const usuarioFiltrado = this.dataFiltrada[0];
 
-      if (usuarioFiltrado.contraseña === contraseña) {
+      if (usuarioFiltrado.password === password) {
         console.log('Contraseña válida');
 
         // Generar un token basado en el datetime actual

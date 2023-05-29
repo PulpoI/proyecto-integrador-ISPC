@@ -38,6 +38,7 @@ const routes: Routes = [
   {path:'admin', component: LoginAdminComponent},
   {path:'dashboard', component: DashboardComponent},
   {path:'plan/:id', component: PlanComponent},
+  {path:'cliente/:id', component: ClienteComponent},
   {path:'crear-plan', component: CrearPlanComponent },
   {path:'crear-clase', component: CrearClaseComponent },
   {path:'clase/:id', component: ClaseComponent},

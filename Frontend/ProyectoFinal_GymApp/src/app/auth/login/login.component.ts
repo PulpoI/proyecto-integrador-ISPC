@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   logindata(): void {
     const correoElectronico = this.login.value.fname;
-    const contraseña = this.login.value.password;
+    const password = this.login.value.password;
 
     this.loginService.getData().subscribe(data => {
       const usuarioFiltrado = data.clientes.find(
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       );
 
       if (usuarioFiltrado) {
-        if (usuarioFiltrado.contraseña === contraseña) {
+        if (usuarioFiltrado.password === password) {
           console.log('Contraseña válida');
 
           // Generar un token basado en el datetime actual
