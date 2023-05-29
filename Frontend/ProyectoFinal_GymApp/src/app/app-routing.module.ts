@@ -20,10 +20,6 @@ import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 
-
-
-
-
 const routes: Routes = [
   // {path:'inicio', component: DashboardComponent},
   //Pages: 
@@ -43,7 +39,10 @@ const routes: Routes = [
   {path:'admin', component: LoginAdminComponent},
   {path:'dashboard', component: DashboardComponent},
   {path:'plan/:id', component: PlanComponent},
+  {path:'cliente/:id', component: ClienteComponent},
   {path:'crear-plan', component: CrearPlanComponent },
+  {path:'crear-clase', component: CrearClaseComponent },
+  {path:'clase/:id', component: ClaseComponent},
     {path:'**', component: HomeComponent},
 
 ];

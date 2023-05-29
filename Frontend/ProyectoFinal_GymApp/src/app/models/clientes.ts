@@ -3,7 +3,7 @@ export interface Clientes {
   nombre: string;
   apellido: string;
   dni: string;
-  fechaNacimiento: Date;
+  fecha_nacimiento: Date;
   email: string;
   password: string;
 }

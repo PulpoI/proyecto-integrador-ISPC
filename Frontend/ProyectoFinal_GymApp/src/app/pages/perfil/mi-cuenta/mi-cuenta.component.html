@@ -1,68 +1,65 @@
 <div class=" w-auto shadow p-0 fs-6 container-perfil">
-
-
   <div class="editar-perfil-container">
     <div *ngIf="clientes">
-      <div class= "tittle">Mi cuenta</div>
-       <div class="id">
-      <p>ID: {{ clientes.id }}</p>
-    </div>
+      <div class="tittle">Mi cuenta</div>
+      <div class="id">
+        <p>ID: {{ clientes.id }}</p>
+      </div>
       <div class="user" *ngIf="!editar">
         <p>Nombre: {{ clientes.nombre }}</p>
         <p>Apellido: {{ clientes.apellido }}</p>
         <p>DNI: {{ clientes.dni }}</p>
-        <p>Fecha de Nacimiento: {{ clientes.fechaNacimiento }}</p>
+        <p>Fecha de Nacimiento: {{ clientes.fecha_nacimiento | date: 'dd/MM/yyyy' }}</p>
         <p>Email: {{ clientes.email }}</p>
         <p>Contraseña: **********</p>
-      
+
       </div>
       <div class="d-grid">
-      <button type="submit" class="btn btn-outline-dark" (click)="editarDatos()" *ngIf="!editar">Editar datos</button>
-    </div>
+        <button type="submit" class="btn btn-outline-dark" (click)="editarDatos()" *ngIf="!editar">Editar datos</button>
+      </div>
 
       <form *ngIf="editar">
         <div class=" user-details">
-        <div class="input-box">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" [(ngModel)]="clientes.nombre" name="nombre" required>
-        </div>
+          <div class="input-box">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" [(ngModel)]="clientes.nombre" name="nombre" required>
+          </div>
 
-        <div class="input-box">
-          <label for="apellido">Apellido:</label>
-          <input type="text" id="apellido" [(ngModel)]="clientes.apellido" name="apellido" required>
-        </div>
+          <div class="input-box">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" [(ngModel)]="clientes.apellido" name="apellido" required>
+          </div>
 
-        <div class="input-box">
-          <label for="dni">DNI:</label>
-          <input type="text" id="dni" [(ngModel)]="clientes.dni" name="dni" required>
-        </div>
+          <div class="input-box">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" [(ngModel)]="clientes.dni" name="dni" required>
+          </div>
 
-        <div class="input-box">
-          <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-          <input type="date" id="fechaNacimiento" [(ngModel)]="clientes.fechaNacimiento" name="fechaNacimiento"
-            required>
-        </div>
+          <div class="input-box">
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="Date" id="fecha_nacimiento" [(ngModel)]="clientes.fecha_nacimiento" name="fecha_nacimiento"
+              required>
+          </div>
 
-        <div class="input-box">
-          <label for="email">Email:</label>
-          <input type="email" id="email" [(ngModel)]="clientes.email" name="email" required>
-        </div>
+          <div class="input-box">
+            <label for="email">Email:</label>
+            <input type="email" id="email" [(ngModel)]="clientes.email" name="email" required>
+          </div>
 
 
-        <div class="input-box">
-          <label for="password">Contraseña:</label>
-          <input type="password" id="password" [(ngModel)]="clientes.password" name="password" required>
-        </div>
+          <div class="input-box">
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="contraseña" [(ngModel)]="clientes.password" name="contraseña" required>
+          </div>
 
-        <br>
-        <!-- Agrega otros campos aquí según los datos que desees editar -->
-        <div class="d-grid">
-          <button type="submit" class="btn btn-outline-dark" (click)="guardarCambios()">Guardar
-            cambios</button>
-        </div>
+          <br>
+          <!-- Agrega otros campos aquí según los datos que desees editar -->
+          <div class="d-grid">
+            <button type="submit" class="btn btn-outline-dark" (click)="guardarCambios()">Guardar
+              cambios</button>
+          </div>
         </div>
       </form>
     </div>
   </div>
 </div>
-

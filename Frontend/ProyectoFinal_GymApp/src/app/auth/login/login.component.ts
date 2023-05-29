@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   logindata(): void {
     const correoElectronico = this.login.value.fname;
-    const contraseña = this.login.value.password;
+    const password = this.login.value.password;
 
     this.loginService.getData().subscribe(data => {
       const usuarioFiltrado = data.clientes.find(
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       );
 
       if (usuarioFiltrado) {
-        if (usuarioFiltrado.contraseña === contraseña) {
+        if (usuarioFiltrado.password === password) {
           console.log('Contraseña válida');
 
           // Generar un token basado en el datetime actual
@@ -44,13 +44,13 @@ export class LoginComponent implements OnInit {
 
           // Guardar el token y el usuario filtrado en el sessionStorage
           sessionStorage.setItem('token', token);
-          sessionStorage.setItem('usuario', JSON.stringify(usuarioFiltrado));
+          sessionStorage.setItem('usuario', JSON.stringify(usuarioFiltrado.id));
           sessionStorage.setItem('isAuthenticated', 'true');
           // Actualizar el estado de autenticación al iniciar sesión correctamente
           this.authService.updateAuthenticationStatus(true);
           
           // Redirigir al dashboard o a la página deseada
-          const clienteId = 1;
+          const clienteId = usuarioFiltrado.id;;
           this.router.navigate(['/mi-cuenta', clienteId]);
         } else {
           console.log('Contraseña inválida');
