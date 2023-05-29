@@ -70,8 +70,8 @@ export class AuthService {
     return this.clienteIdSubject.value;
   }
 
-  private getClienteIdFromSessionStorage(): number {
-    const clienteId = sessionStorage.getItem('clienteId');
+  public  getClienteIdFromSessionStorage(): number {
+    const clienteId = sessionStorage.getItem('usuario');
     return clienteId ? parseInt(clienteId, 10) : 0;
   }
 

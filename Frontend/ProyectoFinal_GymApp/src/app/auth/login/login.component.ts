@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
 
           // Guardar el token y el usuario filtrado en el sessionStorage
           sessionStorage.setItem('token', token);
-          sessionStorage.setItem('usuario', JSON.stringify(usuarioFiltrado));
+          sessionStorage.setItem('usuario', JSON.stringify(usuarioFiltrado.id));
           sessionStorage.setItem('isAuthenticated', 'true');
           // Actualizar el estado de autenticación al iniciar sesión correctamente
           this.authService.updateAuthenticationStatus(true);

@@ -32,13 +32,15 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'registro', component: RegistroComponent},
   {path:'checkout', component: CheckoutComponent},
-  {path: 'mi-cuenta/:id', component: MiCuentaComponent},
+  {path: 'mi-cuenta', component: MiCuentaComponent},
   {path:'',redirectTo:'/inicio', pathMatch:'full'},
   //Admin views
   {path:'admin', component: LoginAdminComponent},
   {path:'dashboard', component: DashboardComponent},
   {path:'plan/:id', component: PlanComponent},
   {path:'crear-plan', component: CrearPlanComponent },
+  {path:'crear-clase', component: CrearClaseComponent },
+  {path:'clase/:id', component: ClaseComponent},
     {path:'**', component: HomeComponent},
 
 ];

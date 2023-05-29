@@ -31,9 +31,10 @@ export class MiCuentaComponent implements OnInit {
   ngOnInit(): void {
     const isAdmin = this.authService.getIsAdmin();
     const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.obtenerIdCliente();
+    console.log(clienteId);
     this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
-      clientes.fecha_nacimiento = new Date(clientes.fecha_nacimiento);
-      this.clientes = clientes;
+     
+      this.clientes = clientes.cliente;
       console.log('Datos del cliente:', clientes);
     });
   }
