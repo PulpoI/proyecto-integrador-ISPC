@@ -78,24 +78,22 @@ a {
 .custom-dropdown {
   background-color: rgb(173, 161, 161);
   color: rgb(221, 28, 28);
-  /* Estilos adicionales para el desplegable */
+
 }
 
 .custom-dropdown .dropdown-menu {
-  background-color: black; /* Establece el fondo en negro */
-  /* Otros estilos adicionales para el fondo del desplegable */
+  background-color: black; 
 }
 
 .custom-dropdown .dropdown-menu a {
-  color: rgb(197, 41, 41); /* Establece el color del texto en blanco */
-  /* Otros estilos adicionales para el texto del desplegable */
+  color: rgb(197, 41, 41); 
 }
 
 
 .custom-dropdown .dropdown-toggle {
   font-size: 20px !important;
   font-weight: bold;
-  text-transform: uppercase;
+  
 }
 
 /* Estilos para la versión desktop */

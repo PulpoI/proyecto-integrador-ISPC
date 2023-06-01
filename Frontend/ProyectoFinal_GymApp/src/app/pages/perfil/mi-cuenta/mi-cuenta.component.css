@@ -14,7 +14,8 @@
   width: 100%;
   background: rgb(223, 124, 124);
   padding: 20px 20px ;
-  border-radius: 5px;
+  border-radius: 1rem;
+ 
 }
 
 .editar-perfil-container .id{
