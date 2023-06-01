@@ -14,7 +14,7 @@ export class MiCuentaComponent implements OnInit {
     id: 0,
     nombre: '',
     apellido: '',
-    dni: '',
+    dni: 'number',
     fecha_nacimiento: new Date(),
     email: '',
     password:'',
