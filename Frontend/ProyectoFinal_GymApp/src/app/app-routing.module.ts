@@ -19,6 +19,7 @@ import { TiendaComponent } from './shop/tienda/tienda.component';
 import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
 import { PlanesComponent } from './pages/planes/planes.component';
+import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-suscripciones.component';
 
 const routes: Routes = [
   // {path:'inicio', component: DashboardComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:'registro', component: RegistroComponent},
   {path:'checkout', component: CheckoutComponent},
   {path: 'mi-cuenta', component: MiCuentaComponent},
+  {path: 'mis-suscripciones', component: MisSuscripcionesComponent},
   {path:'',redirectTo:'/inicio', pathMatch:'full'},
   //Admin views
   {path:'admin', component: LoginAdminComponent},

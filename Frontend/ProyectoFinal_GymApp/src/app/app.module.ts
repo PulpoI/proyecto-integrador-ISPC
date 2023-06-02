@@ -30,10 +30,10 @@ import { ClaseComponent } from './roles/admin/views/clase/clase.component';
 import { PlanesTiendaComponent } from './shop/planesTienda/planesTienda.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { PlanesTiendaModule } from './shop/planesTienda/planesTienda.module';
-import { PlanService } from './shop/services/plan.service';
 import { TiendaModule } from './shop/tienda/tienda.module';
 
 import { CurrencyPipe } from '@angular/common';
+import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-suscripciones.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +58,7 @@ import { CurrencyPipe } from '@angular/common';
     MiCuentaComponent,
     CrearClaseComponent,
     ClaseComponent,
+    MisSuscripcionesComponent,
     
   ],
   imports: [
