@@ -62,7 +62,7 @@ import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-
     
   ],
   imports: [
-    
+    RouterModule.forRoot([]),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
