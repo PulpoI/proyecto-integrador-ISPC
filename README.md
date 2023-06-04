@@ -2,8 +2,11 @@
 
 ## Proyecto integrador ISPC 2023
 
+## Integrantes por Sprint:
+
 ## 10/04/2023
 ## SPRINT 0 / SPRINT 1
+
 ## Boiola Julieta
 ## Duarte Pablo
 ## Malbran María Jose
@@ -15,6 +18,7 @@
 
 ## 08/05/2023
 ## SPRINT 2 / SPRINT 3
+
 ## Duarte Pablo
 ## Mattos María Soledad
 ## Medina Carolina Estefanía 
