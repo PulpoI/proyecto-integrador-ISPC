@@ -1,0 +1,19 @@
+<div class="planes m-5">
+  <div class="product-card card plan-tienda-card" *ngFor="let plan of planes; let i = index">
+    <!--<pre>{{ plan | json }}</pre>-->
+    <div class="card-body">
+      <ng-container *ngIf="plan.image; else placeholder">
+        <img [src]="plan.image"  class="card-img-top" alt="Plan Image">
+      </ng-container>
+      <ng-template #placeholder>
+        <img [src]="getImagePath(i)" class="card-img-top" alt="Placeholder Image">
+      </ng-template>
+      <ng-container *ngIf="plan.nombre || plan.id"></ng-container>
+      <h3>{{ plan.nombre }}</h3><i class="i fa-solid fa-dumbbell"></i>
+      <p class="price">{{ plan.precio | currency }}</p>
+      <p class="description">{{ plan.descripcion }}</p>
+      <!-- <button (click)="viewPlan(plan)">Ver detalle {{ plan.nombre }}</button>-->
+      <button class="product-detail-add-to-cart" (click)="addToCart(plan)">Agregar al carrito</button>
+    </div>
+  </div>
+</div>

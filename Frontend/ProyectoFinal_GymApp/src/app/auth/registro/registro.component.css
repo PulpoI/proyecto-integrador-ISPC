@@ -1,0 +1,36 @@
+.container-registro {
+    
+    background: url("../../assets/login.jpg") no-repeat center center fixed;
+    background-size: cover;    
+}
+
+
+.custom-form {
+    min-width: 300px;
+    max-width: 60%;
+    margin: 0px auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2rem 3rem;
+    margin: auto;
+    border-radius: 2.5rem;
+    background-color:  rgb(223, 124, 124);
+   
+    
+    color: black;
+    margin-top: 5rem;
+  }
+  
+  .custom-form input {
+    display: block;
+    margin: 2rem 0;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: none;
+    box-shadow: inset -5px -5px 15px rgba(255, 255, 255, 0.8), inset 5px 5px 10px
+        rgba(0, 0, 0, 0.1);
+    border: 0 none;
+    background: #ebf5fc;
+  }
+
+

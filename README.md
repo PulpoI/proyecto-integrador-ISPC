@@ -2,6 +2,30 @@
 
 ## Proyecto integrador ISPC 2023
 
+## Integrantes por Sprint:
+
+## 10/04/2023
+## SPRINT 0 / SPRINT 1
+
+## Boiola Julieta
+## Duarte Pablo
+## Malbran María Jose
+## Mattos María Soledad
+## Medina Carolina Estefanía
+## Moreno Rivero Ivan Ignacio
+## Rivarola Celeste 
+## Robledo Romina 
+
+## 08/05/2023
+## SPRINT 2 / SPRINT 3
+
+## Duarte Pablo
+## Mattos María Soledad
+## Medina Carolina Estefanía 
+
+## 05/05/2023 
+## SPRINT 4
+
 ### Frontend desplegado [GYM APP](https://gym-app.pulpol.com.ar/).
 ### Backlog [Tablero Kanban](https://github.com/users/PulpoI/projects/4/views/1).
 ### Wiki (2023 a partir de la #16) [Wiki GYM APP](https://github.com/PulpoI/proyecto-integrador-ISPC/wiki).
@@ -28,7 +52,7 @@
 ### Rutas de la api:
 ### Ruta de Administradores: http://127.0.0.1:8000/api/admins/
 ### Ruta de Clientes: http://127.0.0.1:8000/api/clientes
-### Ruta de Planes: http://127.0.0.1:8000/api/planes/
+### Ruta de Tienda: http://127.0.0.1:8000/api/tienda/
 ### Ruta de Clases: http://127.0.0.1:8000/api/clases/
 ### Ruta de Reservas: http://127.0.0.1:8000/api/reservas/
 

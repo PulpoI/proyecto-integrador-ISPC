@@ -1,0 +1,22 @@
+<h2>Mi Cuenta</h2>
+
+<div *ngIf="clientes">
+  <p><strong>Nombre:</strong> {{ clientes.nombre }}</p>
+  <p><strong>Apellido:</strong> {{ clientes.apellido }}</p>
+  <p><strong>DNI:</strong> {{ clientes.dni }}</p>
+  <p><strong>Fecha de Nacimiento:</strong> {{ clientes.fecha_nacimiento | date }}</p>
+  <p><strong>Email:</strong> {{ clientes.email }}</p>
+
+  <div *ngIf="clientes.plan_id">
+    <h3>Detalles del Plan</h3>
+    <p><strong>Plan ID:</strong> {{ clientes.plan_id }}</p>
+    <p><strong>Clases Restantes:</strong> {{ clientes.clases_restantes }}</p>
+    <p><strong>Descripción del Plan:</strong> {{ clientes.descripcion }}</p>
+    <p><strong>Cantidad de Clases:</strong> {{ clientes.cantidad_clases }}</p>
+    <p><strong>Precio:</strong> {{ clientes.precio }}</p>
+  </div>
+
+</div>
+<div *ngIf="!clientes">
+  <p>No se encontraron datos del cliente.</p>
+</div>

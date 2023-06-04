@@ -5,7 +5,7 @@ from django.utils.timezone import now
 class Admin(models.Model):
   nombre=models.CharField(max_length=50)
   email=models.CharField(max_length=100)
-  contraseña=models.CharField(max_length=50)
+  password=models.CharField(max_length=50)
 
 class Plan(models.Model):
   nombre=models.CharField(max_length=50)
@@ -19,7 +19,7 @@ class Cliente(models.Model):
   apellido=models.CharField(max_length=50)
   dni=models.CharField(max_length=50)
   email=models.CharField(max_length=100)
-  contraseña=models.CharField(max_length=50)
+  password=models.CharField(max_length=50)
   fecha_nacimiento=models.DateField(null=True)
   plan=models.ForeignKey(Plan, on_delete=models.CASCADE, null=True, blank=True)
   clases_restantes=models.PositiveBigIntegerField(null=True, default=None, blank=True)
