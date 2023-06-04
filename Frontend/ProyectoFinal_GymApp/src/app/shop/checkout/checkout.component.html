@@ -9,22 +9,31 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="nombre">Nombre</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }">
+              <input id="validationCustom01" type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }"  [ngModelOptions]="{ standalone: true }" [ngClass]="{ 'borde-rojo': !validarNombre() && nombre !== '', 'borde-verde': validarNombre() }" [ngStyle]="{ 'text-decoration': validarNombre() ? 'underline' : 'none' }">
             </div>
             <div class="col-md-6 mb-3">
               <label for="apellido">Apellido</label>
-              <input type="text" class="form-control" id="apellido" name="apellido" required [(ngModel)]="apellido">
+              <input id="validationCustom01" type="text" class="form-control" id="apellido" name="apellido"required [(ngModel)]="apellido" [ngClass]="{ 'borde-rojo': !validarApellido() && apellido !== '', 'borde-verde': validarApellido() }" [ngStyle]="{ 'text-decoration': validarApellido() ? 'underline' : 'none' }">
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
           </div>
 
           <div class="mb-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required [(ngModel)]="email">
+            <input id="validationCustom01" type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required [(ngModel)]="email">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
           </div>
 
           <div class="mb-3">
             <label for="domicilio">Domicilio</label>
-            <input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Los Alamos 4444 6°G" required [(ngModel)]="domicilio">
+            <input id="validationCustom01" type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Los Alamos 4444 6°G" required [(ngModel)]="domicilio">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
           </div>
 
           <div class="row">
@@ -66,7 +75,10 @@
             </div>
             <div class="col-md-3 mb-3">
               <label for="cp">Código postal</label>
-              <input type="text" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
+              <input type="text" id="validationCustom01" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
           </div>
           <button class="pago" (click)="completarPago()" [disabled]="seccionVisible === 3">Continuar</button>

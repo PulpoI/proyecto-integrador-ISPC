@@ -32,8 +32,18 @@ export class CheckoutComponent implements OnInit {
   constructor(private router: Router, private cartService: CartService) {}
 
   completarPago() {
+    if (
+      !this.validarNombre() ||
+      !this.validarApellido() ||
+      !this.email ||
+      !this.domicilio
+    ) {
+      window.alert('Por favor, completar todos los campos');
+      return;
+    }
+  
     // Aquí puedes guardar la información del formulario
-
+  
     // Cambiar a la sección 3
     this.seccionVisible = 3;
     this.seccionActual = 3;
@@ -41,7 +51,8 @@ export class CheckoutComponent implements OnInit {
     this.apellido = '';
     this.email = '';
     this.domicilio = '';
-    this.mostrarSeccion3 = true;  }
+    this.mostrarSeccion3 = true;
+  }
 
   mostrarSeccion(seccion: number) {
     if (seccion === 3) {
@@ -55,7 +66,6 @@ export class CheckoutComponent implements OnInit {
       this.seccionActual = seccion;
     }
   }
-  
 
   calculateTotal(): number {
     return this.cartItems.reduce((acc, item) => acc + item.price, 0);
@@ -69,11 +79,8 @@ export class CheckoutComponent implements OnInit {
       !this.payment.cvv ||
       !this.payment.cardName
     ) {
-      window.alert('Pago completado, '+this.payment.cardName+", se enviará un email con la factura a su email ");
-  ;
-      console.log('Por favor, completar los datos de pago');
-      return 
-      
+      window.alert('Por favor, completar los datos de pago');
+      return;
     }
 
     // Process the payment or save shipping information
@@ -103,6 +110,24 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    (function () {
+      'use strict';
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation');
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event: Event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const state = this.router.getCurrentNavigation()?.extras.state;
@@ -130,4 +155,13 @@ export class CheckoutComponent implements OnInit {
       submitContainer.style.display = 'block';
     }
   }
+
+  validarNombre(): boolean {
+    return this.nombre.length > 0;
+  }
+
+  validarApellido(): boolean {
+    return this.apellido.length > 0;
+  }
+  
 }

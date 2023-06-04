@@ -98,7 +98,7 @@ td{
   background: rgb(2,0,36);
   background: rgb(16, 0, 0);
   background: linear-gradient(0deg, rgb(87, 3, 3) 0%, rgb(155, 28, 28) 100%);
- 
+margin-bottom: 1rem;
   z-index:auto;
   
   transition: transform 0.3s ease-in-out;
@@ -341,6 +341,7 @@ td{
  }
 .tabla-r{
   width:fit-content;
+  margin-left: 1rem;
 }
 .tr1{
   width:700px;
@@ -361,6 +362,7 @@ row > * {
   button{
     background-color: black!important;
     color: #ff1900;
+    margin-left: 9rem;
   }
   .tabla-r .fa-solid{
     color: rgb(254, 246, 246);
