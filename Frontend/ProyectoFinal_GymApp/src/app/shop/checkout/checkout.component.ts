@@ -1,16 +1,14 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit {
   cartItems: any[] = [];
   cartTotal: number = 0;
-  items: any[] = [];
-  total: number = 0;
 
   payment: any = {
     cardNumber: '',
@@ -28,26 +26,41 @@ export class CheckoutComponent {
   }
 
   placeOrder(): void {
-    // Validar los campos de pago, por ejemplo:
-    if (!this.payment.cardNumber || !this.payment.expDate || !this.payment.cvv) {
-      console.log('Por favor completa todos los campos de pago');
+    // Validate the payment fields
+    if (!this.payment.cardNumber || !this.payment.expDate || !this.payment.cvv || !this.payment.cardName) {
+      console.log('Por favor, completar los datos de pago');
       return;
     }
 
-    // Crear un objeto de pedido con la información necesaria
+    // Process the payment or save shipping information
+    // You can add the logic here to handle the payment or save shipping information
+    // For example, you can make an HTTP request to a payment processing API or a backend server to handle the payment
+
+    // Create an order object with the necessary information
     const order = {
-      items: this.items,
+      items: this.cartItems,
       total: this.calculateTotal(),
       payment: this.payment
     };
 
-    // Simular el envío del pedido al servidor
-    // Aquí puedes hacer una solicitud HTTP para guardar el pedido en la base de datos o realizar otras acciones relacionadas con el pedido
-    console.log('Enviando pedido al servidor y realizando pedido', order);
+    // Simulate sending the order to the server
+    // Here you can make an HTTP request to save the order to the database or perform other actions related to the order
+    console.log('Enviando ordenes', order);
 
-    // Redirigir a la página de confirmación después de realizar el pedido
-    this.router.navigate(['ruta-de-confirmacion']);
-    this.confirmationMessage = 'Pedido realizado correctamente';
+    // Redirect to the PayPal sandbox
+    window.location.href = 'https://www.sandbox.paypal.com';
+
+    this.confirmationMessage = 'Order enviada';
   }
 
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const state = this.router.getCurrentNavigation()?.extras.state;
+        if (state && state['items']) {
+          this.cartItems = Array.isArray(state['items']) ? state['items'] : [state['items']];
+        }
+      }
+    });
+  }
 }

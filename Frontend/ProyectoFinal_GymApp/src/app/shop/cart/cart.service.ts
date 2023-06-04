@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, HostListener } from '@angular/core';
 import { Plan } from '../models/plan.model';
 import { OnInit } from '@angular/core';
 import { Component, Input } from '@angular/core';
@@ -18,7 +18,18 @@ export class CartService {
   getItems() {
     return this.items;
   }
-  
+  isCartOpen = false;
+
+  @HostListener('document:click', ['$event.target'])
+  onClickOutside(target: any): void {
+    if (!target.closest('.cart')) {
+      this.isCartOpen = false;
+    }
+  }
+
+  toggleCart(): void {
+    this.isCartOpen = !this.isCartOpen;
+  }
   addToCart(plan: Plan) {
     this.items.push(plan);
     
@@ -41,6 +52,11 @@ export class CartService {
   }
   getTotal() {
     return this.items.reduce((acc, item) => acc + (item.precio * item.cantidad_clases), 0);
+  }
+  
+  calculateTotal(): number {
+    // Calcular el subtotal sumando los precios de los productos en el carrito
+    return this.items.reduce((subtotal, item) => subtotal + item.precio, 0);
   }
 }
 

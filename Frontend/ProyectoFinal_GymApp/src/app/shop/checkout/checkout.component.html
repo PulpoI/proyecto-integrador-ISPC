@@ -1,4 +1,136 @@
 <div class="checkout">
+  
+  <div class="container">
+    <div class="py-3 text-center">
+      <h2>Detalle de compra</h2>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-6 order-md-2 mb-4">
+        <!-- Aquí puedes agregar el resumen del carrito de compras -->
+      </div>
+      <div class="col-md-6 order-md-1">
+        <h4 class="mb-3">Dirección de facturación</h4>
+        <form class="py-sm-1">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="Nombre">Nombre</label>
+              <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="Apellido">Apellido</label>
+              <input type="text" class="form-control" id="apellido" required>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
+          </div>
+  
+          <div class="mb-3">
+            <label for="address">Domicilio</label>
+            <input type="text" class="form-control" id="domicilio" placeholder="Los Alamos 4444 6°G" required>
+          </div>
+  
+
+  
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="pais">Provincia</label>
+              <select class="custom-select d-block w-100" id="pais" required>
+                <option value="">Choose...</option>
+                <option>Argentina</option>
+                <option>Uruguay</option>
+                <option>Chile</option>
+                <option>Brasil</option>
+                <option>Peru</option>
+                <option>Paraguay</option>
+                <option>Bolivia</option>
+              </select>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="state">State</label>
+              <select class="custom-select d-block w-100" id="provincia" required>
+                <option value="">Choose...</option>
+                <option>Buenos Aires</option>
+                <option>Córdoba</option>
+                <option>Misiones</option>
+                <option>La pampa</option>
+                <option>San juan</option>
+                <option>Salta</option>
+                <option>Chaco</option>
+                <option>Entre Ríos</option>
+                <option>Santa Fe</option>
+                <option>Corrientes</option>
+                <option>Mendoza</option>
+                <option>Tucumán</option>
+                <option>Río negro</option>
+                <option>Chubut</option>
+                <option>Ushuaia</option>
+                <option>Tierra del Fuego</option>
+                <option>Malvinas</option>
+              </select>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="cp">Código postal</label>
+              <input type="text" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
+            </div>
+          </div>
+  
+          <hr class="mb-4">
+          <h4 class="mb-3">Pago</h4>
+  
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="credit" name="metodoPago" type="radio" class="custom-control-input" checked required>
+              <label class="custom-control-label" for="credito">Tarjeta de crédito</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="debit" name="metodoPago" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="debito">Tarjeta de débito</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input id="paypal" name="metodoPago" type="radio" class="custom-control-input" required>
+              <label class="custom-control-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="nombreTarjeta">Nombre en la tarjeta</label>
+              <input type="text" class="form-control" id="nombreTarjeta" placeholder="Nombre como aparece en la tarjeta" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="numeroTarjeta">Número de tarjeta</label>
+              <input type="text" class="form-control" id="numeroTarjeta" placeholder="Número de tarjeta" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 mb-3">
+              <label for="vencimientoTarjeta">Expiration</label>
+              <input type="text" class="form-control" id="vencimientoTarjeta" placeholder="mm/aa" required>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="cvvTarjeta">CVV</label>
+              <input type="number" class="form-control" id="cvvTarjeta" placeholder="xxx" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="tel">Teléfono</label>
+              <input type="text" class="form-control" id="tel" placeholder="Ej: 2236453645" required>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="enviar">Continuar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+    </div>
+  
+  
+  <!--
+  
   <h1>Detalle de pago</h1>
   <p>{{ confirmationMessage }}</p>
   <form >
@@ -82,7 +214,7 @@
             </div>
             <div class="item-total">
               {{ plan.precio  }} x {{ plan.cantidad_clases }} =
-              {{ plan.cantidad_clases * plan.precio  }}
+              {{ plan.cantidad_de_clases * plan.precio  }}
             </div>
           </div>
         </div>
@@ -102,8 +234,8 @@
               {{ plan.nombre }}
             </div>
             <div class="item-total">
-              {{ plan.precio  }} x {{ plan.cantidad_clases }} =
-              {{ plan.cantidad_clases * plan.precio  }}
+              {{ plan.precio  }} x {{ plan.cantidad_de_clases }} =
+              {{ plan.cantidad_de_clases * plan.precio  }}
             </div>
           </div>
         </div>
@@ -114,7 +246,7 @@
     <h3>Resumen del pedido</h3>
     <ul>
       <li *ngFor="let plan of cartItems">
-        {{ plan.nombre }} x {{ plan.cantidad_clases }} - {{ plan.precio  }}
+        {{ plan.name }} x {{ plan.quantity }} - {{ plan.price  }}
       </li>
     </ul>
     <p class="cart-total">Total: {{ calculateTotal() }}</p>
@@ -123,3 +255,4 @@
   <button type="submit" (click)="placeOrder()">Realizar pedido</button>
 </form>
 </div>
+-->

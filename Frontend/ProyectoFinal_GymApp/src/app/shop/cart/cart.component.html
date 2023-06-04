@@ -1,52 +1,83 @@
-<div class="cart" [class.open]="isCartOpen" (mouseleave)="hideCart()">
-  <h3>Carrito de Compras</h3>
-  <table class="table table-danger table-striped">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio Unitario</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container class="ngcont" *ngFor="let plan of items">
-        <tr class="tr">
-          <td><div class="cart-item-image">
-            <img [src]="plan.image" alt="{{ plan.nombre }}" />
-          </div>
-             {{ plan.nombre }}</td>
-          <td>{{ plan.cantidad_clases }}</td>
-          <td>{{ plan.precio | currency }}</td>
-            <td> <button class="btn-remove" (click)="removeCartItem(plan)"><i class="fas fa-trash text-danger"></i></button>
-          </td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
+<div class="cart" [class.open]="isCartOpen">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-6">
+          <span class="text-muted align-content-lg-center">Tu carrito</span>
+          <i class="fa-solid fa-cart-shopping"></i>
+        </h4>
 
+        <table class="table">
+          <thead>
+            <tr class="firstTr">
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Borrar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container class="ngcont" *ngFor="let plan of items">
+              <tr class="tr">
+                <td>
+                  <div class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                      <h6 class="my-0">{{ plan.nombre }}</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                      <small class="text-muted">Clases: {{ plan.cantidad_clases }}</small>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="text-muted">{{ plan.precio | currency }}</span>
+                </td>
+                <td>
+                  <button class="btn-remove" (click)="removeItem(plan)">
+                    <i class="fas fa-trash text-danger"></i>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
 
-        <!--
-        <div class="cart-item-color">
-          <label>Color:</label>
-          <select [(ngModel)]="item.color" (ngModelChange)="updateCartItem(item)">
-            <option *ngFor="let color of item.product?.colors" [value]="color">{{ color }}</option>
-          </select>
+            <tr class="tr cupon list-group-item d-flex">
+              <td>
+                <div class="text-success w-100">
+                  <h6 class="my-0">Cupón</h6>
+                </div>
+              </td>
+              <td>
+                <small>(Para compras mayores a $5000)</small>
+              </td>
+              <td>
+                <span class="text-success w-100">-$1500</span>
+              </td>
+              <td><i class="fa-solid fa-receipt"></i></td>
+              <td class="w-100">Total(ARS)</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>{{ calculateTotal() | currency }}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="cart-summary">
+          <button class="btn-buy" (click)="openCheckout()">Comprar</button>
         </div>
-        <div class="cart-item-size">
-          <label>Tamaño:</label>
-          <select [(ngModel)]="item.size" (ngModelChange)="updateCartItem(item)">
-            <option *ngFor="let size of item.product?.sizes" [value]="size">{{ size }}</option>
-          </select>
+      </div>
+
+      <div class="col-xxl-9 order-md-1">
+        <div class="checkout-sidebar" *ngIf="isCheckoutOpen">
+          <!-- Componente de checkout -->
+          <app-checkout></app-checkout>
         </div>
-        -->
-       
-      
-  
-
-
-  <div class="cart-summary">
-    <p class="cart-total">Total: {{ calculateTotal() | currency }}</p>
-    <button class="btn-buy" (click)="placeOrder()">Comprar</button>
+      </div>
+    </div>
   </div>
 </div>

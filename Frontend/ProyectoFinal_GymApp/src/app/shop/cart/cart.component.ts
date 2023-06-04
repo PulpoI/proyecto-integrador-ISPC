@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  isCheckoutOpen: boolean = false;
+
   cartItems: any[] = [];
   cartTotal: number = 0;
   planes: Plan[] = [];
@@ -21,6 +23,14 @@ export class CartComponent implements OnInit {
     
     return this.items;
   }
+  toggleCart(): void {
+    this.isCartOpen = !this.isCartOpen;
+  }
+  
+  openCheckout() {
+    this.isCheckoutOpen = true;
+  }
+  
   
   addToCart(plan: Plan) {
     // this.cartService.addToCart(plan);
@@ -75,31 +85,28 @@ export class CartComponent implements OnInit {
     
   }
 
-  calculateTotal(): number {
-    return this.cartItems.reduce((acc, item) => acc + item.price, 0);
+  removeItem(item: any): void  {
+    this.cartService.removeCartItem(item);
+    this.items = this.cartService.getItems();
+  
   }
-
   updateCartItem(item: any) {
   }
 
  
-    removeCartItem(item: any): void  {
-  this.cartService.removeCartItem(item);
-  this.items = this.cartService.getItems();
-  this.calculateTotal();
-}
+
 
 checkout() {
-  // Do checkout process here
+  
+  if (this.cartItems.length === 0) {
+    console.log('El carrito está vacío');
+    return;
+  }
 
+  this.router.navigate(['checkout'], { state: { items: this.cartItems } });
 }
-
 
 updateItem(item: Plan) {
- 
-}
-
-removeItem(item: Plan) {
  
 }
 
@@ -119,10 +126,20 @@ cartContainer.classList.remove('show');
 
 }
 
+calculateTotal(): number {
+  // Calcular el subtotal sumando los precios de los productos en el carrito
+  const subtotal = this.items.reduce((acc, item) => acc + item.precio, 0);
 
+  if (subtotal > 5000) {
+    return subtotal - 1500;
+  } else {
+    return subtotal;
+  }
+}
 
 
 }
+
 /*@Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',

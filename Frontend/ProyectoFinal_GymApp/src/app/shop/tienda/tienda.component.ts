@@ -8,10 +8,16 @@ import { PlanesTiendaComponent } from '../planesTienda/planesTienda.component';
   styleUrls: ['./tienda.component.css']
 })
 export class TiendaComponent {
-  showCart() {
+  isCartOpen: boolean = false;
+
+  toggleCart(): void {
+    this.isCartOpen = !this.isCartOpen;
+  }
+
+  showCart(): void {
     const cartContainer = document.getElementById('cart-container');
     if (cartContainer) {
       cartContainer.classList.add('show');
     }
   }
-}
+} 

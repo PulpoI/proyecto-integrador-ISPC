@@ -2,20 +2,29 @@
     background: rgb(193, 39, 39);
     color: aliceblue;
     text-align: center;
-    font-size: 20px;
+    font-size: 10px;
+    width: 40%;
+   
 }
 h1{
     font-size: 100px;
 }
 label{
-    font-size: 50px;
-    padding-right: 15px;
+    font-size: 10px;
+    padding-right: 0px;
+    
 }
 input{
-    border-radius: 20px;
+    border-radius: 30px;
     font-weight: 200;
-    font-size: 30px;
+    font-size: 15px;
+    height: 1.8rem;
 
+}
+
+input::placeholder {
+    font: 0.9rem/40 sans-serif;
+    text-align: center;
 }
 button{
     width: 50%;
@@ -23,4 +32,7 @@ button{
     padding: 5px 5px;
     border-radius: 30px;
 margin-bottom: 20px;
+}
+.form{
+    font-size: xx-small!important;
 }
