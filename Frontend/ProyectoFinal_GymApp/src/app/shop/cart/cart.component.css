@@ -91,7 +91,7 @@ td{
 .cart {
   border-radius: 10px;
   position: fixed;
-  right:36.8%;
+  right:28.8%;
   top: 52.5%;
   transform: translateY(-50%);
   width: 400px;
@@ -326,14 +326,16 @@ margin-bottom: 1rem;
  }
  .cart {
   border-radius: 10px;
-  width: 400px;
-  padding: 10px;
+  width: 580px;
+  padding: 1.5rem 2rem 1.5rem 2rem;
   background: rgb(2, 0, 36);
   background: rgb(16, 0, 0);
   background: linear-gradient(0deg, rgb(87, 3, 3) 0%, rgb(155, 28, 28) 100%);
   color: rgba(14, 13, 13, 0.228);
   font-weight: 500;
   margin: 0 auto; /* Añadido para centrar el card en la página */
+  align-content: center;
+ 
 }
 
  checkout{

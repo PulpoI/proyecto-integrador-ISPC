@@ -32,9 +32,9 @@ input::placeholder {
     text-align: center;
 }
 button{
-    width: 50%;
+    width: 20%;
     margin-left: 0;
-    padding: 5px 5px;
+    
     border-radius: 30px;
 margin-bottom: 20px;
 }
