@@ -2,7 +2,7 @@ import { Injectable, HostListener } from '@angular/core';
 import { Plan } from '../models/plan.model';
 import { OnInit } from '@angular/core';
 import { Component, Input } from '@angular/core';
-
+import { Subject } from 'rxjs';
 import { PlanService } from '../services/plan.service';
 
 import { CurrencyPipe } from '../pipes/currency.pipe';
@@ -13,7 +13,8 @@ import { CurrencyPipe } from '../pipes/currency.pipe';
 
 export class CartService {
   items: Plan[] = [];
-  
+ 
+  itemAdded: Subject<any> = new Subject<any>();
   constructor() { }
   getItems() {
     return this.items;

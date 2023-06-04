@@ -1,24 +1,27 @@
 .checkout{
-    background: rgb(193, 39, 39);
+    width: 80%;
+    background: rgba(193, 39, 39, 0);
     color: aliceblue;
     text-align: center;
     font-size: 10px;
-    width: 40%;
+    padding-right: 0;
    
 }
+
 h1{
     font-size: 100px;
 }
 label{
     font-size: 10px;
     padding-right: 0px;
+    color: aliceblue;
     
 }
 input{
     border-radius: 30px;
     font-weight: 200;
-    font-size: 15px;
-    height: 1.8rem;
+    font-size: 12px;
+    height: 1.4rem;
 
 }
 
@@ -35,4 +38,13 @@ margin-bottom: 20px;
 }
 .form{
     font-size: xx-small!important;
+    color: aliceblue;
+    
 }
+h4{
+    color: aliceblue;
+}
+.pago{
+    background-color: black!important;
+    color: #ff1900;
+  }
