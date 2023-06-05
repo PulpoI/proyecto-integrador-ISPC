@@ -1,132 +1,124 @@
 <div class="checkout">
   <div *ngIf="!mostrarSeccion3">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-md-12 order-md-1">
-        <h4 class="mb-sm-0">Dirección de facturación</h4>
-        <form class="py-sm-1">
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="nombre">Nombre</label>
-              <input id="validationCustom01" type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }"  [ngModelOptions]="{ standalone: true }" [ngClass]="{ 'borde-rojo': !validarNombre() && nombre !== '', 'borde-verde': validarNombre() }" [ngStyle]="{ 'text-decoration': validarNombre() ? 'underline' : 'none' }">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="apellido">Apellido</label>
-              <input id="validationCustom01" type="text" class="form-control" id="apellido" name="apellido"required [(ngModel)]="apellido" [ngClass]="{ 'borde-rojo': !validarApellido() && apellido !== '', 'borde-verde': validarApellido() }" [ngStyle]="{ 'text-decoration': validarApellido() ? 'underline' : 'none' }">
-              <div class="valid-feedback">
-                Looks good!
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <h4 class="mb-sm-0">Dirección de facturación</h4>
+          <form class="py-sm-1">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nombre">Nombre</label>
+                <input id="validationCustom01" type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }" [ngClass]="{ 'borde-rojo': !validarNombre() && nombre !== '', 'borde-verde': validarNombre() }" [ngStyle]="{ 'text-decoration': validarNombre() ? 'underline' : 'none' }">
+                <span class="error-message" *ngIf="!validarNombre() && nombre !== ''">Por favor, ingrese un nombre válido.</span>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="apellido">Apellido</label>
+                <input id="validationCustom01" type="text" class="form-control" id="apellido" name="apellido" required [(ngModel)]="apellido" [ngClass]="{ 'borde-rojo': !validarApellido() && apellido !== '', 'borde-verde': validarApellido() }" [ngStyle]="{ 'text-decoration': validarApellido() ? 'underline' : 'none' }">
+                <span class="error-message" *ngIf="!validarApellido() && apellido !== ''">Por favor, ingrese un apellido válido.</span>
               </div>
             </div>
-          </div>
 
-          <div class="mb-3">
-            <label for="email">Email</label>
-            <input id="validationCustom01" type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required [(ngModel)]="email">
-            <div class="valid-feedback">
-              Looks good!
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input id="validationCustom01" type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required [(ngModel)]="email">
+              <span class="error-message" *ngIf="!emailValido() && email !== ''">Por favor, ingrese un correo electrónico válido.</span>
             </div>
-          </div>
 
-          <div class="mb-3">
-            <label for="domicilio">Domicilio</label>
-            <input id="validationCustom01" type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Los Alamos 4444 6°G" required [(ngModel)]="domicilio">
-            <div class="valid-feedback">
-              Looks good!
+            <div class="mb-3">
+              <label for="domicilio">Domicilio</label>
+              <input id="validationCustom01" type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Los Alamos 4444 6°G" required [(ngModel)]="domicilio">
+              <span class="error-message" *ngIf="domicilio === ''">Por favor, ingrese un domicilio.</span>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-5 mb-3">
-              <label for="pais">País</label>
-              <select class="custom-select d-block w-100" id="pais" required>
-                <option value="">Choose...</option>
-                <option>Argentina</option>
-                <option>Uruguay</option>
-                <option>Chile</option>
-                <option>Brasil</option>
-                <option>Peru</option>
-                <option>Paraguay</option>
-                <option>Bolivia</option>
-              </select>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="provincia">Provincia</label>
-              <select class="custom-select d-block w-100" id="provincia" required>
-                <option value="">Choose...</option>
-                <option>Buenos Aires</option>
-                <option>Córdoba</option>
-                <option>Misiones</option>
-                <option>La Pampa</option>
-                <option>San Juan</option>
-                <option>Salta</option>
-                <option>Chaco</option>
-                <option>Entre Ríos</option>
-                <option>Santa Fe</option>
-                <option>Corrientes</option>
-                <option>Mendoza</option>
-                <option>Tucumán</option>
-                <option>Río Negro</option>
-                <option>Chubut</option>
-                <option>Ushuaia</option>
-                <option>Tierra del Fuego</option>
-                <option>Malvinas</option>
-              </select>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="cp">Código postal</label>
-              <input type="text" id="validationCustom01" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
-              <div class="valid-feedback">
-                Looks good!
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="pais">País</label>
+                <select class="custom-select d-block w-100" id="pais" required>
+                  <option value="">Choose...</option>
+                  <option>Argentina</option>
+                  <option>Uruguay</option>
+                  <option>Chile</option>
+                  <option>Brasil</option>
+                  <option>Peru</option>
+                  <option>Paraguay</option>
+                  <option>Bolivia</option>
+                </select>
+                <span class="error-message" *ngIf="pais === ''">Por favor, seleccione un país.</span>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="provincia">Provincia</label>
+                <select class="custom-select d-block w-100" id="provincia" required>
+                  <option value="">Choose...</option>
+                  <option>Buenos Aires</option>
+                  <option>Córdoba</option>
+                  <option>Misiones</option>
+                  <option>La Pampa</option>
+                  <option>San Juan</option>
+                  <option>Salta</option>
+                  <option>Chaco</option>
+                  <option>Entre Ríos</option>
+                  <option>Santa Fe</option>
+                  <option>Corrientes</option>
+                  <option>Mendoza</option>
+                  <option>Tucumán</option>
+                  <option>Río Negro</option>
+                  <option>Chubut</option>
+                  <option>Ushuaia</option>
+                  <option>Tierra del Fuego</option>
+                  <option>Malvinas</option>
+                </select>
+                <span class="error-message" *ngIf="provincia === ''">Por favor, seleccione una provincia.</span>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cp">Código postal</label>
+                <input type="text" id="validationCustom01" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
+                <span class="error-message" *ngIf="cp === ''">Por favor, ingrese un código postal.</span>
               </div>
             </div>
-          </div>
-          <button class="pago" (click)="completarPago()" [disabled]="seccionVisible === 3">Continuar</button>
-        </form>
+            <button class="pago" (click)="completarPago()" [disabled]="seccionVisible === 3">Continuar</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-   
-</div>
 </div>
 <div *ngIf="mostrarSeccion3">
-  <div *ngIf="seccionActual === 3"> <!-- Se muestra solo si seccionVisible es verdadero y seccionActual es 3 -->
-      <h4 class="mb-3">Pago</h4>
-    
-      <!-- Pago form code -->
-      
-      <div class="row">
-        <div class="col-md-6 mb-3">
-          <label for="nombreTarjeta">Nombre en la tarjeta</label>
-          <input type="text" class="form-control" id="nombreTarjeta" placeholder="Nombre como aparece en la tarjeta" required [(ngModel)]="payment.cardName">
-           </div>
-        <div class="col-md-6 mb-3">
-          <label for="numeroTarjeta">Número de tarjeta</label>
-          <input type="text" class="form-control" id="numeroTarjeta" placeholder="Número de tarjeta" required>
-
-        </div>
+  <div *ngIf="seccionActual === 3">
+    <h4 class="mb-3">Pago</h4>
+    <!-- Pago form code -->
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="nombreTarjeta">Nombre en la tarjeta</label>
+        <input type="text" class="form-control" id="nombreTarjeta" placeholder="Nombre como aparece en la tarjeta" required [(ngModel)]="payment.cardName">
+        <span class="error-message" *ngIf="!payment.cardName">Por favor, ingrese un nombre válido.</span>
       </div>
-      <div class="row">
-        <div class="col-md-3 mb-3">
-          <label for="vencimientoTarjeta">Expiration</label>
-          <input type="text" class="form-control" id="vencimientoTarjeta" placeholder="mm/aa" required>
-        </div>
-        <div class="col-md-3 mb-3">
-          <label for="cvvTarjeta">CVV</label>
-          <input type="number" class="form-control" id="cvvTarjeta" placeholder="xxx" required>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="tel">Teléfono</label>
-          <input type="text" class="form-control" id="tel" placeholder="Ej: 2236453645" required>
-        </div>
+      <div class="col-md-6 mb-3">
+        <label for="numeroTarjeta">Número de tarjeta</label>
+        <input type="text" class="form-control" id="numeroTarjeta" placeholder="Número de tarjeta" required>
+        <span class="error-message" *ngIf="!validarNumeroTarjeta()">Por favor, ingrese un número de tarjeta válido.</span>
       </div>
-    
-      <div class="row mt-4">
-        <div class="col-md-12">
-          <button class="pago" (click)="placeOrder()">Completar pago</button>
-        </div>
-      </div>
- 
     </div>
-
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label for="vencimientoTarjeta">Expiration</label>
+        <input type="text" class="form-control" id="vencimientoTarjeta" placeholder="mm/aa" required>
+        <span class="error-message" *ngIf="!validarFechaVencimiento()">Por favor, ingrese una fecha de vencimiento válida.</span>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="cvvTarjeta">CVV</label>
+        <input type="number" class="form-control" id="cvvTarjeta" placeholder="xxx" required>
+        <span class="error-message" *ngIf="!validarCVV()">Por favor, ingrese un CVV válido.</span>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="tel">Teléfono</label>
+        <input type="text" class="form-control" id="tel" placeholder="Ej: 2236453645" required>
+        <span class="error-message" *ngIf="!validarTelefono()">Por favor, ingrese un número de teléfono válido.</span>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <button class="pago" (click)="placeOrder()">Completar pago</button>
+      </div>
+    </div>
   </div>
+</div>
