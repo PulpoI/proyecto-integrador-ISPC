@@ -1,43 +1,44 @@
 <div class="checkout">
-  
+  <div *ngIf="!mostrarSeccion3">
   <div class="container">
-    <div class="py-3 text-center">
-      <h2>Detalle de compra</h2>
-    </div>
-  
+
     <div class="row">
-      <div class="col-md-6 order-md-2 mb-4">
-        <!-- Aquí puedes agregar el resumen del carrito de compras -->
-      </div>
-      <div class="col-md-6 order-md-1">
-        <h4 class="mb-3">Dirección de facturación</h4>
+      <div class="col-md-12 order-md-1">
+        <h4 class="mb-sm-0">Dirección de facturación</h4>
         <form class="py-sm-1">
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="Nombre">Nombre</label>
-              <input type="text" class="form-control" id="nombre" required>
+              <label for="nombre">Nombre</label>
+              <input id="validationCustom01" type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }"  [ngModelOptions]="{ standalone: true }" [ngClass]="{ 'borde-rojo': !validarNombre() && nombre !== '', 'borde-verde': validarNombre() }" [ngStyle]="{ 'text-decoration': validarNombre() ? 'underline' : 'none' }">
             </div>
             <div class="col-md-6 mb-3">
-              <label for="Apellido">Apellido</label>
-              <input type="text" class="form-control" id="apellido" required>
+              <label for="apellido">Apellido</label>
+              <input id="validationCustom01" type="text" class="form-control" id="apellido" name="apellido"required [(ngModel)]="apellido" [ngClass]="{ 'borde-rojo': !validarApellido() && apellido !== '', 'borde-verde': validarApellido() }" [ngStyle]="{ 'text-decoration': validarApellido() ? 'underline' : 'none' }">
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
           </div>
-  
+
           <div class="mb-3">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
+            <input id="validationCustom01" type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required [(ngModel)]="email">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
           </div>
-  
-          <div class="mb-3">
-            <label for="address">Domicilio</label>
-            <input type="text" class="form-control" id="domicilio" placeholder="Los Alamos 4444 6°G" required>
-          </div>
-  
 
-  
+          <div class="mb-3">
+            <label for="domicilio">Domicilio</label>
+            <input id="validationCustom01" type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Los Alamos 4444 6°G" required [(ngModel)]="domicilio">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-md-5 mb-3">
-              <label for="pais">Provincia</label>
+              <label for="pais">País</label>
               <select class="custom-select d-block w-100" id="pais" required>
                 <option value="">Choose...</option>
                 <option>Argentina</option>
@@ -50,14 +51,14 @@
               </select>
             </div>
             <div class="col-md-4 mb-3">
-              <label for="state">State</label>
+              <label for="provincia">Provincia</label>
               <select class="custom-select d-block w-100" id="provincia" required>
                 <option value="">Choose...</option>
                 <option>Buenos Aires</option>
                 <option>Córdoba</option>
                 <option>Misiones</option>
-                <option>La pampa</option>
-                <option>San juan</option>
+                <option>La Pampa</option>
+                <option>San Juan</option>
                 <option>Salta</option>
                 <option>Chaco</option>
                 <option>Entre Ríos</option>
@@ -65,7 +66,7 @@
                 <option>Corrientes</option>
                 <option>Mendoza</option>
                 <option>Tucumán</option>
-                <option>Río negro</option>
+                <option>Río Negro</option>
                 <option>Chubut</option>
                 <option>Ushuaia</option>
                 <option>Tierra del Fuego</option>
@@ -74,185 +75,58 @@
             </div>
             <div class="col-md-3 mb-3">
               <label for="cp">Código postal</label>
-              <input type="text" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
+              <input type="text" id="validationCustom01" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
             </div>
           </div>
-  
-          <hr class="mb-4">
-          <h4 class="mb-3">Pago</h4>
-  
-          <div class="d-block my-3">
-            <div class="custom-control custom-radio">
-              <input id="credit" name="metodoPago" type="radio" class="custom-control-input" checked required>
-              <label class="custom-control-label" for="credito">Tarjeta de crédito</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input id="debit" name="metodoPago" type="radio" class="custom-control-input" required>
-              <label class="custom-control-label" for="debito">Tarjeta de débito</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input id="paypal" name="metodoPago" type="radio" class="custom-control-input" required>
-              <label class="custom-control-label" for="paypal">PayPal</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="nombreTarjeta">Nombre en la tarjeta</label>
-              <input type="text" class="form-control" id="nombreTarjeta" placeholder="Nombre como aparece en la tarjeta" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="numeroTarjeta">Número de tarjeta</label>
-              <input type="text" class="form-control" id="numeroTarjeta" placeholder="Número de tarjeta" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-3 mb-3">
-              <label for="vencimientoTarjeta">Expiration</label>
-              <input type="text" class="form-control" id="vencimientoTarjeta" placeholder="mm/aa" required>
-            </div>
-            <div class="col-md-3 mb-3">
-              <label for="cvvTarjeta">CVV</label>
-              <input type="number" class="form-control" id="cvvTarjeta" placeholder="xxx" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="tel">Teléfono</label>
-              <input type="text" class="form-control" id="tel" placeholder="Ej: 2236453645" required>
-            </div>
-          </div>
-          <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="enviar">Continuar</button>
+          <button class="pago" (click)="completarPago()" [disabled]="seccionVisible === 3">Continuar</button>
         </form>
       </div>
     </div>
   </div>
-  
-    </div>
-  
-  
-  <!--
-  
-  <h1>Detalle de pago</h1>
-  <p>{{ confirmationMessage }}</p>
-  <form >
-  
-
-    
-  
-  
-    
-    <div class="payment-container">
-     
-    
-        <div class="input-container">
-          <label for="">Card number</label>
-          <input
-            nz-input
-            type="text"
-            name="cardNumber"
-           
-            placeholder="1234 1234 1234 1234"
-          />
-        </div>
-        <div class="input-container">
-          <label for="">Name on card</label>
-          <input
-            nz-input
-            type="text"
-            name="cardName"
-          
-            placeholder="John Doe"
-          />
-        </div>
-        <div class="‼️">
-          <div class="input-container">
-            <label for="">Expiry date</label>
-            <input
-              nz-input
-              type="text"
-              name="cardExpiry"
-             
-              placeholder="06/30"
-            />
-          </div>
-          <div class="input-container">
-            <label for="">Security code</label>
-            <input
-              nz-input
-              type="text"
-              name="cvv"
-             
-             
-              placeholder="123"
-            />
-          </div>
-        </div>
-    
-      
-    </div>
-  
-  
-
-    <div class="summary-container">
-      <div class="summary-container__order">
-        
-        <div class="details">
-          <div><span>Item(s)</span> </div>
-          <div><span>Metodo de pago</span> Crédito</div>
-          
-        </div>
-        
-      </div>
-      <div class="summary-container__items">
-        <h2>Listado de productos</h2>
-        <div class="item-list">
-          <div class="item-container" *ngFor="let plan of items">
-            <div class="item-image">
-              <img [src]="plan.image" alt="" />
-            </div>
-            <div class="item-title">
-              {{ plan.nombre}}
-            </div>
-            <div class="item-total">
-              {{ plan.precio  }} x {{ plan.cantidad_clases }} =
-              {{ plan.cantidad_de_clases * plan.precio  }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
- 
- 
    
-    <div class="products-container">
-      
-        <div class="products-container__list">
-          <div class="list-item" *ngFor="let plan of items">
-            <div class="item-image">
-              <img [src]="plan.image" alt="" />
-            </div>
-            <div class="item-title">
-              {{ plan.nombre }}
-            </div>
-            <div class="item-total">
-              {{ plan.precio  }} x {{ plan.cantidad_de_clases }} =
-              {{ plan.cantidad_de_clases * plan.precio  }}
-            </div>
-          </div>
-        </div>
-      </div>
-   
-    
-  <div class="checkout-summary">
-    <h3>Resumen del pedido</h3>
-    <ul>
-      <li *ngFor="let plan of cartItems">
-        {{ plan.name }} x {{ plan.quantity }} - {{ plan.price  }}
-      </li>
-    </ul>
-    <p class="cart-total">Total: {{ calculateTotal() }}</p>
-  </div>
-
-  <button type="submit" (click)="placeOrder()">Realizar pedido</button>
-</form>
 </div>
--->
+</div>
+<div *ngIf="mostrarSeccion3">
+  <div *ngIf="seccionActual === 3"> <!-- Se muestra solo si seccionVisible es verdadero y seccionActual es 3 -->
+      <h4 class="mb-3">Pago</h4>
+    
+      <!-- Pago form code -->
+      
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="nombreTarjeta">Nombre en la tarjeta</label>
+          <input type="text" class="form-control" id="nombreTarjeta" placeholder="Nombre como aparece en la tarjeta" required [(ngModel)]="payment.cardName">
+           </div>
+        <div class="col-md-6 mb-3">
+          <label for="numeroTarjeta">Número de tarjeta</label>
+          <input type="text" class="form-control" id="numeroTarjeta" placeholder="Número de tarjeta" required>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <label for="vencimientoTarjeta">Expiration</label>
+          <input type="text" class="form-control" id="vencimientoTarjeta" placeholder="mm/aa" required>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="cvvTarjeta">CVV</label>
+          <input type="number" class="form-control" id="cvvTarjeta" placeholder="xxx" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="tel">Teléfono</label>
+          <input type="text" class="form-control" id="tel" placeholder="Ej: 2236453645" required>
+        </div>
+      </div>
+    
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <button class="pago" (click)="placeOrder()">Completar pago</button>
+        </div>
+      </div>
+ 
+    </div>
+
+  </div>
