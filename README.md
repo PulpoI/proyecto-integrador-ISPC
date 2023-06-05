@@ -22,6 +22,7 @@
 ## Duarte Pablo
 ## Mattos María Soledad
 ## Medina Carolina Estefanía 
+## Rivarola Celeste 
 
 ## 05/05/2023 
 ## SPRINT 4
