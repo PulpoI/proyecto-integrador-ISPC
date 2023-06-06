@@ -29,8 +29,8 @@ export class CheckoutComponent implements OnInit {
     cardNumber: '',
     expDate: '',
     cvv: '',
-    cardName: '',
-    cardExpiry: ''
+    cardName: ''
+    
   };
   seccionActual: number = 1;
   seccionVisible: number = 1;
@@ -49,70 +49,52 @@ private isPaymentTestData() {
     this.payment.cardNumber === '4111111111111111' &&
     this.payment.expDate === '12/23' &&
     this.payment.cvv === '123'
+    
   );
-  console.log("test llamado")
+ 
 }
   completarPago() {
     const isPaymentTestData = this.isPaymentTestData();
-  const isPaymentValid = this.validarNumeroTarjeta() && this.validarFechaVencimiento() && this.validarCVV();
+    const isPaymentValid = this.validarNumeroTarjeta() && this.validarFechaVencimiento() && this.validarCVV();
   
-  if (
-    !this.validarNombre() ||
-    !this.validarApellido() ||
-    !this.emailValido() ||
-    !this.domicilio ||
-    (isPaymentValid && !isPaymentTestData && !this.payment.cardName)
-  ) {
-    let errorMessage = 'Por favor, completa los siguientes campos:';
-    
-    if (!this.validarNombre()) {
-      errorMessage += '\n- Nombre';
+    if (
+      !this.validarNombre() ||
+      !this.validarApellido() ||
+      !this.emailValido() ||
+      !this.domicilio ||
+      (isPaymentValid && !isPaymentTestData && !this.payment.cardName)
+    ) {
+      // Mostrar mensaje de error y regresar si falta algún campo obligatorio
+      let errorMessage = 'Por favor, completa los siguientes campos:';
+      // ...
+  
+      window.alert(errorMessage);
+      return;
     }
-
-    if (!this.validarApellido()) {
-      errorMessage += '\n- Apellido';
-    }
-
-    if (!this.emailValido()) {
-      errorMessage += '\n- Email válido';
-    }
-
-    if (!this.domicilio) {
-      errorMessage += '\n- Domicilio';
-    }
-
-    if (isPaymentValid && !isPaymentTestData && !this.payment.cardName) {
-      errorMessage += '\n- Nombre en la tarjeta';
-    }
-
-    if (!isPaymentValid && !isPaymentTestData) {
-      if (!this.validarNumeroTarjeta()) {
-        errorMessage += '\n- Número de tarjeta inválido. Debe contener 16 dígitos.';
-      }
-
-      if (!this.validarFechaVencimiento()) {
-        errorMessage += '\n- Fecha de vencimiento inválida. Use el formato MM/AA.';
-      }
-
-      if (!this.validarCVV()) {
-        errorMessage += '\n- CVV inválido. Debe contener 3 dígitos.';
-      }
-    }
-
-    window.alert(errorMessage);
-    return;
-  }
-
+  
     // Guarda los datos del formulario en el objeto formData
     this.formData.nombre = this.nombre;
     this.formData.apellido = this.apellido;
     this.formData.email = this.email;
     this.formData.domicilio = this.domicilio;
+  
     // Agrega aquí los demás campos del formulario que deseas guardar
-
+  
     // Guarda la información del formulario utilizando el servicio FormService
     this.formService.setFormData(this.formData);
-
+  
+    // Verifica si todos los campos del formulario están completos
+    if (
+      this.validarNombre() &&
+      this.validarApellido() &&
+      this.emailValido() &&
+      this.domicilio &&
+      isPaymentValid
+    ) {
+      // Realiza el envío del formulario con los datos de prueba
+      this.enviarFormularioPrueba();
+    }
+  
     // Cambiar a la sección 3
     this.seccionVisible = 3;
     this.seccionActual = 3;
@@ -122,8 +104,45 @@ private isPaymentTestData() {
     this.domicilio = '';
     this.mostrarSeccion3 = true;
   }
+  
+  enviarFormularioPrueba() {
+    const order = {
+      items: this.cartItems,
+      total: this.calculateTotal(),
+      payment: this.payment
+    };
+  
+    // Realiza el envío del formulario utilizando el servicio o método correspondiente
+    this.processPayment(order).subscribe(
+      (response) => {
+        console.log('Pago procesado correctamente', response);
+  
+        // Guarda la información de envío
+        this.saveShippingInformation(this.formData).subscribe(
+          () => {
+            console.log('Información de envío guardada correctamente');
+  
+            // Realiza el redireccionamiento a la página de confirmación o a donde sea necesario
+            this.redireccionarPaginaConfirmacion();
+          },
+          (error) => {
+            console.error('Error al guardar la información de envío', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Error al procesar el pago', error);
+      }
+    );
+  }
+  
+  redireccionarPaginaConfirmacion() {
+    // Redirecciona a la página de confirmación o a donde sea necesario
+    this.router.navigate(['/confirmacion']);
+  }
 
   ngOnInit(): void {
+    
     (function () {
       'use strict';
 
@@ -254,10 +273,7 @@ private isPaymentTestData() {
     return this.http.post('http://127.0.0.1:8000/api/cliente', shippingData);
   }
 
-  redirectToMercadoLibreSandbox(): void {
-    // Redirigir al sandbox de Mercado Libre
-    window.location.href = 'URL_DEL_SANDBOX_DE_MERCADO_LIBRE';
-  }
+  
 
   showPaymentForm(): void {
     const paymentForm = document.getElementById('payment-form');
@@ -272,13 +288,28 @@ private isPaymentTestData() {
   }
 
   validarNombre(): boolean {
+    if (!this.nombre) {
+      return false; // El campo está vacío, no es válido
+    }
+    
+    // Verificar si el campo cumple con las condiciones necesarias, como la longitud mínima, formato, etc.
     return this.nombre.length > 0;
   }
-
+  
   validarApellido(): boolean {
+    if (!this.apellido) {
+      return false; // El campo está vacío, no es válido
+    }
+    
+    // Verificar si el campo cumple con las condiciones necesarias, como la longitud mínima, formato, etc.
     return this.apellido.length > 0;
   }
+  
   emailValido(): boolean {
+    if (!this.email) {
+      return false; // El campo está vacío, no es válido
+    }
+    
     // Expresión regular para validar el formato del correo electrónico
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
@@ -287,35 +318,58 @@ private isPaymentTestData() {
   }
   
   validarNumeroTarjeta(): boolean {
+    if (!this.payment.cardNumber) {
+      return false; // El campo está vacío, no es válido
+    }
+  
     // Expresión regular para validar el número de tarjeta
     const cardNumberRegex = /^\d{16}$/;
   
     // Validar si el número de tarjeta cumple con el formato esperado
-    return cardNumberRegex.test(this.payment.cardNumber);
+    const isValid = cardNumberRegex.test(this.payment.cardNumber);
+  
+    return isValid || this.payment.cardNumber === '';
   }
   
+  
   validarFechaVencimiento(): boolean {
+    if (!this.payment.expDate) {
+      return false; // El campo está vacío, no es válido
+    }
+  
     // Expresión regular para validar el formato de la fecha de vencimiento (MM/AA)
-    const expiryDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    const expDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
   
     // Validar si la fecha de vencimiento cumple con el formato esperado
-    return expiryDateRegex.test(this.payment.expDate);
+    const isValid = expDateRegex.test(this.payment.expDate);
+  
+    return isValid || this.payment.expDate === '';
   }
   
   validarCVV(): boolean {
+    if (!this.payment.cvv) {
+      return false; // El campo está vacío, no es válido
+    }
+  
     // Expresión regular para validar el CVV (código de seguridad de la tarjeta)
     const cvvRegex = /^\d{3}$/;
   
     // Validar si el CVV cumple con el formato esperado
-    return cvvRegex.test(this.payment.cvv);
+    const isValid = cvvRegex.test(this.payment.cvv);
+  
+    return isValid || this.payment.cvv === '';
   }
+
   
   validarTelefono(): boolean {
+    if (!this.payment.telefono) {
+      return false; // El campo está vacío, no es válido
+    }
     // Expresión regular para validar el número de teléfono (solo dígitos)
     const phoneRegex = /^\d+$/;
   
     // Validar si el número de teléfono cumple con el formato esperado
-    return phoneRegex.test(this.formData.telefono);
+    return phoneRegex.test(this.payment.telefono);
   }
   
 }

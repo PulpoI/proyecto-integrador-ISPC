@@ -8,25 +8,25 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="nombre">Nombre</label>
-                <input id="validationCustom01" type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }" [ngClass]="{ 'borde-rojo': !validarNombre() && nombre !== '', 'borde-verde': validarNombre() }" [ngStyle]="{ 'text-decoration': validarNombre() ? 'underline' : 'none' }">
+                <input class="validationCustom01" type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nombre" [ngModelOptions]="{ standalone: true }" [ngClass]="{ 'borde-rojo': !validarNombre() && nombre !== '', 'borde-verde': validarNombre() }" [ngStyle]="{ 'text-decoration': validarNombre() ? 'underline' : 'none' }">
                 <span class="error-message" *ngIf="!validarNombre() && nombre !== ''">Por favor, ingrese un nombre válido.</span>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="apellido">Apellido</label>
-                <input id="validationCustom01" type="text" class="form-control" id="apellido" name="apellido" required [(ngModel)]="apellido" [ngClass]="{ 'borde-rojo': !validarApellido() && apellido !== '', 'borde-verde': validarApellido() }" [ngStyle]="{ 'text-decoration': validarApellido() ? 'underline' : 'none' }">
+                <input class="validationCustom01" type="text" class="form-control" id="apellido" name="apellido" required [(ngModel)]="apellido" [ngClass]="{ 'borde-rojo': !validarApellido() && apellido !== '', 'borde-verde': validarApellido() }" [ngStyle]="{ 'text-decoration': validarApellido() ? 'underline' : 'none' }">
                 <span class="error-message" *ngIf="!validarApellido() && apellido !== ''">Por favor, ingrese un apellido válido.</span>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="email">Email</label>
-              <input id="validationCustom01" type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required [(ngModel)]="email">
+              <input class="validationCustom01" type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required [(ngModel)]="email">
               <span class="error-message" *ngIf="!emailValido() && email !== ''">Por favor, ingrese un correo electrónico válido.</span>
             </div>
 
             <div class="mb-3">
               <label for="domicilio">Domicilio</label>
-              <input id="validationCustom01" type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Los Alamos 4444 6°G" required [(ngModel)]="domicilio">
+              <input class="validationCustom01" type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Los Alamos 4444 6°G" required [(ngModel)]="domicilio">
               <span class="error-message" *ngIf="domicilio === ''">Por favor, ingrese un domicilio.</span>
             </div>
 
@@ -71,7 +71,7 @@
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cp">Código postal</label>
-                <input type="text" id="validationCustom01" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
+                <input type="text" class="validationCustom01" class="form-control" id="cp" placeholder="CP: ejemplo: 7600" required>
                 <span class="error-message" *ngIf="cp === ''">Por favor, ingrese un código postal.</span>
               </div>
             </div>

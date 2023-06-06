@@ -63,4 +63,7 @@ h4{
   .invalid-message {
     color: red;
     margin-top: 5px}
-  
+  .error-message{
+ background-color: #ff1900;
+ color:aliceblue;
+  }
