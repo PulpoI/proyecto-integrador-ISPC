@@ -7,6 +7,7 @@ from .models import Admin
 from .models import Cliente
 from .models import Clase
 from .models import Reserva
+from .models import Orden
 import json
 
 # Create your views here.
@@ -335,7 +336,7 @@ class ReservaView(View):
     if len(reservas) > 0:
       reserva = Reserva.objects.get(id=id)
       reserva.cliente_id = jd['cliente_id']
-      reserva.clase_ide = jd['clase_ide']
+      reserva.clase_id = jd['clase_id']
       reserva.save()
       datos = {'mensaje': "Success"}
     else:
@@ -353,3 +354,61 @@ class ReservaView(View):
       return JsonResponse(datos)
 
 
+# ORDENES 
+class OrdenView(View):
+  @method_decorator(csrf_exempt)
+  def dispatch(self, request, *args, **kwargs):
+    return super().dispatch(request, *args, **kwargs)
+
+  # get
+  def get(self, request, id=0):
+    if (id > 0):
+        ordenes = list(Orden.objects.filter(id=id).values())
+        if len(ordenes) > 0:
+            orden = ordenes[0]
+            datos={'mensaje': "Success", 'ordenes': orden}
+        else: 
+            datos={'mensaje': "No se encontró la orden..."} 
+        return JsonResponse(datos)
+    else:
+        ordenes = list(Orden.objects.values())
+        if len(ordenes) > 0:
+          datos = {'mensaje': "Success", 'ordenes': ordenes}
+        else:
+          datos = {'mensaje': "No se encontraron ordenes..."}
+        return JsonResponse(datos)
+
+  # post
+  def post(self, request):
+    # print(request.body)
+    jd = json.loads(request.body)
+    # print(jd)
+    Orden.objects.create(cliente_id=jd['cliente_id'], plan_id=jd['plan_id'], precio=jd['precio'], fecha=jd['fecha'])
+    datos={'mensaje': "Success"}
+    return JsonResponse(datos)
+
+  # put
+  def put(self, request, id):
+    jd = json.loads(request.body)
+    ordenes = list(Orden.objects.filter(id=id).values())
+    if len(ordenes) > 0:
+      orden = Orden.objects.get(id=id)
+      orden.cliente_id = jd['cliente_id']
+      orden.plan_id = jd['plan_id']
+      orden.fecha = jd['fecha']
+      orden.precio = jd['precio']
+      orden.save()
+      datos = {'mensaje': "Success"}
+    else:
+      datos = {'mensaje': "No se encontró la orden..."} 
+    return JsonResponse(datos)
+
+  # delete
+  def delete(self, request, id):
+      clases = list(Orden.objects.filter(id=id).values())
+      if len(clases) > 0:
+        Orden.objects.filter(id=id).delete()
+        datos = {'mensaje': "Success"}
+      else:
+        datos = {'mensaje': "No se encontró la orden..."} 
+      return JsonResponse(datos)
