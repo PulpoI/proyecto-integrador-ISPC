@@ -20,6 +20,7 @@ import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-suscripciones.component';
+import { InscripcionClasesComponent } from './pages/perfil/inscripcion-clases/inscripcion-clases.component';
 
 const routes: Routes = [
   // {path:'inicio', component: DashboardComponent},
@@ -36,7 +37,9 @@ const routes: Routes = [
   {path:'checkout', component: CheckoutComponent},
   {path: 'mi-cuenta', component: MiCuentaComponent},
   {path: 'mis-suscripciones', component: MisSuscripcionesComponent},
+  {path: 'mis-clases', component: InscripcionClasesComponent},
   {path:'',redirectTo:'/inicio', pathMatch:'full'},
+
   //Admin views
   {path:'admin', component: LoginAdminComponent},
   {path:'dashboard', component: DashboardComponent},

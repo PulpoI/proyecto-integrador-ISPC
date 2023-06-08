@@ -34,6 +34,7 @@ import { TiendaModule } from './shop/tienda/tienda.module';
 
 import { CurrencyPipe } from '@angular/common';
 import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-suscripciones.component';
+import { InscripcionClasesComponent } from './pages/perfil/inscripcion-clases/inscripcion-clases.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-
     CrearClaseComponent,
     ClaseComponent,
     MisSuscripcionesComponent,
+    InscripcionClasesComponent,
     
   ],
   imports: [

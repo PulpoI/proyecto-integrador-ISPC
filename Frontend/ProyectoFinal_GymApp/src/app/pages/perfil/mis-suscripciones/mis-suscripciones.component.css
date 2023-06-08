@@ -1,0 +1,28 @@
+.container-plan {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, #bfe2bf, rgb(223, 124, 124));
+    
+  }
+
+  .container{
+      max-width: 400px;
+      width: 100%;
+      background: rgb(223, 124, 124);
+      padding: 20px 20px ;
+      border-radius: 1rem;
+     
+    }
+
+  
+
+  .container .tittle {
+    font-size: 35px;
+   font-weight: 500;
+   font-weight:bold;
+  text-align: center;
+   
+ }
