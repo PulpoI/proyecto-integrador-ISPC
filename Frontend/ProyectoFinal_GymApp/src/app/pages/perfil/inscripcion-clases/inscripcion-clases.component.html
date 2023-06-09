@@ -1,27 +1,30 @@
-<div class=" w-auto shadow p-0 fs-6 container-clases">
-    <h2 class="titulo">Mis Clases</h2>
+<!-- Clases -->
+<div *ngIf="clases.length > 0">
+  <h2>Clases</h2>
+  <ul>
+    <li *ngFor="let clase of clases">
+      <h3>{{ clase.nombre }}</h3>
+      <p>{{ clase.descripcion }}</p>
+      <button (click)="inscribirse(clase)">Inscribirse</button>
+    </li>
+  </ul>
+</div>
+<div *ngIf="clases.length === 0">
+  <p>No se encontraron clases.</p>
+</div>
 
-    <div class="contenido">
-        <div class="opciones">
-            <label for="clase">Seleccione una clase:</label>
-            <select id="clase" [(ngModel)]="claseSeleccionada">
-                <option *ngFor="let clase of clases" [value]="clase.id">{{ clase.nombre }}</option>
-            </select>
-        </div>
-
-        <div class="boton-container">
-            <button class="boton" (click)="anotarse()">Anotarse</button>
-        </div>
-    </div>
-
-
-    <h3 class="subtitulo">Clases Inscriptas</h3>
-    <ul class="lista-clases">
-        <li *ngFor="let clase of clasesInscritas">
-          {{ clase.nombre }}
-        </li>
-      </ul>
-
-<ng-template #noClasesInscriptas>
-  <p>No tienes clases inscriptas</p>
-</ng-template>
+<!-- Reservas -->
+<div *ngIf="reservas.length > 0">
+  <h2>Reservas</h2>
+  <ul>
+    <li *ngFor="let reserva of reservas">
+      <h3>{{ reserva.id }}</h3>
+      <p>{{ reserva.cliente_id }}</p>
+      <p>{{ reserva.clase_id }}</p>
+      <button (click)="cancelarReserva(reserva)">Cancelar Reserva</button>
+    </li>
+  </ul>
+</div>
+<div *ngIf="reservas.length === 0">
+  <p>No se encontraron reservas.</p>
+</div>

@@ -19,12 +19,6 @@
     margin-top: 20px;
   }
   
-  .titulo {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-  }
 
   .contenido {
     display: flex;
@@ -32,23 +26,8 @@
     align-items: flex-start;
     margin-top: 20px;
   }
-  
-  
-  .opciones {
-    margin-bottom: 10px;
-  }
-  
-  .boton-container {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .boton {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-  }
-  
+
+ 
   .subtitulo {
 
     color: rgb(31, 29, 29);
