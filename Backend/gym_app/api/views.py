@@ -297,6 +297,63 @@ class ClaseView(View):
 
 
 # RESERVAS
+# class ReservaView(View):
+#   @method_decorator(csrf_exempt)
+#   def dispatch(self, request, *args, **kwargs):
+#     return super().dispatch(request, *args, **kwargs)
+
+#   # get
+#   def get(self, request, id=0):
+#     if (id > 0):
+#         reservas = list(Reserva.objects.filter(id=id).values())
+#         if len(reservas) > 0:
+#             reserva = reservas[0]
+#             datos={'mensaje': "Success", 'reservas': reserva}
+#         else: 
+#             datos={'mensaje': "No se encontró el reserva..."} 
+#         return JsonResponse(datos)
+#     else:
+#         reservas = list(Reserva.objects.values())
+#         if len(reservas) > 0:
+#           datos = {'mensaje': "Success", 'reservas': reservas}
+#         else:
+#           datos = {'mensaje': "No se encontraron reservas..."}
+#         return JsonResponse(datos)
+
+#   # post
+#   def post(self, request):
+#     # print(request.body)
+#     jd = json.loads(request.body)
+#     # print(jd)
+#     Reserva.objects.create(cliente_id=jd['cliente_id'], clase_id=jd['clase_id'])
+#     datos={'mensaje': "Success"}
+#     return JsonResponse(datos)
+
+#   # put
+#   def put(self, request, id):
+#     jd = json.loads(request.body)
+#     reservas = list(Reserva.objects.filter(id=id).values())
+#     if len(reservas) > 0:
+#       reserva = Reserva.objects.get(id=id)
+#       reserva.cliente_id = jd['cliente_id']
+#       reserva.clase_id = jd['clase_id']
+#       reserva.save()
+#       datos = {'mensaje': "Success"}
+#     else:
+#       datos = {'mensaje': "No se encontró la reserva..."} 
+#     return JsonResponse(datos)
+
+#   # delete
+#   def delete(self, request, id):
+      # clases = list(Reserva.objects.filter(id=id).values())
+      # if len(clases) > 0:
+      #   Reserva.objects.filter(id=id).delete()
+      #   datos = {'mensaje': "Success"}
+      # else:
+      #   datos = {'mensaje': "No se encontró la reserva..."} 
+      # return JsonResponse(datos)
+
+# RESERVAS
 class ReservaView(View):
   @method_decorator(csrf_exempt)
   def dispatch(self, request, *args, **kwargs):
@@ -304,55 +361,135 @@ class ReservaView(View):
 
   # get
   def get(self, request, id=0):
-    if (id > 0):
-        reservas = list(Reserva.objects.filter(id=id).values())
-        if len(reservas) > 0:
-            reserva = reservas[0]
-            datos={'mensaje': "Success", 'reservas': reserva}
-        else: 
-            datos={'mensaje': "No se encontró el reserva..."} 
-        return JsonResponse(datos)
-    else:
-        reservas = list(Reserva.objects.values())
-        if len(reservas) > 0:
-          datos = {'mensaje': "Success", 'reservas': reservas}
+    if id > 0:
+        reserva = Reserva.objects.filter(id=id).values().first()
+        if reserva:
+            cliente_id = reserva.get('cliente_id')
+            clase_id = reserva.get('clase_id')
+            if cliente_id:
+                try:
+                    cliente = Cliente.objects.get(id=cliente_id)
+                    reserva['cliente'] = {
+                        'id': cliente.id,
+                        'nombre': cliente.nombre,
+                        'apellido': cliente.apellido,
+                        # Agrega los campos adicionales de Cliente que desees
+                    }
+                except Cliente.DoesNotExist:
+                    pass
+            if clase_id:
+                try:
+                    clase = Clase.objects.get(id=clase_id)
+                    reserva['clase'] = {
+                        'id': clase.id,
+                        'nombre': clase.nombre,
+                        'descripcion': clase.descripcion,
+                        'fecha': clase.fecha,
+                        'hora': clase.hora,                        
+                    }
+                except Clase.DoesNotExist:
+                    pass
+            datos = {'mensaje': "Success", 'reserva': reserva}
         else:
-          datos = {'mensaje': "No se encontraron reservas..."}
+            datos = {'mensaje': "Error, no se encontró la reserva"}
         return JsonResponse(datos)
-
-  # post
-  def post(self, request):
-    # print(request.body)
-    jd = json.loads(request.body)
-    # print(jd)
-    Reserva.objects.create(cliente_id=jd['cliente_id'], clase_id=jd['clase_id'])
-    datos={'mensaje': "Success"}
-    return JsonResponse(datos)
-
-  # put
-  def put(self, request, id):
-    jd = json.loads(request.body)
-    reservas = list(Reserva.objects.filter(id=id).values())
-    if len(reservas) > 0:
-      reserva = Reserva.objects.get(id=id)
-      reserva.cliente_id = jd['cliente_id']
-      reserva.clase_id = jd['clase_id']
-      reserva.save()
-      datos = {'mensaje': "Success"}
     else:
-      datos = {'mensaje': "No se encontró la reserva..."} 
-    return JsonResponse(datos)
-
-  # delete
-  def delete(self, request, id):
-      clases = list(Reserva.objects.filter(id=id).values())
-      if len(clases) > 0:
-        Reserva.objects.filter(id=id).delete()
-        datos = {'mensaje': "Success"}
-      else:
-        datos = {'mensaje': "No se encontró la reserva..."} 
+        reservas = Reserva.objects.values()
+        reservas_con_clientes = []
+        for reserva in reservas:
+            cliente_id = reserva.get('cliente_id')
+            clase_id = reserva.get('clase_id')
+            if cliente_id:
+                try:
+                    cliente = Cliente.objects.get(id=cliente_id)
+                    reserva['cliente'] = {
+                        'id': cliente.id,
+                        'nombre': cliente.nombre,
+                        'apellido': cliente.apellido,
+                        # Agrega los campos adicionales de Cliente que desees
+                    }
+                except Cliente.DoesNotExist:
+                    pass
+            if clase_id:
+                try:
+                    clase = Clase.objects.get(id=clase_id)
+                    reserva['clase'] = {
+                        'id': clase.id,
+                        'nombre': clase.nombre,
+                        'descripcion': clase.descripcion,
+                        'fecha': clase.fecha,
+                        'hora': clase.hora,   
+                        # Agrega los campos adicionales de Clase que desees
+                    }
+                except Clase.DoesNotExist:
+                    pass
+            reservas_con_clientes.append(reserva)
+        if reservas_con_clientes:
+            datos = {'mensaje': "Success", 'reservas': reservas_con_clientes}
+        else:
+            datos = {'mensaje': "No se encontraron reservas..."}
+        return JsonResponse(datos)
+  def post(self, request):
+      jd = json.loads(request.body)
+      cliente_id = jd.get('cliente_id')
+      clase_id = jd.get('clase_id')
+      cliente = None
+      clase = None
+      if cliente_id:
+          try:
+              cliente = Cliente.objects.get(id=cliente_id)
+          except Cliente.DoesNotExist:
+              pass
+      if clase_id:
+          try:
+              clase = Clase.objects.get(id=clase_id)
+          except Clase.DoesNotExist:
+              pass
+      reserva = Reserva.objects.create(cliente=cliente, clase=clase)
+      datos = {'mensaje': "Success", 'reserva': reserva.id}
       return JsonResponse(datos)
 
+  def put(self, request, id):
+      jd = json.loads(request.body)
+      try:
+          reserva = Reserva.objects.get(id=id)
+      except Reserva.DoesNotExist:
+          datos = {'mensaje': "Error, no se encontró la reserva"}
+          return JsonResponse(datos, status=404)
+
+      cliente_id = jd.get('cliente_id')
+      clase_id = jd.get('clase_id')
+      cliente = None
+      clase = None
+      if cliente_id:
+          try:
+              cliente = Cliente.objects.get(id=cliente_id)
+          except Cliente.DoesNotExist:
+              pass
+      if clase_id:
+          try:
+              clase = Clase.objects.get(id=clase_id)
+          except Clase.DoesNotExist:
+              pass
+
+      reserva.cliente = cliente
+      reserva.clase = clase
+      reserva.save()
+
+      datos = {'mensaje': "Success", 'reserva': reserva.id}
+      return JsonResponse(datos)
+
+  def delete(self, request, id):
+        try:
+            reserva = Reserva.objects.get(id=id)
+        except Reserva.DoesNotExist:
+            datos = {'mensaje': "Error, no se encontró la reserva"}
+            return JsonResponse(datos, status=404)
+
+        reserva.delete()
+
+        datos = {'mensaje': "Success"}
+        return JsonResponse(datos)
 
 # ORDENES 
 class OrdenView(View):

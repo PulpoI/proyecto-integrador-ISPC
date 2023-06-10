@@ -3,7 +3,7 @@
     <div class="col-md-6 containerC">
       <!-- Clases -->
       <div *ngIf="clases.length > 0">
-        <h2>Mis Clases</h2>
+        <h2>Clases disponibles</h2>
         <ul>
           <li *ngFor="let clase of clases">
             <h3>{{ clase.nombre }}</h3>
@@ -19,12 +19,12 @@
     <div class="col-md-6 containerC">
       <!-- Reservas -->
       <div *ngIf="reservas.length > 0">
-        <h2>Reservas</h2>
+        <h2>Mis Reservas</h2>
         <ul>
           <li *ngFor="let reserva of reservas">
-            <h3>{{ reserva.id }}</h3>
-            <p>{{ reserva.cliente_id }}</p>
-            <p>{{ reserva.clase_id }}</p>
+            <h3>{{ reserva.clase.nombre }}</h3>
+            <p>{{ reserva.clase.fecha }}</p>
+            <p>{{ reserva.clase.hora }}</p>
             <button (click)="cancelarReserva(reserva)">Cancelar Reserva</button>
           </li>
         </ul>

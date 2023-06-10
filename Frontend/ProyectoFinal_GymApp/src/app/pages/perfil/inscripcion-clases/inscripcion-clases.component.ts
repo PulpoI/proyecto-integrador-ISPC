@@ -30,10 +30,11 @@ export class InscripcionClasesComponent implements OnInit {
 
     // Asignar el ID del cliente al usuarioId
     this.usuarioId = clienteId;
+    
   }
 
   getClases() {
-    this.http.get<any>('http://127.0.0.1:8000/api/clases').subscribe(response => {
+    this.http.get<any>('http://127.0.0.1:8000/api/clases/').subscribe(response => {
       if (response.mensaje === 'Success') {
         this.clases = response.clases;
       }
@@ -41,17 +42,19 @@ export class InscripcionClasesComponent implements OnInit {
   }
 
   getReservas() {
-    this.http.get<any>('http://127.0.0.1:8000/api/reservas').subscribe(response => {
+    this.http.get<any>('http://127.0.0.1:8000/api/reservas/').subscribe(response => {
       if (response.mensaje === 'Success') {
         this.reservas = response.reservas;
+        console.log(response.reservas);
       }
     });
+    
   }
 
   inscribirse(clase: any) {
     console.log('Inscribiendo a la clase:', clase);
   
-    this.http.post<any>('http://127.0.0.1:8000/api/reservas', { cliente_id: this.usuarioId, clase_id: clase.id }).subscribe(response => {
+    this.http.post<any>('http://127.0.0.1:8000/api/reservas/', { cliente_id: this.usuarioId, clase_id: clase.id }).subscribe(response => {
       console.log('Respuesta de la API:', response);
       if (response.mensaje === 'Success') {
         // Inscripción exitosa, actualizar las reservas
