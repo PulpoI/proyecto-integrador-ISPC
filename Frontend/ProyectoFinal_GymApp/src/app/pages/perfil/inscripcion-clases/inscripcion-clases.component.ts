@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/service/auth.service';
@@ -50,8 +49,10 @@ export class InscripcionClasesComponent implements OnInit {
   }
 
   inscribirse(clase: any) {
-    // Realizar la solicitud de inscripción a la API
+    console.log('Inscribiendo a la clase:', clase);
+  
     this.http.post<any>('http://127.0.0.1:8000/api/reservas', { cliente_id: this.usuarioId, clase_id: clase.id }).subscribe(response => {
+      console.log('Respuesta de la API:', response);
       if (response.mensaje === 'Success') {
         // Inscripción exitosa, actualizar las reservas
         this.getReservas();
@@ -61,7 +62,6 @@ export class InscripcionClasesComponent implements OnInit {
       }
     });
   }
-
   cancelarReserva(reserva: any) {
     // Realizar la solicitud de cancelación de reserva a la API
     this.http.delete<any>('http://127.0.0.1:8000/api/reservas/' + reserva.id).subscribe(response => {

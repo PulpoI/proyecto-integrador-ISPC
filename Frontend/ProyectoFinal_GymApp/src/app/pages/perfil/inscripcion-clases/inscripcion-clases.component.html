@@ -1,30 +1,37 @@
-<!-- Clases -->
-<div *ngIf="clases.length > 0">
-  <h2>Clases</h2>
-  <ul>
-    <li *ngFor="let clase of clases">
-      <h3>{{ clase.nombre }}</h3>
-      <p>{{ clase.descripcion }}</p>
-      <button (click)="inscribirse(clase)">Inscribirse</button>
-    </li>
-  </ul>
-</div>
-<div *ngIf="clases.length === 0">
-  <p>No se encontraron clases.</p>
-</div>
-
-<!-- Reservas -->
-<div *ngIf="reservas.length > 0">
-  <h2>Reservas</h2>
-  <ul>
-    <li *ngFor="let reserva of reservas">
-      <h3>{{ reserva.id }}</h3>
-      <p>{{ reserva.cliente_id }}</p>
-      <p>{{ reserva.clase_id }}</p>
-      <button (click)="cancelarReserva(reserva)">Cancelar Reserva</button>
-    </li>
-  </ul>
-</div>
-<div *ngIf="reservas.length === 0">
-  <p>No se encontraron reservas.</p>
+<div class="container-clases">
+  <div class="row">
+    <div class="col-md-6 containerC">
+      <!-- Clases -->
+      <div *ngIf="clases.length > 0">
+        <h2>Mis Clases</h2>
+        <ul>
+          <li *ngFor="let clase of clases">
+            <h3>{{ clase.nombre }}</h3>
+            <p>{{ clase.descripcion }}</p>
+            <button (click)="inscribirse(clase)">Inscribirse</button>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="clases.length === 0">
+        <p>No se encontraron clases.</p>
+      </div>
+    </div>
+    <div class="col-md-6 containerC">
+      <!-- Reservas -->
+      <div *ngIf="reservas.length > 0">
+        <h2>Reservas</h2>
+        <ul>
+          <li *ngFor="let reserva of reservas">
+            <h3>{{ reserva.id }}</h3>
+            <p>{{ reserva.cliente_id }}</p>
+            <p>{{ reserva.clase_id }}</p>
+            <button (click)="cancelarReserva(reserva)">Cancelar Reserva</button>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="reservas.length === 0">
+        <p>No se encontraron reservas.</p>
+      </div>
+    </div>
+  </div>
 </div>
