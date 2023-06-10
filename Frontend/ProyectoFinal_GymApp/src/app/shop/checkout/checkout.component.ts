@@ -1,8 +1,9 @@
+import { ClientesService } from 'src/app/service/clientes.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { CartService } from '../cart/cart.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { FormService } from './../services/form.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 export class CheckoutComponent implements OnInit {
   formData: any = {};
   mostrarSeccion3: boolean = false;
-
+  clienteInfo: any = {};
   seccionInvisible: number = 2;
   nombre: string = '';
   apellido: string = '';
@@ -44,7 +45,8 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private formService: FormService,
     private http: HttpClient,
-    private authService: AuthService 
+    private authService: AuthService,
+    private clientesService: ClientesService,
   ) {}
 //simular pago
 
@@ -237,42 +239,48 @@ private isPaymentTestData() {
     //   return;
     // }
     // Create an order object with the necessary information
-    const order = {
-      
-      // items: this.cartItems,
-      // total: this.calculateTotal(),
-      // payment: this.payment
-      cliente_id: this.authService.getClienteIdFromSessionStorage(),
-      plan_id: 1,
-      precio: 200,
-      fecha: "2023-06-08"
-    };
-    this.cartService.getItems()
-    this.authService.getIsAuthenticated()
+    const planId = this.cartService.getItems()[0]
+    const isoDate = new Date().toISOString();
+    const formattedDate = isoDate.slice(0, isoDate.indexOf('T'));
 
-    console.log(order);
-    console.log(this.cartTotal);
-    console.log(this.cartService.getItems()[0]);
-    console.log(this.authService.getIsAuthenticated());
+    const order = {
+      cliente_id: this.authService.getClienteIdFromSessionStorage(),
+      plan_id: planId.id,
+      precio: planId.precio,
+      fecha: formattedDate
+    };
+
+    console.log(this.cartService.getItems())
+
     console.log(this.authService.getClienteIdFromSessionStorage());
 
+    const clienteId = this.authService.getClienteIdFromSessionStorage()
 
+    const userUpdate = {
+      plan_id: planId.id // Actualiza la propiedad "plan_id" con el valor de "planId"
+    };
     
 
-    
+    this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
+      console.log('Datos del cliente:', clientes);
 
+      
+     
+    });
+
+    
     // Process the payment
     this.processPayment(order).subscribe(
       (response) => {
         console.log('Pago procesado correctamente', response);
-        
+
         // Save the shipping information
-        this.saveShippingInformation(this.formData).subscribe(
+        this.saveShippingInformation(userUpdate).subscribe(
           () => {
             console.log('Información de envío guardada correctamente');
 
             // Redirect to the PayPal sandbox
-            window.location.href = 'https://developer.paypal.com/tools/sandbox/';
+            // window.location.href = 'https://developer.paypal.com/tools/sandbox/';
 
             this.confirmationMessage = 'Orden enviada';
           },
@@ -292,9 +300,22 @@ private isPaymentTestData() {
     return this.http.post('http://127.0.0.1:8000/api/ordenes/', order);
   }
 
-  saveShippingInformation(shippingData: any) {
+  // updatePlan(planId: number): Observable<any> {
+  //   const userId = this.authService.getClienteIdFromSessionStorage(); // Obtén el ID del usuario logueado desde el AuthService
+
+  //   // Crea el objeto con los datos a actualizar en el usuario
+  //   const userUpdate = {
+  //     plan_id: planId // Actualiza la propiedad "plan_id" con el valor de "planId"
+  //   };
+
+  //   // Realiza la solicitud PUT para actualizar el usuario
+  //   return this.http.put<any>(`http://127.0.0.1:8000/api/clientes/${userId}`, userUpdate);
+  // }
+
+  saveShippingInformation(userUpdate: any) {
+
     // envio info
-    return this.http.post('http://127.0.0.1:8000/api/cliente', shippingData);
+    return this.http.put(`http://127.0.0.1:8000/api/clientes/${this.authService.getClienteIdFromSessionStorage()}`, userUpdate);
   }
 
   
