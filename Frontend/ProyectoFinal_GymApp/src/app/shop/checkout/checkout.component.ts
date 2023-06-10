@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { CartService } from '../cart/cart.service';
@@ -36,11 +37,14 @@ export class CheckoutComponent implements OnInit {
   seccionVisible: number = 1;
   confirmationMessage: string = '';
 
+ 
+
   constructor(
     private router: Router,
     private cartService: CartService,
     private formService: FormService,
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: AuthService 
   ) {}
 //simular pago
 
@@ -51,6 +55,7 @@ private isPaymentTestData() {
     this.payment.cvv === '123'
     
   );
+  
  
 }
   completarPago() {
@@ -111,12 +116,13 @@ private isPaymentTestData() {
       total: this.calculateTotal(),
       payment: this.payment
     };
+    
   
     // Realiza el envío del formulario utilizando el servicio o método correspondiente
     this.processPayment(order).subscribe(
       (response) => {
         console.log('Pago procesado correctamente', response);
-  
+        
         // Guarda la información de envío
         this.saveShippingInformation(this.formData).subscribe(
           () => {
@@ -197,51 +203,69 @@ private isPaymentTestData() {
 
   placeOrder(): void {
     // Validate the payment fields
-    if (
-      !this.payment.cardNumber ||
-      !this.payment.expDate ||
-      !this.payment.cvv ||
-      !this.payment.cardName
-    ) {
-      let errorMessage = 'Por favor, complete los siguientes campos:';
+    // if (
+    //   !this.payment.cardNumber ||
+    //   !this.payment.expDate ||
+    //   !this.payment.cvv ||
+    //   !this.payment.cardName
+    // ) {
+    //   let errorMessage = 'Por favor, complete los siguientes campos:';
   
-      if (!this.payment.cardNumber) {
-        errorMessage += '\n- Número de tarjeta';
-      } else if (!/^\d{16}$/.test(this.payment.cardNumber)) {
-        errorMessage += '\n- Número de tarjeta inválido. Debe contener 16 dígitos.';
-      }
+    //   if (!this.payment.cardNumber) {
+    //     errorMessage += '\n- Número de tarjeta';
+    //   } else if (!/^\d{16}$/.test(this.payment.cardNumber)) {
+    //     errorMessage += '\n- Número de tarjeta inválido. Debe contener 16 dígitos.';
+    //   }
   
-      if (!this.payment.expDate) {
-        errorMessage += '\n- Fecha de vencimiento';
-      } else if (!/^\d{2}\/\d{2}$/.test(this.payment.expDate)) {
-        errorMessage += '\n- Fecha de vencimiento inválida. Use el formato MM/AA.';
-      }
+    //   if (!this.payment.expDate) {
+    //     errorMessage += '\n- Fecha de vencimiento';
+    //   } else if (!/^\d{2}\/\d{2}$/.test(this.payment.expDate)) {
+    //     errorMessage += '\n- Fecha de vencimiento inválida. Use el formato MM/AA.';
+    //   }
   
-      if (!this.payment.cvv) {
-        errorMessage += '\n- CVV';
-      } else if (!/^\d{3}$/.test(this.payment.cvv)) {
-        errorMessage += '\n- CVV inválido. Debe contener 3 dígitos.';
-      }
+    //   if (!this.payment.cvv) {
+    //     errorMessage += '\n- CVV';
+    //   } else if (!/^\d{3}$/.test(this.payment.cvv)) {
+    //     errorMessage += '\n- CVV inválido. Debe contener 3 dígitos.';
+    //   }
   
-      if (!this.payment.cardName) {
-        errorMessage += '\n- Nombre en la tarjeta';
-      }
+    //   if (!this.payment.cardName) {
+    //     errorMessage += '\n- Nombre en la tarjeta';
+    //   }
   
-      window.alert(errorMessage);
-      return;
-    }
+    //   window.alert(errorMessage);
+    //   return;
+    // }
     // Create an order object with the necessary information
     const order = {
-      items: this.cartItems,
-      total: this.calculateTotal(),
-      payment: this.payment
+      
+      // items: this.cartItems,
+      // total: this.calculateTotal(),
+      // payment: this.payment
+      cliente_id: this.authService.getClienteIdFromSessionStorage(),
+      plan_id: 1,
+      precio: 200,
+      fecha: "2023-06-08"
     };
+    this.cartService.getItems()
+    this.authService.getIsAuthenticated()
+
+    console.log(order);
+    console.log(this.cartTotal);
+    console.log(this.cartService.getItems()[0]);
+    console.log(this.authService.getIsAuthenticated());
+    console.log(this.authService.getClienteIdFromSessionStorage());
+
+
+    
+
+    
 
     // Process the payment
     this.processPayment(order).subscribe(
       (response) => {
         console.log('Pago procesado correctamente', response);
-
+        
         // Save the shipping information
         this.saveShippingInformation(this.formData).subscribe(
           () => {
@@ -265,7 +289,7 @@ private isPaymentTestData() {
 
   processPayment(order: any) {
     // pago info
-    return this.http.post('http://127.0.0.1:8000/api/cliente', order);
+    return this.http.post('http://127.0.0.1:8000/api/ordenes/', order);
   }
 
   saveShippingInformation(shippingData: any) {
