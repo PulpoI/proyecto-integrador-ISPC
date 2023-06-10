@@ -1,3 +1,4 @@
+import { ClientAuthGuard } from './service/auth/cliente-auth-guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +36,7 @@ import { TiendaModule } from './shop/tienda/tienda.module';
 import { CurrencyPipe } from '@angular/common';
 import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-suscripciones.component';
 import { InscripcionClasesComponent } from './pages/perfil/inscripcion-clases/inscripcion-clases.component';
+import { AdminAuthGuard } from './service/auth/admin-auth-guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +75,7 @@ import { InscripcionClasesComponent } from './pages/perfil/inscripcion-clases/in
     TiendaModule,
     PlanesTiendaModule
   ],
-  providers: [CartService, CurrencyPipe],
+  providers: [CartService, CurrencyPipe, AdminAuthGuard, ClientAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

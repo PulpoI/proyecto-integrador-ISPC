@@ -43,7 +43,7 @@ export class InscripcionClasesComponent implements OnInit {
 
   getReservas() {
     this.http.get<any>('http://127.0.0.1:8000/api/reservas/').subscribe(response => {
-      if (response.mensaje === 'Success') {
+      if (response.mensaje === 'Success')    {
         this.reservas = response.reservas;
         console.log(response.reservas);
       }
