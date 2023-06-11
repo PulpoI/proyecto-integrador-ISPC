@@ -19,14 +19,15 @@
     <div class="col-md-6 containerC border border-danger">
       <!-- Reservas -->
       <div *ngIf="reservas.length > 0">
-        <h2>Mis Reservas</h2>
+        <h2 class="border-bottom border-dark">Mis Reservas</h2>
         <ul>
-          <li *ngFor="let reserva of reservas">
+          <li *ngFor="let reserva of reservas" class="border-bottom border-dark">
             <h3>{{ reserva.clase.nombre }}</h3>
             <p>Cliente: {{ reserva.cliente.nombre }} {{ reserva.cliente.apellido }}</p>
             <p>Fecha: {{ reserva.clase.fecha }}</p>
             <p>Hora: {{ reserva.clase.hora }}</p>
-          </li>
+            <button class="btn btn-outline-dark border-danger" (click)="cancelarReserva(reserva)">Cancelar Reserva</button>
+           </li>
         </ul>
       </div>
       <div *ngIf="reservas.length === 0" class="border-bottom border-dark">
