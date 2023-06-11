@@ -31,6 +31,8 @@ export class InscripcionClasesComponent implements OnInit {
   
     // Obtener las reservas del cliente logueado
     this.getReservas();
+
+    
   }
 
   getClases() {
@@ -42,21 +44,17 @@ export class InscripcionClasesComponent implements OnInit {
   }
 
   getReservas(): void {
-    // Obtener el ID del cliente logueado desde el sessionStorage
-    const clienteId = sessionStorage.getItem('usuario');
-    
-    if (clienteId) {
-      this.http.get<any>(`http://127.0.0.1:8000/api/reservas/?cliente_id=${clienteId}`).subscribe(response => {
-        if (response.mensaje === 'Success') {
-          this.reservas = response.reservas;
-          console.log(response.reservas);
-        }
-      });
-    } else {
-      console.log('No se encontró el ID del cliente logueado en el sessionStorage');
-    }
+    // Obtener el ID del cliente logueado desde el AuthService
+    const clienteId = this.authService.getClienteIdFromSessionStorage();
+  
+    this.http.get<any>('http://127.0.0.1:8000/api/reservas/').subscribe(response => {
+      if (response.mensaje === 'Success') {
+        // Filtrar las reservas por el ID del cliente logueado
+        this.reservas = response.reservas.filter((reserva: any) => reserva.cliente_id === clienteId);
+        console.log(this.reservas);
+      }
+    });
   }
-
   inscribirse(clase: any) {
     console.log('Inscribiendo a la clase:', clase);
   
