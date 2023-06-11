@@ -30,13 +30,14 @@ export class MiCuentaComponent implements OnInit {
 
   ngOnInit(): void {
     const isAdmin = this.authService.getIsAdmin();
-    const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.obtenerIdCliente();
-    console.log(clienteId);
-    this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
- 
-      this.clientes = clientes.cliente;
-      console.log('Datos del cliente:', clientes);
-    });
+    if (!isAdmin) { // Verifica si el usuario no es un administrador
+      const clienteId = this.authService.obtenerIdCliente();
+      console.log(clienteId);
+      this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
+        this.clientes = clientes.cliente;
+        console.log('Datos del cliente:', clientes);
+      });
+    }
   }
 
   editarDatos(): void {
@@ -51,9 +52,8 @@ export class MiCuentaComponent implements OnInit {
       console.log('Cambios guardados exitosamente');
     });
   }
-
-
 }
+
 
 
 

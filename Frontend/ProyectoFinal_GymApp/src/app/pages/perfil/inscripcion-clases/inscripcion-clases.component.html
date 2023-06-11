@@ -1,35 +1,35 @@
 <div class="container-clases">
   <div class="row">
-    <div class="col-md-6 containerC">
+    <div class="col-md-6 containerC border border-danger">
       <!-- Clases -->
       <div *ngIf="clases.length > 0">
-        <h2>Clases disponibles</h2>
+        <h2 class="border-bottom border-dark">Clases disponibles</h2>
         <ul>
-          <li *ngFor="let clase of clases">
+          <li *ngFor="let clase of clases" class="border-bottom border-dark">
             <h3>{{ clase.nombre }}</h3>
             <p>{{ clase.descripcion }}</p>
-            <button (click)="inscribirse(clase)">Inscribirse</button>
+            <button class="btn btn-outline-dark border-danger" (click)="inscribirse(clase)">Inscribirse</button>
           </li>
         </ul>
       </div>
-      <div *ngIf="clases.length === 0">
+      <div *ngIf="clases.length === 0" class="border-bottom border-primary">
         <p>No se encontraron clases.</p>
       </div>
     </div>
-    <div class="col-md-6 containerC">
+    <div class="col-md-6 containerC border border-danger">
       <!-- Reservas -->
       <div *ngIf="reservas.length > 0">
         <h2>Mis Reservas</h2>
         <ul>
           <li *ngFor="let reserva of reservas">
             <h3>{{ reserva.clase.nombre }}</h3>
-            <p>{{ reserva.clase.fecha }}</p>
-            <p>{{ reserva.clase.hora }}</p>
-            <button (click)="cancelarReserva(reserva)">Cancelar Reserva</button>
+            <p>Cliente: {{ reserva.cliente.nombre }} {{ reserva.cliente.apellido }}</p>
+            <p>Fecha: {{ reserva.clase.fecha }}</p>
+            <p>Hora: {{ reserva.clase.hora }}</p>
           </li>
         </ul>
       </div>
-      <div *ngIf="reservas.length === 0">
+      <div *ngIf="reservas.length === 0" class="border-bottom border-dark">
         <p>No se encontraron reservas.</p>
       </div>
     </div>

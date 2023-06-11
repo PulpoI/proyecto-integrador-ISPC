@@ -1,27 +1,28 @@
-<div class=" w-auto shadow p-0 fs-6 container-plan" >
-<div class="container">
-  <div *ngIf="clientes">
-    <div class="tittle">Mi Suscripción</div>
+<div class="w-auto shadow p-0 fs-6 container-plan border border-secondary">
+  <div class="container">
     <div *ngIf="clientes">
-      <p><strong>Nombre:</strong> {{ clientes.nombre }}</p>
-      <p><strong>Apellido:</strong> {{ clientes.apellido }}</p>
-      <p><strong>DNI:</strong> {{ clientes.dni }}</p>
-      <p><strong>Fecha de Nacimiento:</strong> {{ clientes.fecha_nacimiento | date }}</p>
-      <p><strong>Email:</strong> {{ clientes.email }}</p>
-    
-      <div *ngIf="clientes.plan_id">
-        <h3>Detalles del Plan</h3>
-        <br>
-        
-        <p><strong>Descripción del Plan:</strong></p>
-        <p [innerHTML]="clientes.plan.descripcion"></p>
-        <p><strong>Cantidad de Clases:</strong> {{ clientes.plan.cantidad_clases }}</p>
-        <p><strong>Precio:</strong> {{ clientes.plan.precio }}</p>
-        <p><strong>Clases Restantes:</strong> {{ clientes.plan.clases_restantes }}</p>
+      <div class="tittle border-bottom border-dark">Mi Suscripción</div>
+      <div *ngIf="clientes">
+        <p><strong>Nombre:</strong> {{ clientes.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ clientes.apellido }}</p>
+        <p><strong>DNI:</strong> {{ clientes.dni }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ clientes.fecha_nacimiento | date }}</p>
+        <p><strong>Email:</strong> {{ clientes.email }}</p>
+
+        <div *ngIf="clientes.plan_id" class="border-top border-dark">
+          <h3 class="border-bottom border-dark">Detalles del Plan</h3>
+          <br>
+
+          <p><strong>Descripción del Plan:</strong></p>
+          <p [innerHTML]="clientes.plan.descripcion"></p>
+          <p><strong>Cantidad de Clases:</strong> {{ clientes.plan.cantidad_clases }}</p>
+          <p><strong>Precio:</strong> {{ clientes.plan.precio }}</p>
+          <p><strong>Clases Restantes:</strong> {{ clientes.plan.clases_restantes }}</p>
+        </div>
       </div>
-    </div>
-    <div *ngIf="!clientes">
-      <p>No se encontraron datos del cliente.</p>
+      <div *ngIf="!clientes" class="border-top border-primary">
+        <p>No se encontraron datos del cliente.</p>
+      </div>
     </div>
   </div>
 </div>

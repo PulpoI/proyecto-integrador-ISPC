@@ -22,15 +22,15 @@ export class InscripcionClasesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getClases();
-    this.getReservas();
-
-    // Obtener el ID del cliente autenticado
-    const isAdmin = this.authService.getIsAdmin();
-    const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.obtenerIdCliente();
-
+  
+    // Obtener el ID del cliente autenticado desde el AuthService
+    const clienteId = this.authService.obtenerIdCliente();
+  
     // Asignar el ID del cliente al usuarioId
     this.usuarioId = clienteId;
-    
+  
+    // Obtener las reservas del cliente logueado
+    this.getReservas();
   }
 
   getClases() {
@@ -41,14 +41,20 @@ export class InscripcionClasesComponent implements OnInit {
     });
   }
 
-  getReservas() {
-    this.http.get<any>('http://127.0.0.1:8000/api/reservas/').subscribe(response => {
-      if (response.mensaje === 'Success')    {
-        this.reservas = response.reservas;
-        console.log(response.reservas);
-      }
-    });
+  getReservas(): void {
+    // Obtener el ID del cliente logueado desde el sessionStorage
+    const clienteId = sessionStorage.getItem('usuario');
     
+    if (clienteId) {
+      this.http.get<any>(`http://127.0.0.1:8000/api/reservas/?cliente_id=${clienteId}`).subscribe(response => {
+        if (response.mensaje === 'Success') {
+          this.reservas = response.reservas;
+          console.log(response.reservas);
+        }
+      });
+    } else {
+      console.log('No se encontró el ID del cliente logueado en el sessionStorage');
+    }
   }
 
   inscribirse(clase: any) {

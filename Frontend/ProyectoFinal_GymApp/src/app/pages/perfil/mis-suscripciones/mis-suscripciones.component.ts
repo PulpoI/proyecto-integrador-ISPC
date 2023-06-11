@@ -20,34 +20,35 @@ export class MisSuscripcionesComponent implements OnInit {
 
   ngOnInit(): void {
     const isAdmin = this.authService.getIsAdmin();
-    const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.obtenerIdCliente();
-    console.log(clienteId);
+    if (!isAdmin) { // Verifica si el usuario no es un administrador
+      const clienteId = this.authService.obtenerIdCliente();
+      console.log(clienteId);
 
-    this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
-      this.clientes = clientes.cliente;
-      console.log('Datos del cliente:', clientes);
+      this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
+        this.clientes = clientes.cliente;
+        console.log('Datos del cliente:', clientes);
 
-      const planId = this.clientes.plan.planId;
-      if (planId) {
-        this.http.get<any>(`http://127.0.0.1:8000/api/clientes/mi_plan/${planId}`).subscribe(
-          response => {
-            if (response.mensaje === 'Success') {
-            
-              this.clientes.plan.clases_restantes = response.plan.clases_restantes;
-              this.clientes.plan.cantidad_clases = response.plan.cantidad_clases;
-              this.clientes.plan.precio = response.plan.precio;
-              this.clientes.plan.descripcion = response.plan.descripcion.replace(/\n/g, '<br><br>');
+        const planId = this.clientes.plan.planId;
+        if (planId) {
+          this.http.get<any>(`http://127.0.0.1:8000/api/clientes/mi_plan/${planId}`).subscribe(
+            response => {
+              if (response.mensaje === 'Success') {
+                this.clientes.plan.clases_restantes = response.plan.clases_restantes;
+                this.clientes.plan.cantidad_clases = response.plan.cantidad_clases;
+                this.clientes.plan.precio = response.plan.precio;
+                this.clientes.plan.descripcion = response.plan.descripcion.replace(/\n/g, '<br><br>');
         
-              console.log('Descripción del Plan:', response.plan.descripcion);
-            } else {
-              console.error('Error al obtener el plan:', response.mensaje);
+                console.log('Descripción del Plan:', response.plan.descripcion);
+              } else {
+                console.error('Error al obtener el plan:', response.mensaje);
+              }
+            },
+            error => {
+              console.error('Error al obtener el plan:', error);
             }
-          },
-          error => {
-            console.error('Error al obtener el plan:', error);
-          }
-        );
+          );
         }
       });
     }
   }
+}
