@@ -62,7 +62,9 @@ export class AuthService {
 
   // Actualiza la ID del cliente normal
   public updateClienteId(clienteId: number) {
-    this.clienteIdSubject.next(clienteId);
+    if (clienteId !== this.clienteIdSubject.value) {
+      this.clienteIdSubject.next(clienteId);
+    }
   }
 
   // Obtiene la ID del cliente normal
@@ -70,7 +72,7 @@ export class AuthService {
     return this.clienteIdSubject.value;
   }
 
-  public  getClienteIdFromSessionStorage(): number {
+  public getClienteIdFromSessionStorage(): number {
     const clienteId = sessionStorage.getItem('usuario');
     return clienteId ? parseInt(clienteId, 10) : 0;
   }
@@ -97,6 +99,9 @@ export class AuthService {
     sessionStorage.removeItem('usuario');
     sessionStorage.removeItem('isAuthenticated');
     this.updateAuthenticationStatus(false);
+
+    // Actualizar el valor de clienteIdSubject a 0
+    this.updateClienteId(0);
 
     if (sessionStorage.getItem('isAdmin')) {
       sessionStorage.removeItem('isAdmin');

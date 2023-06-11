@@ -22,14 +22,16 @@ export class InscripcionClasesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getClases();
-    this.getReservas();
-
-    // Obtener el ID del cliente autenticado
-    const isAdmin = this.authService.getIsAdmin();
-    const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.obtenerIdCliente();
-
+  
+    // Obtener el ID del cliente autenticado desde el AuthService
+    const clienteId = this.authService.obtenerIdCliente();
+  
     // Asignar el ID del cliente al usuarioId
     this.usuarioId = clienteId;
+  
+    // Obtener las reservas del cliente logueado
+    this.getReservas();
+
     
   }
 
@@ -41,16 +43,18 @@ export class InscripcionClasesComponent implements OnInit {
     });
   }
 
-  getReservas() {
+  getReservas(): void {
+    // Obtener el ID del cliente logueado desde el AuthService
+    const clienteId = this.authService.getClienteIdFromSessionStorage();
+  
     this.http.get<any>('http://127.0.0.1:8000/api/reservas/').subscribe(response => {
-      if (response.mensaje === 'Success')    {
-        this.reservas = response.reservas;
-        console.log(response.reservas);
+      if (response.mensaje === 'Success') {
+        // Filtrar las reservas por el ID del cliente logueado
+        this.reservas = response.reservas.filter((reserva: any) => reserva.cliente_id === clienteId);
+        console.log(this.reservas);
       }
     });
-    
   }
-
   inscribirse(clase: any) {
     console.log('Inscribiendo a la clase:', clase);
   

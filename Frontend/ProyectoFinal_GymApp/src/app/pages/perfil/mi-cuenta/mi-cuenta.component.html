@@ -1,7 +1,7 @@
-<div class=" w-auto shadow p-0 fs-6 container-perfil" >
+<div class="w-auto shadow p-0 fs-6 container-perfil border border-secondary">
   <div class="editar-perfil-container">
     <div *ngIf="clientes">
-      <div class="tittle">Mi cuenta</div>
+      <div class="tittle border-bottom border-dark">Mi cuenta</div>
       <div class="id">
         <p>ID: {{ clientes.id }}</p>
       </div>
@@ -12,14 +12,13 @@
         <p>Fecha de Nacimiento: {{ clientes.fecha_nacimiento | date: 'dd/MM/yyyy' }}</p>
         <p>Email: {{ clientes.email }}</p>
         <p>Contraseña: **********</p>
-
       </div>
       <div class="d-grid">
-        <button type="submit" class="btn btn-outline-dark" (click)="editarDatos()" *ngIf="!editar">Editar datos</button>
+        <button type="submit" class="btn btn-outline-dark border-dark" (click)="editarDatos()" *ngIf="!editar">Editar datos</button>
       </div>
 
       <form *ngIf="editar">
-        <div class=" user-details">
+        <div class="user-details">
           <div class="input-box">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" [(ngModel)]="clientes.nombre" name="nombre" required>
@@ -37,8 +36,7 @@
 
           <div class="input-box">
             <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-            <input type="Date" id="fecha_nacimiento" [(ngModel)]="clientes.fecha_nacimiento" name="fecha_nacimiento"
-              required>
+            <input type="Date" id="fecha_nacimiento" [(ngModel)]="clientes.fecha_nacimiento" name="fecha_nacimiento" required>
           </div>
 
           <div class="input-box">
@@ -46,17 +44,14 @@
             <input type="email" id="email" [(ngModel)]="clientes.email" name="email" required>
           </div>
 
-
           <div class="input-box">
             <label for="contraseña">Contraseña:</label>
             <input type="password" id="contraseña" [(ngModel)]="clientes.password" name="contraseña" required>
           </div>
 
-          <br>
-          <!-- Agrega otros campos aquí según los datos que desees editar -->
+          
           <div class="d-grid">
-            <button type="submit" class="btn btn-outline-dark" (click)="guardarCambios()">Guardar
-              cambios</button>
+            <button type="submit" class="btn btn-outline-dark border-dark" (click)="guardarCambios()">Guardar cambios</button>
           </div>
         </div>
       </form>
