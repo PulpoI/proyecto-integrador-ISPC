@@ -27,18 +27,20 @@ import { CrearPlanComponent } from './roles/admin/views/crear-plan/crear-plan.co
 import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
 import { CrearClaseComponent } from './roles/admin/views/crear-clase/crear-clase.component';
 import { ClaseComponent } from './roles/admin/views/clase/clase.component';
-
+import{MatTabsModule} from '@angular/material/tabs';
 import { PlanesTiendaComponent } from './shop/planesTienda/planesTienda.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { PlanesTiendaModule } from './shop/planesTienda/planesTienda.module';
 import { TiendaModule } from './shop/tienda/tienda.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-suscripciones.component';
 import { InscripcionClasesComponent } from './pages/perfil/inscripcion-clases/inscripcion-clases.component';
 import { AdminAuthGuard } from './service/auth/admin-auth-guard';
 @NgModule({
   declarations: [
+    DashboardComponent,
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -73,7 +75,10 @@ import { AdminAuthGuard } from './service/auth/admin-auth-guard';
     ReactiveFormsModule, 
     HttpClientModule,
     TiendaModule,
-    PlanesTiendaModule
+    PlanesTiendaModule,
+    CommonModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
   ],
   providers: [CartService, CurrencyPipe, AdminAuthGuard, ClientAuthGuard],
   bootstrap: [AppComponent]
