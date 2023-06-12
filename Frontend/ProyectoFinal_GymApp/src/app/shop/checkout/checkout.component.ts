@@ -7,6 +7,7 @@ import { Subject, Observable } from 'rxjs';
 import { FormService } from './../services/form.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from './../../../../node_modules/ngx-toastr';
 
 @Component({
   selector: 'app-checkout',
@@ -41,6 +42,7 @@ export class CheckoutComponent implements OnInit {
  
 
   constructor(
+    private toastr: ToastrService,
     private router: Router,
     private cartService: CartService,
     private formService: FormService,
@@ -52,9 +54,9 @@ export class CheckoutComponent implements OnInit {
 
 private isPaymentTestData() {
   return (
-    this.payment.cardNumber === '4111111111111111' &&
-    this.payment.expDate === '12/23' &&
-    this.payment.cvv === '123'
+    this.payment.cardNumber === '1' &&
+    this.payment.expDate === '1' &&
+    this.payment.cvv === '1'
     
   );
   
@@ -73,11 +75,33 @@ private isPaymentTestData() {
     ) {
       // Mostrar mensaje de error y regresar si falta algún campo obligatorio
       let errorMessage = 'Por favor, completa los siguientes campos:';
-      // ...
-  
-      window.alert(errorMessage);
+      
+      if (!this.validarNombre()) {
+        errorMessage += '\n- Nombre';
+      }
+      
+      if (!this.validarApellido()) {
+        errorMessage += '\n- Apellido';
+      }
+      
+      if (!this.emailValido()) {
+        errorMessage += '\n- Email';
+      }
+      
+      if (!this.domicilio) {
+        errorMessage += '\n- Domicilio';
+      }
+      
+      if (isPaymentValid && !isPaymentTestData && !this.payment.cardName) {
+        errorMessage += '\n- Nombre en la tarjeta';
+      }
+      
+      this.toastr.error(errorMessage);
+      
+      console.log(errorMessage);
       return;
     }
+    
   
     // Guarda los datos del formulario en el objeto formData
     this.formData.nombre = this.nombre;
@@ -170,7 +194,7 @@ private isPaymentTestData() {
       });
     })();
 
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         const state = this.router.getCurrentNavigation()?.extras.state;
         if (state && state['items']) {
@@ -261,8 +285,8 @@ private isPaymentTestData() {
     };
     
 
-    this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
-      console.log('Datos del cliente:', clientes);
+    this.clientesService.obtenerCliente(clienteId).subscribe((cliente: any) => {
+      console.log('Datos del cliente:', cliente);
 
       
      
