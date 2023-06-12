@@ -1,9 +1,7 @@
-  //quiero que los metodos: verCliente, verPlan y verClase abran sus páginas en un sidebar o modal 
   import { AuthService } from 'src/app/service/auth.service';
   import { Router } from '@angular/router';
   import { Component, OnInit } from '@angular/core';
   import { ApiService } from 'src/app/service/api.service';
-  import { MatTabsModule } from '@angular/material/tabs';
 
 
   @Component({
@@ -29,8 +27,7 @@
     ngOnInit() {
       this.loadData();
     }
-    
-
+  
     openTab(tabName: string) {
       this.currentTab = ['plans', 'subscriptions', 'clients'].indexOf(tabName);
 
