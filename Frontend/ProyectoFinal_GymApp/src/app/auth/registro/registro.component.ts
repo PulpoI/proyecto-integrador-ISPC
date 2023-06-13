@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from 'src/app/service/registro.service';
 
-
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -12,24 +11,41 @@ import { RegistroService } from 'src/app/service/registro.service';
 })
 export class RegistroComponent {
   registroForm: FormGroup;
+  registroExitoso: boolean = false;
+  registroError: boolean = false;
 
-  constructor(private registroService: RegistroService, private authService: AuthService, private router: Router) {
+  constructor(
+    private registroService: RegistroService,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.registroForm = new FormGroup({
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
       dni: new FormControl('', Validators.required),
       fecha_nacimiento: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      contraseña: new FormControl('', Validators.required)
+      password: new FormControl('', Validators.required)
     });
   }
 
   registrarCliente(): void {
     if (this.registroForm.valid) {
-      const cliente = this.registroForm.value;
+      const cliente = {
+        nombre: this.registroForm.get('nombre')?.value,
+        apellido: this.registroForm.get('apellido')?.value,
+        dni: this.registroForm.get('dni')?.value,
+        fecha_nacimiento: this.registroForm.get('fecha_nacimiento')?.value,
+        email: this.registroForm.get('email')?.value,
+        password: this.registroForm.get('password')?.value
+      };
+
       this.registroService.registrarCliente(cliente).subscribe(
         response => {
           console.log('Cliente registrado exitosamente:', response);
+          this.registroExitoso = true;
+          this.registroError = false;
+
           // Generar un token basado en el datetime actual
           const token = Date.now().toString();
 
@@ -39,14 +55,14 @@ export class RegistroComponent {
           sessionStorage.setItem('isAuthenticated', 'true');
           // Actualizar el estado de autenticación al iniciar sesión correctamente
           this.authService.updateAuthenticationStatus(true);
-          
+
           // Redirigir al dashboard o a la página deseada
           this.router.navigate(['/mi-cuenta']);
-         
         },
         error => {
           console.error('Error al registrar el cliente:', error);
-       
+          this.registroExitoso = false;
+          this.registroError = true;
         }
       );
     }
