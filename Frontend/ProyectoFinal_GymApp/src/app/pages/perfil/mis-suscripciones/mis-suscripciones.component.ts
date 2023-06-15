@@ -21,7 +21,7 @@ export class MisSuscripcionesComponent implements OnInit {
   ngOnInit(): void {
     const isAdmin = this.authService.getIsAdmin();
     if (!isAdmin) { // Verifica si el usuario no es un administrador
-      const clienteId = this.authService.obtenerIdCliente();
+      const clienteId = this.authService.getClienteIdFromSessionStorage();
       console.log(clienteId);
 
       this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
