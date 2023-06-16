@@ -1,4 +1,4 @@
-<form [formGroup]="claseForm" (ngSubmit)="crearClase()">
+<form [formGroup]="claseForm" (ngSubmit)="crearClase()" class="bg-light p-3">
   <div class="form-group">
     <label for="nombre">Nombre:</label>
     <input type="text" class="form-control" formControlName="nombre" id="nombre" required>
@@ -9,19 +9,19 @@
   </div>
   <div class="form-group">
     <label for="fecha">Fecha:</label>
-    <input id="fecha" type="date" formControlName="fecha" required />
+    <input id="fecha" type="date" formControlName="fecha" required class="form-control">
   </div>
   <div class="form-group">
     <label for="hora">Hora:</label>
-    <input id="hora" type="time" formControlName="hora" required />
+    <input id="hora" type="time" formControlName="hora" required class="form-control">
   </div>
   <div class="form-group">
-    <label for="limite_cupos">Limite de cupos:</label>
-    <input id="limite_cupos" type="number" formControlName="limite_cupos" required />
+    <label for="limite_cupos">Límite de cupos:</label>
+    <input id="limite_cupos" type="number" formControlName="limite_cupos" required class="form-control">
   </div>
   <div class="form-group">
     <label for="cantidad_inscriptos">Cantidad de inscriptos:</label>
-    <input id="cantidad_inscriptos" type="number" formControlName="cantidad_inscriptos" required />
+    <input id="cantidad_inscriptos" type="number" formControlName="cantidad_inscriptos" required class="form-control">
   </div>
   <div class="form-group">
     <label for="estado_clase">Estado:</label>

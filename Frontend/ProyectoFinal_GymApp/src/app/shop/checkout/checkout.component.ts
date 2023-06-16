@@ -129,7 +129,7 @@ private isPaymentTestData() {
         this.saveShippingInformation(this.formData).subscribe(
           () => {
             console.log('Información de envío guardada correctamente');
-  
+            
             // Realiza el redireccionamiento a la página de confirmación o a donde sea necesario
             this.redireccionarPaginaConfirmacion();
           },
@@ -257,7 +257,8 @@ private isPaymentTestData() {
     const clienteId = this.authService.getClienteIdFromSessionStorage()
 
     const userUpdate = {
-      plan_id: planId.id // Actualiza la propiedad "plan_id" con el valor de "planId"
+      plan_id: planId.id, // Actualiza la propiedad "plan_id" con el valor de "planId"
+      clases_restantes: planId.cantidad_clases
     };
     
 
@@ -278,9 +279,9 @@ private isPaymentTestData() {
         this.saveShippingInformation(userUpdate).subscribe(
           () => {
             console.log('Información de envío guardada correctamente');
-
-            // Redirect to the PayPal sandbox
-            // window.location.href = 'https://developer.paypal.com/tools/sandbox/';
+            
+            // Redirect a suscripciones
+            window.location.href = 'http://localhost:4200/mis-suscripciones';
 
             this.confirmationMessage = 'Orden enviada';
           },

@@ -33,12 +33,13 @@
         <li class="nav-item dropdown ml-auto" *ngIf="isAuthenticated">
           <a class="nav-link dropdown-toggle text-danger" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-         MI CUENTA
+            MI CUENTA
           </a>
           <div class="dropdown-menu dropdown-menu-end custom-dropdown" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="mi-cuenta">Perfil</a>
-            <a class="dropdown-item" routerLink="/mis-suscripciones">Mis suscripciones</a>
-            <a class="dropdown-item" routerLink="/mis-clases">Mis clases</a>
+            <a class="dropdown-item" routerLink="mi-cuenta" *ngIf="isAuthenticated && !isAdmin">Perfil</a>
+            <a class="dropdown-item" routerLink="/mis-suscripciones" *ngIf="isAuthenticated && !isAdmin">Mis
+              suscripciones</a>
+            <a class="dropdown-item" routerLink="/mis-clases" *ngIf="isAuthenticated && !isAdmin">Mis clases</a>
             <div class="dropdown-divider"></div>
             <button class="dropdown-item" (click)="logout()">CERRAR SESION</button>
           </div>

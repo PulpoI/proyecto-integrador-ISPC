@@ -26,6 +26,7 @@
   
     ngOnInit() {
       this.loadData();
+ 
     }
   
     openTab(tabName: string) {

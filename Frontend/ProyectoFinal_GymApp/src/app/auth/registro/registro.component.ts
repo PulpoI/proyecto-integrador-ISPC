@@ -51,7 +51,7 @@ export class RegistroComponent {
 
           // Guardar el token y el usuario filtrado en el sessionStorage
           sessionStorage.setItem('token', token);
-          sessionStorage.setItem('usuario', JSON.stringify(response.cliente));
+          sessionStorage.setItem('usuario', JSON.stringify(response.cliente.id));
           sessionStorage.setItem('isAuthenticated', 'true');
           // Actualizar el estado de autenticación al iniciar sesión correctamente
           this.authService.updateAuthenticationStatus(true);

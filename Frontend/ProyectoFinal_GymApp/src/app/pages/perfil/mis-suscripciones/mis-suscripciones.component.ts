@@ -27,7 +27,7 @@ export class MisSuscripcionesComponent implements OnInit {
       this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
         this.clientes = clientes.cliente;
         console.log('Datos del cliente:', clientes);
-
+        
         const planId = this.clientes.plan.planId;
         if (planId) {
           this.http.get<any>(`http://127.0.0.1:8000/api/clientes/mi_plan/${planId}`).subscribe(

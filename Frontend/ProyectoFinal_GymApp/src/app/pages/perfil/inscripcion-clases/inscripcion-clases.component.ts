@@ -52,6 +52,9 @@ export class InscripcionClasesComponent implements OnInit {
         // Filtrar las reservas por el ID del cliente logueado
         this.reservas = response.reservas.filter((reserva: any) => reserva.cliente_id === clienteId);
         console.log(this.reservas);
+      } else {
+        // Manejar el caso en que ocurra un error en la inscripción
+        console.log('No hay reservas');
       }
     });
   }
@@ -79,6 +82,8 @@ export class InscripcionClasesComponent implements OnInit {
         // Manejar el caso en que ocurra un error en la cancelación de reserva
         console.log('Error al cancelar la reserva');
       }
+     
     });
+
   }
 }

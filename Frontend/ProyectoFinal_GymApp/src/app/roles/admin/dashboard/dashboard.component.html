@@ -1,15 +1,15 @@
 <div class="css-dash-adm bg-danger bg-gradient">
   <h2>Dashboard ADMIN</h2>
   <div class="container">
-  
+
     <mat-tab-group [(selectedIndex)]="currentTab">
-      
+
       <mat-tab [ngClass]="{'selected-tab': currentTab === 0}">
         <ng-template mat-tab-label>Planes</ng-template>
         <div>
           <!-- Mostrar datos de la API -->
           <div *ngIf="planes">
-           
+
             <table class="table">
               <thead class="thead-light">
                 <tr>
@@ -35,7 +35,7 @@
         <div>
           <!-- Mostrar datos de la API -->
           <div *ngIf="clases">
-            
+
             <table class="table">
               <thead class="thead-light">
                 <tr>
@@ -56,12 +56,12 @@
           </div>
         </div>
       </mat-tab>
-      <mat-tab  [ngClass]="{'selected-tab': currentTab === 2}">
+      <mat-tab [ngClass]="{'selected-tab': currentTab === 2}">
         <ng-template mat-tab-label>Clientes</ng-template>
         <div>
           <!-- Mostrar datos de la API -->
           <div *ngIf="clientes">
-            
+
             <table class="table">
               <thead class="thead-light">
                 <tr>
@@ -80,7 +80,7 @@
                 </tr>
               </tbody>
             </table>
-            <a routerLink="/crear-cliente" class="btn btn-danger">Agregar Cliente</a>
+            <!-- <a routerLink="/crear-cliente" class="btn btn-danger">Agregar Cliente</a> -->
           </div>
         </div>
       </mat-tab>

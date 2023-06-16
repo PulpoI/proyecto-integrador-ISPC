@@ -62,7 +62,9 @@
    height: 150px; 
   }
   
- 
+  .mat-mdc-tab-body-content {
+    overflow: hidden !important;
+  }
 
   .sidebar {
     width: 200px;
