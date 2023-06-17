@@ -1,4 +1,18 @@
 /* Estilos para el encabezado */
+
+.i{  
+  font-size:15px;
+  transition:1s;
+  cursor:pointer;
+  color:#aeaeae;
+  text-align: center;
+}
+.i:hover{
+  transform: scale(1.25) rotate(100deg); 
+  color:#100df2;
+  
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -10,11 +24,11 @@ header {
   font-weight: bold;
 }
 h1{
-  color: black;
+  color: #fff;
   text-align: center;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family:Monospace, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size:300%;
-  text-decoration: underline;
+
 }
 
 
@@ -119,7 +133,10 @@ right: 1%;
 border-radius: 10px;
 margin-left: 87%;
 color: rgba(255, 1, 1, 0.959);
-background-color: rgb(1, 10, 14);
+background:rgba(0, 0, 0, 0);
+}
+.btn-carrito :hover{
+   color: #ff7300;
 }
 .cart-container {
 
