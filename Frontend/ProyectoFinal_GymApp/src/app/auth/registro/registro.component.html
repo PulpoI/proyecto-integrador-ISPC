@@ -1,10 +1,11 @@
 <div class=" w-auto shadow p-0 fs-6 container-registro ">
   <div class="row w-100 justify-content-center fs-6 py-4">
     <div class="col-md-6 formulario fs-6 px-4 rounded">
-      <h2>Registro de Cliente</h2>
+      
 
       <form [formGroup]="registroForm" (ngSubmit)="registrarCliente()" class="custom-form">
         <div>
+          <div class="tittle border-bottom border-dark"><h2>Registro de Cliente</h2></div>
           <label for="nombre">Nombre:</label>
           <input id="nombre" type="text" formControlName="nombre" placeholder="Nombre" />
         </div>
