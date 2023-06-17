@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/service/clientes.service';
 import { Clientes } from 'src/app/models/clientes';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mi-cuenta',
@@ -50,11 +51,13 @@ export class MiCuentaComponent implements OnInit {
     this.clientesService.actualizarCliente(clienteId, this.clientes).subscribe(() => {
       this.editar = false;
       console.log('Cambios guardados exitosamente');
+
+      // Mostrar SweetAlert2 de éxito
+      Swal.fire({
+        icon: 'success',
+        title: 'Éxito',
+        text: 'Cambios guardados exitosamente.'
+      });
     });
   }
 }
-
-
-
-
-

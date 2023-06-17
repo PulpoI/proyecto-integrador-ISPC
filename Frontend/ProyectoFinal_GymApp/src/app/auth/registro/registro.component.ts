@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from 'src/app/service/registro.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -46,6 +47,13 @@ export class RegistroComponent {
           this.registroExitoso = true;
           this.registroError = false;
 
+          // Mostrar SweetAlert2 de éxito
+          Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: 'Usuario registrado exitosamente.'
+          });
+
           // Generar un token basado en el datetime actual
           const token = Date.now().toString();
 
@@ -63,6 +71,13 @@ export class RegistroComponent {
           console.error('Error al registrar el cliente:', error);
           this.registroExitoso = false;
           this.registroError = true;
+
+          // Mostrar SweetAlert2 de error
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error al registrar el cliente.'
+          });
         }
       );
     }
