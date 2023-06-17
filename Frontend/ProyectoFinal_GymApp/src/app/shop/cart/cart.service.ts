@@ -14,11 +14,6 @@ import { CurrencyPipe } from '../pipes/currency.pipe';
 export class CartService {
   items: Plan[] = [];
   private formData: FormGroup | null = null;
-  itemAdded: Subject<any> = new Subject<any>();
-  constructor() { }
-  getItems() {
-    return this.items;
-  }
   isCartOpen = false;
 
   @HostListener('document:click', ['$event.target'])
@@ -31,6 +26,14 @@ export class CartService {
   toggleCart(): void {
     this.isCartOpen = !this.isCartOpen;
   }
+ 
+ 
+  itemAdded: Subject<any> = new Subject<any>();
+  constructor() { }
+  getItems() {
+    return this.items;
+  }
+  
   addToCart(plan: Plan) {
     this.items.push(plan);
     

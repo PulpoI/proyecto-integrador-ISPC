@@ -22,9 +22,9 @@ export class CheckoutComponent implements OnInit {
   apellido: string = '';
   email: string = '';
   domicilio: string = '';
-  pais: string = ''; // Propiedad añadida
-  provincia: string = ''; // Propiedad añadida
-  cp: string = ''; // Propiedad añadida
+  pais: string = ''; 
+  provincia: string = ''; 
+  cp: string = ''; 
   cartItems: any[] = [];
   cartTotal: number = 0;
   payment: any = {
@@ -75,7 +75,7 @@ private isPaymentTestData() {
       let errorMessage = 'Por favor, completa los siguientes campos:';
       // ...
   
-      window.alert(errorMessage);
+      console.log(errorMessage);
       return;
     }
   

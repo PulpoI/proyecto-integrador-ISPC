@@ -86,7 +86,12 @@ td{
 .planes-item h2 {
   margin-top: 0;
 }
-
+.hidden {
+  display: none;
+}
+.cart-hidden {
+  display: none;
+}
 /* Cart styles */
 .cart {
   border-radius: 10px;

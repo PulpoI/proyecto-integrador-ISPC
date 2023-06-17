@@ -8,7 +8,7 @@ import { PlanesTiendaComponent } from '../planesTienda/planesTienda.component';
   styleUrls: ['./tienda.component.css']
 })
 export class TiendaComponent {
-  isCartOpen: boolean = false;
+  isCartOpen = false;
 
   toggleCart(): void {
     this.isCartOpen = !this.isCartOpen;
