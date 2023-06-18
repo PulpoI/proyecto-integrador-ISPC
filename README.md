@@ -4,8 +4,8 @@
 
 ## Integrantes por Sprint:
 
-## 10/04/2023-SPRINT 0 / 
-## 24/04/2023- SPRINT 1:
+## 10/04/2023
+## SPRINT 0 / SPRINT 1
 
 ## Boiola Julieta
 ## Duarte Pablo
@@ -16,19 +16,16 @@
 ## Rivarola Celeste 
 ## Robledo Romina 
 
-## 08/05/2023 - SPRINT 2/
-## 22/05/2023- SPRINT 3:
+## 08/05/2023
+## SPRINT 2 / SPRINT 3
 
 ## Duarte Pablo
 ## Mattos María Soledad
 ## Medina Carolina Estefanía 
 ## Rivarola Celeste 
 
-## 05/06/2023- SPRINT 4:
-## Duarte Pablo
-## Mattos María Soledad
-## Medina Carolina Estefanía 
-## Rivarola Celeste 
+## 05/05/2023 
+## SPRINT 4
 
 ### Frontend desplegado [GYM APP](https://gym-app.pulpol.com.ar/).
 ### Backlog [Tablero Kanban](https://github.com/users/PulpoI/projects/4/views/1).
