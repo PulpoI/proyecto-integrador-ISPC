@@ -33,4 +33,29 @@
     background: #ebf5fc;
   }
 
-
+  .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .alert-success strong,
+  .alert-danger strong {
+    font-weight: bold;
+  }
+  
+  .alert-success p,
+  .alert-danger p {
+    margin: 0;
+  }
+  

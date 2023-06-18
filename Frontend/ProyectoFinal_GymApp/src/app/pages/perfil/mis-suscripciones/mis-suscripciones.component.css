@@ -1,0 +1,32 @@
+.container-plan {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-image: url("/../../../../../../../../assets/login.jpg");
+    background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+    background-position: center; /* Centra la imagen dentro del contenedor */
+    /* Otros estilos de tu contenedor */
+    
+  }
+
+  .container{
+      max-width: 400px;
+      width: 100%;
+      background:rgb(190, 93, 93);
+      padding: 20px 20px ;
+      border-radius: 1rem;
+      font-size: 20px;
+     
+    }
+
+  
+
+  .container .tittle {
+    font-size: 30px;
+   font-weight: 500;
+   font-weight:bold;
+  text-align: center;
+   
+ }

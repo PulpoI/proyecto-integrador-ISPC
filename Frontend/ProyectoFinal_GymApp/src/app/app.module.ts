@@ -1,3 +1,4 @@
+import { ClientAuthGuard } from './service/auth/cliente-auth-guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,16 +27,20 @@ import { CrearPlanComponent } from './roles/admin/views/crear-plan/crear-plan.co
 import { MiCuentaComponent } from './pages/perfil/mi-cuenta/mi-cuenta.component';
 import { CrearClaseComponent } from './roles/admin/views/crear-clase/crear-clase.component';
 import { ClaseComponent } from './roles/admin/views/clase/clase.component';
-
+import{MatTabsModule} from '@angular/material/tabs';
 import { PlanesTiendaComponent } from './shop/planesTienda/planesTienda.component';
 import { PlanesComponent } from './pages/planes/planes.component';
 import { PlanesTiendaModule } from './shop/planesTienda/planesTienda.module';
 import { TiendaModule } from './shop/tienda/tienda.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-suscripciones.component';
+import { InscripcionClasesComponent } from './pages/perfil/inscripcion-clases/inscripcion-clases.component';
+import { AdminAuthGuard } from './service/auth/admin-auth-guard';
 @NgModule({
   declarations: [
+    DashboardComponent,
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -59,6 +64,7 @@ import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-
     CrearClaseComponent,
     ClaseComponent,
     MisSuscripcionesComponent,
+    InscripcionClasesComponent,
     
   ],
   imports: [
@@ -69,9 +75,12 @@ import { MisSuscripcionesComponent } from './pages/perfil/mis-suscripciones/mis-
     ReactiveFormsModule, 
     HttpClientModule,
     TiendaModule,
-    PlanesTiendaModule
+    PlanesTiendaModule,
+    CommonModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
   ],
-  providers: [CartService, CurrencyPipe],
+  providers: [CartService, CurrencyPipe, AdminAuthGuard, ClientAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

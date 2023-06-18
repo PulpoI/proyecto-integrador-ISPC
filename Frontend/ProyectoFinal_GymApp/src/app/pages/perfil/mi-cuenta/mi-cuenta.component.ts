@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/service/clientes.service';
 import { Clientes } from 'src/app/models/clientes';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mi-cuenta',
@@ -30,13 +31,14 @@ export class MiCuentaComponent implements OnInit {
 
   ngOnInit(): void {
     const isAdmin = this.authService.getIsAdmin();
-    const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.obtenerIdCliente();
-    console.log(clienteId);
-    this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
- 
-      this.clientes = clientes.cliente;
-      console.log('Datos del cliente:', clientes);
-    });
+    if (!isAdmin) { // Verifica si el usuario no es un administrador
+      const clienteId = this.authService.getClienteIdFromSessionStorage();
+      console.log(clienteId);
+      this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
+        this.clientes = clientes.cliente;
+        console.log('Datos del cliente:', clientes);
+      });
+    }
   }
 
   editarDatos(): void {
@@ -45,16 +47,17 @@ export class MiCuentaComponent implements OnInit {
 
   guardarCambios(): void {
     const isAdmin = this.authService.getIsAdmin();
-    const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.obtenerIdCliente();
+    const clienteId = isAdmin ? this.authService.obtenerIdClienteAdmin() : this.authService.getClienteIdFromSessionStorage();
     this.clientesService.actualizarCliente(clienteId, this.clientes).subscribe(() => {
       this.editar = false;
       console.log('Cambios guardados exitosamente');
+
+      // Mostrar SweetAlert2 de éxito
+      Swal.fire({
+        icon: 'success',
+        title: 'Éxito',
+        text: 'Cambios guardados exitosamente.'
+      });
     });
   }
-
-
 }
-
-
-
-

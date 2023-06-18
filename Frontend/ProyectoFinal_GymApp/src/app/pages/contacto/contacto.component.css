@@ -1,9 +1,16 @@
 
 h1{
   color: black;
+  font-size:20px;
+  padding: 0px;
+  margin: 0px;
 }
 .lista-dato{
   list-style: none;
+}
+.form-label{
+  color: #fff!important;
+
 }
 .form {
   padding: 25px 40px;
@@ -21,6 +28,7 @@ h1{
   padding: 15px;
   font-size: 15px;
   margin-top: 0px;
+ 
 }
 .form-box input:focus {
   outline-color: #1e9ba3;
@@ -74,11 +82,72 @@ h1{
     text-align: left;
   }
   input {
-    margin-bottom: 20px;
+    margin-bottom: 2px;
+    height: 50%;
+  
+   
   }
+  .form-box[_ngcontent-lim-c22] {
+    padding-bottom: -8px;}
   .input-row {
     margin-bottom: -2px; /* Cambia 20px por la distancia que desees */
   }
   .marg {
     margin-left: 0.00009rem;
   }
+  .card{
+    margin-top:0px;
+    height: 520px;
+    padding: 0px;
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(253,45,45,1) 100%)!important;
+    margin-bottom: 2px;
+  
+  }
+  h3{
+    font-size: 15px!important;
+    color: rgb(129, 129, 129);
+    font-family: monospace;
+  }
+  h2{
+    font-size: 25px!important;
+    color: rgb(244, 31, 31);
+    font-family: monospace;
+  }
+  h1{
+    font-size: 45px!important;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+  }
+  .card  h1{
+    font-size: 25px!important;
+    color: rgb(255, 255, 255);
+    font-family: monospace;
+  }
+  .lista-dato{
+    margin-top:-140px;
+  }
+
+  .card input ::placeholder {
+    color:white;
+    border: none;
+  }
+  .text-center{
+    padding-bottom: 12px;
+  }
+  #contacto-form > div:nth-child(3) > div > label{
+    margin-left: -10px;
+  }
+  #contacto-form > div:nth-child(4) > div > label{
+    margin-top: -36px;
+    margin-left: -10px;
+    position: absolute;
+
+  }
+  #submit{
+    margin-top: -5px;
+    width: 649px;
+    margin-left: 11px;
+    background-color: rgb(123, 3, 3);
+    border: none;
+  }
+ 

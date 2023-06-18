@@ -1,4 +1,6 @@
-
+.mat-mdc-tab-body-content {
+  overflow: hidden !important;
+}
 
 @media (min-width: 1200px) {
 button{

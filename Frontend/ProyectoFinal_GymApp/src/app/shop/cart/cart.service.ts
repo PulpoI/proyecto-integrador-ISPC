@@ -4,7 +4,7 @@ import { OnInit } from '@angular/core';
 import { Component, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { PlanService } from '../services/plan.service';
-
+import { FormGroup } from '@angular/forms';
 import { CurrencyPipe } from '../pipes/currency.pipe';
 
 @Injectable({
@@ -13,12 +13,7 @@ import { CurrencyPipe } from '../pipes/currency.pipe';
 
 export class CartService {
   items: Plan[] = [];
- 
-  itemAdded: Subject<any> = new Subject<any>();
-  constructor() { }
-  getItems() {
-    return this.items;
-  }
+  private formData: FormGroup | null = null;
   isCartOpen = false;
 
   @HostListener('document:click', ['$event.target'])
@@ -31,6 +26,14 @@ export class CartService {
   toggleCart(): void {
     this.isCartOpen = !this.isCartOpen;
   }
+ 
+ 
+  itemAdded: Subject<any> = new Subject<any>();
+  constructor() { }
+  getItems() {
+    return this.items;
+  }
+  
   addToCart(plan: Plan) {
     this.items.push(plan);
     
@@ -58,6 +61,18 @@ export class CartService {
   calculateTotal(): number {
     // Calcular el subtotal sumando los precios de los productos en el carrito
     return this.items.reduce((subtotal, item) => subtotal + item.precio, 0);
+  }
+  
+  setFormData(formData: FormGroup): void {
+    this.formData = formData;
+  }
+
+  getFormData(): FormGroup | null {
+    return this.formData;
+  }
+
+  restoreFormData(formData: FormGroup): void {
+    this.formData = formData;
   }
 }
 

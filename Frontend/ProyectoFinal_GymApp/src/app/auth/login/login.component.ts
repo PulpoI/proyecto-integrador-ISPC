@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { LoginService } from '../../service/auth/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -39,6 +40,13 @@ export class LoginComponent implements OnInit {
         if (usuarioFiltrado.password === password) {
           console.log('Contraseña válida');
 
+          // Mostrar SweetAlert2 de éxito
+          Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: 'Inicio de sesión exitoso.'
+          });
+
           // Generar un token basado en el datetime actual
           const token = Date.now().toString();
 
@@ -50,13 +58,27 @@ export class LoginComponent implements OnInit {
           this.authService.updateAuthenticationStatus(true);
           
           // Redirigir al dashboard o a la página deseada
-          const clienteId = usuarioFiltrado.id;;
-          this.router.navigate(['/mi-cuenta', clienteId]);
+          const clienteId = usuarioFiltrado.id;
+          this.router.navigate(['/mi-cuenta']);
         } else {
           console.log('Contraseña inválida');
+
+          // Mostrar SweetAlert2 de error
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Contraseña inválida.'
+          });
         }
       } else {
         console.log('No se encontró ningún usuario con el correo electrónico especificado');
+
+        // Mostrar SweetAlert2 de error
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se encontró ningún usuario con el correo electrónico especificado.'
+        });
       }
     });
   }

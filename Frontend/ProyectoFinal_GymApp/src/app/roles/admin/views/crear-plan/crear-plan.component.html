@@ -1,4 +1,4 @@
-<form [formGroup]="planForm" (ngSubmit)="crearPlan()">
+<form [formGroup]="planForm" (ngSubmit)="crearPlan()" class="bg-light p-5">
   <div class="form-group">
     <label for="nombre">Nombre:</label>
     <input type="text" class="form-control" formControlName="nombre" id="nombre" required>
@@ -15,5 +15,6 @@
     <label for="precio">Precio:</label>
     <input type="number" class="form-control" formControlName="precio" id="precio" required>
   </div>
-  <button type="submit" class="btn btn-primary">Crear Plan</button>
+  <button type="submit" class="btn btn-primary m-5">Crear Plan</button>
 </form>
+

@@ -4,6 +4,7 @@ import { Plan } from '../models/plan.model';
 import { CartService } from './cart.service';
 import { Router } from '@angular/router';
 import { EventEmitter, Output } from '@angular/core';
+import { Input } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,6 +14,7 @@ import { EventEmitter, Output } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  @Input() isCartOpen = false;
   isCheckoutOpen: boolean = false;
   botonDesactivado: boolean = false;
   cartItems: any[] = [];
@@ -48,10 +50,7 @@ export class CartComponent implements OnInit {
     this.cartItems.push(item);
     this.itemAdded.emit(item);
   }
-  toggleCart(): void {
-    this.isCartOpen = !this.isCartOpen;
-  }
-  
+
   openCheckout() {
     this.isCheckoutOpen = true;
     this.botonDesactivado = true; 
@@ -77,19 +76,35 @@ export class CartComponent implements OnInit {
   }
     
   ngOnInit(): void {
+    this.isCartOpen = false; // Asegura que el carrito esté cerrado al iniciar o refrescar la página
     this.cartItems = this.cartService.getItems();
     this.calculateTotal();
     this.items = this.cartService.getItems();
     for (let item of this.cartItems) {
       this.total += item.quantity * item.precio;
     }
+    
     const cartContainer = document.getElementById('cart-container');
     if (cartContainer) {
-      cartContainer.classList.add('show');
+      cartContainer.classList.add('hidden'); // Oculta el contenedor del carrito por defecto
     }
   }
   
-  isCartOpen: boolean = false;
+  toggleCart(): void {
+    this.isCartOpen = !this.isCartOpen;
+    
+    const cartContainer = document.getElementById('cart-container');
+    if (cartContainer) {
+      if (this.isCartOpen) {
+        cartContainer.classList.remove('hidden'); // Muestra el contenedor del carrito al abrirlo
+      } else {
+        cartContainer.classList.add('hidden'); // Oculta el contenedor del carrito al cerrarlo
+      }
+    }
+  }
+  
+  
+  
   total: number = 0;
   items: Plan[] = [];
   

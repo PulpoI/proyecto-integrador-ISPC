@@ -34,5 +34,13 @@ class Clase(models.Model):
   estado_clase=models.CharField(max_length=30)
 
 class Reserva(models.Model):
+  cliente=models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True, blank=True)
+  clase=models.ForeignKey(Clase, on_delete=models.CASCADE, null=True, blank=True)
+  # cliente=models.ForeignKey(Cliente, on_delete=models.CASCADE)
+  # clase=models.ForeignKey(Clase, on_delete=models.CASCADE)
+
+class Orden(models.Model):
   cliente=models.ForeignKey(Cliente, on_delete=models.CASCADE)
-  clase=models.ForeignKey(Clase, on_delete=models.CASCADE)
+  plan=models.ForeignKey(Plan, on_delete=models.CASCADE)
+  precio=models.PositiveBigIntegerField()
+  fecha=models.DateField(null=True)

@@ -1,22 +1,33 @@
-<h2>Mi Cuenta</h2>
+<div class="w-auto shadow p-0 fs-6 container-plan border border-secondary">
+  <div class="container">
+    <div *ngIf="clientes">
+      <div class="tittle border-bottom border-dark">Mi Suscripción</div>
+      <div *ngIf="clientes">
+        <!-- <p><strong>Nombre:</strong> {{ clientes.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ clientes.apellido }}</p>
+        <p><strong>DNI:</strong> {{ clientes.dni }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ clientes.fecha_nacimiento | date }}</p>
+        <p><strong>Email:</strong> {{ clientes.email }}</p> -->
 
-<div *ngIf="clientes">
-  <p><strong>Nombre:</strong> {{ clientes.nombre }}</p>
-  <p><strong>Apellido:</strong> {{ clientes.apellido }}</p>
-  <p><strong>DNI:</strong> {{ clientes.dni }}</p>
-  <p><strong>Fecha de Nacimiento:</strong> {{ clientes.fecha_nacimiento | date }}</p>
-  <p><strong>Email:</strong> {{ clientes.email }}</p>
+        <div *ngIf="clientes.plan_id" class="border-top border-dark">
+          <h3 class="border-bottom border-dark">Detalles del Plan</h3>
+          <br>
 
-  <div *ngIf="clientes.plan_id">
-    <h3>Detalles del Plan</h3>
-    <p><strong>Plan ID:</strong> {{ clientes.plan_id }}</p>
-    <p><strong>Clases Restantes:</strong> {{ clientes.clases_restantes }}</p>
-    <p><strong>Descripción del Plan:</strong> {{ clientes.descripcion }}</p>
-    <p><strong>Cantidad de Clases:</strong> {{ clientes.cantidad_clases }}</p>
-    <p><strong>Precio:</strong> {{ clientes.precio }}</p>
+          <p><strong>Descripción del Plan:</strong></p>
+          <p [innerHTML]="clientes.plan.descripcion"></p>
+          <p><strong>Cantidad de Clases:</strong> {{ clientes.plan.cantidad_clases }}</p>
+          <p><strong>Precio:</strong> {{ clientes.plan.precio }}</p>
+          <p><strong>Clases Restantes:</strong> {{ clientes.clases_restantes }}</p>
+        </div>
+        <div *ngIf="!clientes.plan_id">
+          <h2 class="text-light">Aun no tenes un plan, adquiere uno en la <button routerLink="/tienda"
+              class="btn btn-dark">Tienda</button>
+          </h2>
+        </div>
+      </div>
+      <div *ngIf="!clientes" class="border-top border-primary">
+        <p>No se encontraron datos del cliente.</p>
+      </div>
+    </div>
   </div>
-
-</div>
-<div *ngIf="!clientes">
-  <p>No se encontraron datos del cliente.</p>
 </div>

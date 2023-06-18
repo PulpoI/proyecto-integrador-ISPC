@@ -1,0 +1,163 @@
+
+.container {
+    display: flex;
+    height: 50%;
+  }
+  /* Add this CSS to your component's CSS file */
+.active {
+    font-weight: bold;
+    /* Add any other styles to visually indicate the active tab */
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 20%;
+    /* Add any other styles for the sidebar */
+  }
+  
+  .content {
+    width: 80%;
+    /* Add any other styles for the content area */
+  }
+  
+  .sidebar {
+    width: 20%;
+    background: #f4f4f4;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 2px;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 5px;
+  }
+  h2 {
+    text-align: center;
+    padding-top: 0.3rem;
+  }
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+ 
+  .container {
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    align-content: center;
+    padding-bottom: 10px;
+  }
+  .mat-mdc-tab-group{
+    width: 1000px;
+    height: 380px;
+  }
+  .table{
+    width:900px;
+   height: 150px; 
+  }
+  
+  .mat-mdc-tab-body-content {
+    overflow: hidden !important;
+  }
+
+  .sidebar {
+    width: 200px;
+    background-color: #f2f2f2;
+  }
+  .ng-star-inserted{
+    width: 50%;
+  }
+  .mat-mdc-tab-group{
+    margin-top: -30px;
+  }
+  
+  .css-dash-adm{
+    margin-bottom: -32px;
+    
+  }
+  .mat-mdc-tab-group-stretch-tabs{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.505) 0%, rgba(253, 45, 45, 0.687) 100%);background-color: rgba(0, 0, 0, 0.272);
+    border-radius: 30px;
+   
+    margin-bottom: 2px;
+  }
+  .btn{
+    
+    margin-left: 50%;
+    width: 200px;
+    height: 40px;
+    
+  }
+  th{
+    text-align: justify;
+  }
+  .table tr th:last-child {
+    padding-right:0!important;
+    padding-left: 399px;
+    }
+  .btn-danger{
+    margin-left: 160%;
+    background-color: brown;
+    margin-bottom: 0;
+  }
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li a {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .sidebar ul li a.active {
+    background-color: #581414;
+  }
+  .selected-tab {
+    background-color: #181818!important; /* Cambia el color oscuro según tus necesidades */
+    color: #fff; /* Cambia el color del texto según tus necesidades */
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .tab {
+    display: none;
+   
+  }
+  
+
+  
+  form {
+    margin-bottom: 10px;
+  }
+  tbody tr{
+    height: 5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: 21%;
+  }
+  .container{
+    margin-left: 118px;
+  }
+  table th, table td {
+    padding: 2px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    
+  }
+  h2{
+    font-size: 1.3rem;
+  }
+ 

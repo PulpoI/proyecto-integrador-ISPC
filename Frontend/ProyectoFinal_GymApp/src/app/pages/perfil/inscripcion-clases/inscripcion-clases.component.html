@@ -1,0 +1,57 @@
+<div class="container-clases">
+  <div class="row" *ngIf="clientes.plan_id">
+    <div class="col-md-6 containerC border border-danger">
+      <!-- Clases -->
+      <div *ngIf="clases.length > 0">
+        <h2 class="border-bottom border-dark">Clases disponibles</h2>
+        <ul>
+          <li *ngFor="let clase of clases" class="border-bottom border-dark">
+            <h3>{{ clase.nombre }}</h3>
+            <p>{{ clase.descripcion }}</p>
+            <p><b>Fecha:</b> {{ clase.fecha }}</p>
+            <p><b>Hora:</b> {{ clase.hora | slice:11:16 }}hs</p>
+            <p *ngIf="clase.limite_cupos - clase.cantidad_inscriptos !== 0"><b>Cupos disponibles:</b> {{
+              clase.limite_cupos - clase.cantidad_inscriptos }}</p>
+            <p *ngIf="clase.limite_cupos - clase.cantidad_inscriptos === 0" class="text-danger">No quedan cupos
+              disponibles</p>
+            <button class="btn btn-outline-dark border-danger" (click)="inscribirse(clase)"
+              *ngIf="clase.limite_cupos - clase.cantidad_inscriptos !== 0">Inscribirse</button>
+          </li>
+
+        </ul>
+      </div>
+      <div *ngIf="clases.length === 0" class="border-bottom border-primary">
+        <p>No se encontraron clases.</p>
+      </div>
+    </div>
+    <div class="col-md-6 containerC border border-danger">
+      <!-- Reservas -->
+      <div *ngIf="reservas.length > 0">
+        <h2 class="border-bottom border-dark">Mis Reservas</h2>
+        <ul>
+          <li *ngFor="let reserva of reservas" class="border-bottom border-dark">
+            <h3>{{ reserva.clase.nombre }}</h3>
+            <!-- <p>Cliente: {{ reserva.cliente.nombre }} {{ reserva.cliente.apellido }}</p> -->
+            <p>Fecha: {{ reserva.clase.fecha }}</p>
+            <p>Hora: {{ reserva.clase.hora | slice:11:16 }}hs</p>
+            <button class="btn btn-outline-dark border-danger" (click)="cancelarReserva(reserva)">Cancelar
+              Reserva</button>
+          </li>
+        </ul>
+      </div>
+      <div *ngIf="reservas.length === 0" class="border-bottom border-dark">
+        <p>No se encontraron reservas.</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!clientes.plan_id">
+    <h2 class="text-light">Aun no tenes un plan, adquiere uno en la <button routerLink="/tienda"
+        class="btn btn-dark">Tienda</button>
+    </h2>
+  </div>
+  <div>
+    <!-- <h2 class="text-light text-center">Aun no tenes un plan, adquiere uno en la <button routerLink="/tienda"
+        class="btn btn-dark">Tienda</button>
+    </h2> -->
+  </div>
+</div>

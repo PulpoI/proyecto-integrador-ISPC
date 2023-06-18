@@ -4,7 +4,10 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #bfe2bf, rgb(223, 124, 124))
+  background-image: url("/../../../../assets/fitness-perfil.jpg");
+  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+  background-position: center; /* Centra la imagen dentro del contenedor */
+  /* Otros estilos de tu contenedor */
 }
 
 
@@ -12,9 +15,10 @@
 
   max-width: 400px;
   width: 100%;
-  background: rgb(223, 124, 124);
+  background: rgb(226, 126, 126);
   padding: 20px 20px ;
   border-radius: 1rem;
+  font-size: 16px; 
  
 }
 
@@ -33,7 +37,7 @@
 
 
 .editar-perfil-container .tittle {
-   font-size: 35px;
+   font-size: 30px;
   font-weight: 500;
   font-weight:bold;
  text-align: center;
@@ -68,14 +72,14 @@ form label{
 width: calc(100%/2 -20px);
 }
 
-.user-details .input-box input{
+.user-details .input-box input {
   height: 35px;
-  width: 70%;
+  width: 100%; /* Amplía el ancho al 100% */
   outline: none;
   border-radius: 5px;
   border: 1px solid #ccc;
   padding-left: 15px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 

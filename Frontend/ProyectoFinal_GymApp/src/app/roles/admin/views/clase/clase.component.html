@@ -1,5 +1,5 @@
-<h2 class="text-center my-5">Detalles de la Clase</h2>
-
+<div class="main">
+  <div class="title"><h2 class="text-center my-5">Detalles de la Clase</h2></div>
 <div class="card">
   <div class="card bg-light mb-3">
     <div class="card-header">Clase</div>
@@ -13,7 +13,9 @@
       <p class="mb-0"><strong>Estado:</strong> {{clase.estado_clase }}</p>
     </div>
   </div>
-  <button class="btn btn-danger" (click)="eliminarClase()">Eliminar clase</button>
-  <button class="btn btn-secondary" (click)="regresar()">Regresar</button>
-
+  <div class="btn-grp">
+    <button class="btn btn-danger" (click)="showModal()">Eliminar clase</button>
+    <button class="btn btn-secondary" (click)="regresar()">Regresar</button>
+  </div>
+</div>
 </div>

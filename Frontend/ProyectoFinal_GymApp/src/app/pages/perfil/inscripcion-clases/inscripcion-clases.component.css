@@ -1,0 +1,35 @@
+.container-clases {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #bfe2bf, rgb(179, 169, 169));
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.containerC {
+  flex: 1;
+  background: linear-gradient(135deg, #bfe2bf, rgb(240, 185, 185));
+  padding: 20px;
+  border-radius: 1rem;
+  margin: 10px;
+}
+
+.containerC .title {
+  font-size: 35px;
+  font-weight: 500;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .container-clases {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .containerC {
+    width: 100%;
+  }
+}

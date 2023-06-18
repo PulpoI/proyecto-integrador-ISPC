@@ -1,0 +1,23 @@
+
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: rgb(152, 8, 8)!important;
+width:1283px;
+margin-left: -20px;
+color: aliceblue;
+ 
+}
+.btn{
+    background-color: rgb(10, 10, 10)!important;
+    border: none;
+    padding-top: 3px;
+    margin-top: 8px;
+}
+input{
+    background-color: grey;
+    border: none;
+    margin-top: 5px;
+    width: 300px;
+  margin-left: 475px;
+  
+}
