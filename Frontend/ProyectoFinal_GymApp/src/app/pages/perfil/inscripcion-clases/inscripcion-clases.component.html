@@ -1,5 +1,5 @@
 <div class="container-clases">
-  <div class="row" *ngIf="clientes.plan_id !== null">
+  <div class="row" *ngIf="clientes.plan_id">
     <div class="col-md-6 containerC border border-danger">
       <!-- Clases -->
       <div *ngIf="clases.length > 0">
@@ -15,7 +15,7 @@
             <p *ngIf="clase.limite_cupos - clase.cantidad_inscriptos === 0" class="text-danger">No quedan cupos
               disponibles</p>
             <button class="btn btn-outline-dark border-danger" (click)="inscribirse(clase)"
-              *ngIf="clase.limite_cupos - clase.cantidad_inscriptos !== 0 && clientes.plan_id !== null">Inscribirse</button>
+              *ngIf="clase.limite_cupos - clase.cantidad_inscriptos !== 0">Inscribirse</button>
           </li>
 
         </ul>
@@ -44,9 +44,14 @@
       </div>
     </div>
   </div>
-  <div *ngIf="clientes.plan_id === null">
-    <h2 class="text-light text-center">Aun no tenes un plan, adquiere uno en la <button routerLink="/tienda"
+  <div *ngIf="!clientes.plan_id">
+    <h2 class="text-light">Aun no tenes un plan, adquiere uno en la <button routerLink="/tienda"
         class="btn btn-dark">Tienda</button>
     </h2>
+  </div>
+  <div>
+    <!-- <h2 class="text-light text-center">Aun no tenes un plan, adquiere uno en la <button routerLink="/tienda"
+        class="btn btn-dark">Tienda</button>
+    </h2> -->
   </div>
 </div>

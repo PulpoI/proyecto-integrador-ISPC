@@ -14,7 +14,8 @@
         <p>Contraseña: **********</p>
       </div>
       <div class="d-grid">
-        <button type="submit" class="btn btn-outline-dark border-dark" (click)="editarDatos()" *ngIf="!editar">Editar datos</button>
+        <button type="submit" class="btn btn-outline-dark border-dark" (click)="editarDatos()" *ngIf="!editar">Editar
+          datos</button>
       </div>
 
       <form *ngIf="editar">
@@ -36,7 +37,8 @@
 
           <div class="input-box">
             <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-            <input type="Date" id="fecha_nacimiento" [(ngModel)]="clientes.fecha_nacimiento" name="fecha_nacimiento" required>
+            <input type="Date" id="fecha_nacimiento" [(ngModel)]="clientes.fecha_nacimiento" name="fecha_nacimiento"
+              required>
           </div>
 
           <div class="input-box">
@@ -49,9 +51,10 @@
             <input type="password" id="contraseña" [(ngModel)]="clientes.password" name="contraseña" required>
           </div>
 
-          
+
           <div class="d-grid">
-            <button type="submit" class="btn btn-outline-dark border-dark" (click)="guardarCambios()">Guardar cambios</button>
+            <button type="submit" class="btn btn-outline-dark border-dark" (click)="guardarCambios()">Guardar
+              cambios</button>
           </div>
         </div>
       </form>

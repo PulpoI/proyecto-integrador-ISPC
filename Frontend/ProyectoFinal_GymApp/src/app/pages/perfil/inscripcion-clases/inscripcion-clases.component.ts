@@ -22,19 +22,75 @@ export class InscripcionClasesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getClases();
+    
+    const clienteId = this.authService.getClienteIdFromSessionStorage();
 
-    // Obtener el ID del cliente autenticado desde el AuthService
-    const clienteId = this.authService.obtenerIdCliente();
-    this.usuarioId = clienteId;
-
-    this.clientesService.obtenerCliente(this.usuarioId).subscribe(clientes => {
+    this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
       this.clientes = clientes.cliente;
-      console.log('Datos del cliente:', clientes.cliente);
+      console.log('Datos del cliente:', clientes);
+
+      const planId = this.clientes.plan.planId;
+      if (planId) {
+        this.http.get<any>(`http://127.0.0.1:8000/api/clientes/mi_plan/${planId}`).subscribe(
+          response => {
+            if (response.mensaje === 'Success') {
+              const clasesRestantes = response.plan.clases_restantes;
+              this.clientes.plan.clases_restantes = clasesRestantes;
+              this.clientes.plan.cantidad_clases = response.plan.cantidad_clases;
+              this.clientes.plan.precio = response.plan.precio;
+              this.clientes.plan.descripcion = response.plan.descripcion.replace(/\n/g, '<br><br>');
+
+              console.log('Descripción del Plan:', response.plan.descripcion);
+              console.log('Clases Restantes:', clasesRestantes);
+            } else {
+              console.error('Error al obtener el plan:', response.mensaje);
+            }
+          },
+          error => {
+            console.error('Error al obtener el plan:', error);
+          }
+        );
+      }
     });
+    // Obtener el ID del cliente autenticado desde el AuthService
+    this.getUsuario()
+    this.getClases();
 
     // Obtener las reservas del cliente logueado
     this.getReservas();
+    
+  }
+
+  getUsuario(): void {
+    const clienteId = this.authService.getClienteIdFromSessionStorage();
+
+    this.clientesService.obtenerCliente(clienteId).subscribe(clientes => {
+      this.clientes = clientes.cliente;
+      console.log('Datos del cliente:', clientes);
+
+      const planId = this.clientes.plan.planId;
+      if (planId) {
+        this.http.get<any>(`http://127.0.0.1:8000/api/clientes/mi_plan/${planId}`).subscribe(
+          response => {
+            if (response.mensaje === 'Success') {
+              const clasesRestantes = response.plan.clases_restantes;
+              this.clientes.plan.clases_restantes = clasesRestantes;
+              this.clientes.plan.cantidad_clases = response.plan.cantidad_clases;
+              this.clientes.plan.precio = response.plan.precio;
+              this.clientes.plan.descripcion = response.plan.descripcion.replace(/\n/g, '<br><br>');
+
+              console.log('Descripción del Plan:', response.plan.descripcion);
+              console.log('Clases Restantes:', clasesRestantes);
+            } else {
+              console.error('Error al obtener el plan:', response.mensaje);
+            }
+          },
+          error => {
+            console.error('Error al obtener el plan:', error);
+          }
+        );
+      }
+    });
   }
 
   getClases(): void {
@@ -79,7 +135,7 @@ export class InscripcionClasesComponent implements OnInit {
         this.http.put<any>(`http://127.0.0.1:8000/api/clases/${clase.id}`, { ...clase, estado_clase: clase.cantidad_inscriptos === clase.limite_cupos ? "No disponible" : "Disponible" }).subscribe(response => {
           console.log('Respuesta de la API:', response);
         });
-
+        this.getClases();
         this.getReservas();
 
         // Mostrar SweetAlert2 de éxito
