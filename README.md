@@ -67,7 +67,7 @@
 
 ## Usuarios de prueba 
 ### ADMIN: http://localhost:4200/admin 
-### Email: admin@admin.com 
+### Email: admin@admin.com
 ### Password: admin1
 
 
